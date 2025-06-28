@@ -51,7 +51,7 @@
 - [X] Create recipe extraction from Evernote notes
 - [X] Add support for Evernote attachments (images)
 - [X] Implement Evernote note synchronization
-- [ ] Create Evernote notebook filtering
+- [X] Create Evernote notebook filtering
 - [ ] Add Evernote note metadata extraction
 - [ ] Implement batch import from Evernote
 - [ ] Create Evernote import progress tracking
