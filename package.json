@@ -18,6 +18,7 @@
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.525.0",
     "next": "15.3.4",
+    "playwright": "^1.53.1",
     "prisma": "^6.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
