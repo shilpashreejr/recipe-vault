@@ -50,7 +50,7 @@
 - [X] Implement Evernote note search functionality
 - [X] Create recipe extraction from Evernote notes
 - [X] Add support for Evernote attachments (images)
-- [ ] Implement Evernote note synchronization
+- [X] Implement Evernote note synchronization
 - [ ] Create Evernote notebook filtering
 - [ ] Add Evernote note metadata extraction
 - [ ] Implement batch import from Evernote
@@ -138,6 +138,9 @@
 - [ ] Create loading skeletons for recipe cards
 - [ ] Implement infinite scroll or pagination
 - [ ] Add recipe card click handlers
+- [ ] Add favorite button to recipe cards
+- [ ] Create favorite recipe indicators
+- [ ] Implement favorite recipe filtering
 
 ### Recipe Detail Page
 - [ ] Create detailed recipe view page
@@ -148,6 +151,22 @@
 - [ ] Add cooking time and servings display
 - [ ] Implement edit recipe name functionality
 - [ ] Add recipe metadata (source, extraction date, etc.)
+- [ ] Add favorite/unfavorite button
+- [ ] Display favorite status and rating
+- [ ] Add "Mark as Cooked" button for favorites
+
+### Favorites Management System
+- [ ] Create favorites page with grid/list view
+- [ ] Build favorite recipe cards with ratings and notes
+- [ ] Implement add to favorites functionality
+- [ ] Create favorite recipe rating system (1-5 stars)
+- [ ] Add favorite recipe notes/description field
+- [ ] Implement favorite recipe filtering and sorting
+- [ ] Create favorite recipe statistics dashboard
+- [ ] Add "Mark as Cooked" functionality
+- [ ] Implement favorite recipe usage tracking
+- [ ] Create favorite recipe preferences (meal type, day, season)
+- [ ] Add bulk favorite management actions
 
 ### Search and Filter System
 - [ ] Create advanced search component
@@ -159,6 +178,8 @@
 - [ ] Create cuisine type filter
 - [ ] Implement search results page
 - [ ] Add search history and suggestions
+- [ ] Add favorite recipe filters
+- [ ] Implement favorite status in search results
 
 ### Categories and Organization
 - [ ] Create categories page
@@ -174,6 +195,7 @@
 - [ ] Add UserPreferences model to Prisma schema
 - [ ] Add MealPlan, MealPlanDay, MealPlanMeal models
 - [ ] Add ShoppingList, ShoppingListItem models
+- [ ] Add FavoriteRecipe model to Prisma schema
 - [ ] Update User and Recipe models with meal planning relations
 - [ ] Create database migration for meal planning tables
 - [ ] Add seed data for common dietary restrictions and allergies
@@ -188,6 +210,7 @@
 - [ ] Add meal planning preferences (meals per day, plan duration)
 - [ ] Create smart repetition preferences (allow repetition, strategy, max repetitions)
 - [ ] Add cooking schedule preferences (cooking days, quick meal days, no-cook days)
+- [ ] Add favorite recipe preferences (integration strategy, min/max per week)
 - [ ] Create preferences onboarding flow
 - [ ] Implement preferences validation and storage
 
@@ -200,6 +223,9 @@
 - [ ] Add batch cooking and meal prep logic
 - [ ] Create leftover utilization strategy
 - [ ] Implement cooking time and serving size matching
+- [ ] Add favorite recipe integration logic
+- [ ] Create favorite recipe rotation strategy
+- [ ] Implement favorite recipe usage tracking
 - [ ] Add meal plan generation API endpoint
 - [ ] Implement background job processing for plan generation
 - [ ] Add meal plan validation and error handling
@@ -227,6 +253,8 @@
 - [ ] Implement favorite recipes functionality
 - [ ] Add recipe tagging (quick, meal-prep-friendly, leftover-friendly)
 - [ ] Create quick meal recipe filter (15-min or less)
+- [ ] Add favorite recipe priority in meal planning
+- [ ] Implement favorite recipe rotation suggestions
 
 ### Shopping List System
 - [ ] Create shopping list generation from meal plans
@@ -263,6 +291,14 @@
 - [ ] Create `/api/meal-plans/[id]/optimize-repetition` endpoint
 - [ ] Add `/api/recipes/quick-meals` endpoint
 - [ ] Implement `/api/recipes/meal-prep-friendly` endpoint
+
+### Favorites API Endpoints
+- [ ] Create `/api/favorites` CRUD endpoints
+- [ ] Implement `/api/favorites/stats` endpoint
+- [ ] Add `/api/favorites/[id]/cook` endpoint
+- [ ] Create `/api/favorites/meal-plan-suggestions` endpoint
+- [ ] Implement `/api/favorites/rotation-suggestions` endpoint
+- [ ] Add `/api/favorites/bulk-actions` endpoint
 
 ## Phase 5: Print and Share Functionality (Week 9)
 
@@ -342,6 +378,9 @@
 - [ ] Implement favorite recipes functionality
 - [ ] Create user recipe collections
 - [ ] Add recipe rating and reviews
+- [ ] Create favorite recipe management interface
+- [ ] Implement favorite recipe statistics and analytics
+- [ ] Add favorite recipe sharing functionality
 
 ### Advanced Features
 - [ ] Recipe scaling (adjust servings)

@@ -108,6 +108,12 @@ CREATE TABLE user_preferences (
   no_cook_days INTEGER DEFAULT 1, -- Days for leftovers/takeout
   weekend_cooking BOOLEAN DEFAULT TRUE, -- Willing to cook on weekends
   
+  -- Favorite Recipe Preferences
+  prefer_favorites_in_meal_plan BOOLEAN DEFAULT TRUE, -- Use favorites when planning
+  min_favorites_per_week INTEGER DEFAULT 3, -- Minimum favorite recipes per week
+  max_favorites_per_week INTEGER DEFAULT 7, -- Maximum favorite recipes per week
+  favorite_rotation_strategy VARCHAR(50) DEFAULT 'balanced', -- "balanced", "heavy", "light"
+  
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
@@ -159,6 +165,30 @@ CREATE TABLE recipe_categories (
   recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
   category_id UUID REFERENCES categories(id) ON DELETE CASCADE,
   PRIMARY KEY (recipe_id, category_id)
+);
+
+-- Favorite Recipes table
+CREATE TABLE favorite_recipes (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+  recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
+  
+  -- Favorite metadata
+  favorite_notes TEXT, -- User notes about why they love this recipe
+  favorite_rating INTEGER CHECK (favorite_rating >= 1 AND favorite_rating <= 5), -- 1-5 star rating
+  last_cooked_date DATE, -- When they last made this recipe
+  cook_count INTEGER DEFAULT 0, -- How many times they've cooked this recipe
+  is_meal_plan_favorite BOOLEAN DEFAULT TRUE, -- Include in meal planning suggestions
+  
+  -- Usage preferences
+  preferred_meal_type VARCHAR(50), -- "breakfast", "lunch", "dinner", "snack"
+  preferred_day_of_week VARCHAR(50), -- "monday", "tuesday", etc.
+  preferred_season VARCHAR(50), -- "spring", "summer", "fall", "winter", "any"
+  
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  
+  UNIQUE(user_id, recipe_id)
 );
 
 -- Meal Plans table
@@ -289,6 +319,7 @@ CREATE TABLE shopping_list_items (
 8. **Preferences Setup** - User preferences and dietary restrictions
 9. **Shopping Lists** - Generated and manual shopping lists
 10. **Progress Tracking** - Meal plan adherence and analytics
+11. **Favorites** - User's favorite recipes with ratings and notes
 
 **Key UI Components:**
 - Responsive navigation with search so that it works on all devices like iphones, ipads and mac
@@ -303,6 +334,8 @@ CREATE TABLE shopping_list_items (
 - **Preferences Form** - Multi-step form for dietary and cooking preferences
 - **Shopping List Editor** - Interactive shopping list with categories
 - **Progress Tracker** - Visual progress indicators for meal completion
+- **Favorites Manager** - Add, rate, and organize favorite recipes
+- **Favorite Recipe Cards** - Enhanced recipe cards with favorite status and ratings
 
 **Search & Filter Options:**
 - Text search (recipe name, ingredients, instructions)
@@ -327,11 +360,18 @@ CREATE TABLE shopping_list_items (
 - **Batch Cooking**: Strategic meal prep and leftover utilization
 - **Quick Meals**: 15-minute meals for busy days
 - **No-Cook Options**: Zero-cooking days when needed
+- **Favorite Recipe Integration**: Intelligently include favorite recipes in meal plans
+- **Favorite Recipe Management**: Add, rate, and organize favorite recipes
 
 **Repetition Strategies:**
 1. **No Repetition** - Every meal is unique (traditional approach)
 2. **Smart Repetition** - Balanced approach with strategic repetition
 3. **Aggressive Repetition** - Heavy batch cooking for maximum efficiency
+
+**Favorite Recipe Strategies:**
+1. **Balanced** - Mix of favorites and new recipes
+2. **Heavy Favorites** - Primarily use favorite recipes
+3. **Light Favorites** - Use favorites sparingly, focus on variety
 
 **Day Type Assignment:**
 - **Cooking Days** - Full recipes with normal prep time
@@ -352,6 +392,7 @@ CREATE TABLE shopping_list_items (
 - Shopping list completion
 - Cooking efficiency analytics
 - Weekly/monthly progress reports
+- Favorite recipe usage tracking
 
 #### 5. Data Extraction Workflow
 
@@ -554,6 +595,15 @@ test-nextjs/
 - `PUT /api/recipes/[id]` - Update recipe
 - `DELETE /api/recipes/[id]` - Delete recipe
 
+**Favorites Management:**
+- `GET /api/favorites` - List user's favorite recipes
+- `POST /api/favorites` - Add recipe to favorites
+- `PUT /api/favorites/[id]` - Update favorite recipe (rating, notes, etc.)
+- `DELETE /api/favorites/[id]` - Remove recipe from favorites
+- `GET /api/favorites/stats` - Get favorite recipe statistics
+- `POST /api/favorites/[id]/cook` - Mark favorite recipe as cooked
+- `GET /api/favorites/meal-plan-suggestions` - Get favorites for meal planning
+
 **Data Extraction:**
 - `POST /api/extract/url` - Extract recipe from URL
 - `POST /api/extract/image` - Extract recipe from image
@@ -676,6 +726,8 @@ interface MealPlanGenerator {
   selectRecipes(recipes: Recipe[], preferences: UserPreferences, dayType: string): Promise<Recipe[]>;
   optimizeRepetition(mealPlan: MealPlan, strategy: string): Promise<MealPlan>;
   assignDayTypes(mealPlan: MealPlan, preferences: UserPreferences): Promise<MealPlan>;
+  integrateFavorites(mealPlan: MealPlan, favorites: FavoriteRecipe[], preferences: UserPreferences): Promise<MealPlan>;
+  suggestFavoriteRotation(favorites: FavoriteRecipe[], weekCount: number): Promise<FavoriteRecipe[]>;
 }
 ```
 
@@ -694,6 +746,19 @@ interface NutritionalCalculator {
   calculateDailyNutrition(meals: MealPlanMeal[]): NutritionalInfo;
   calculateWeeklyNutrition(mealPlan: MealPlan): NutritionalInfo;
   validateNutritionalGoals(mealPlan: MealPlan, preferences: UserPreferences): boolean;
+}
+```
+
+**Favorites Manager:**
+```typescript
+interface FavoritesManager {
+  addToFavorites(userId: string, recipeId: string, metadata: FavoriteMetadata): Promise<FavoriteRecipe>;
+  updateFavorite(favoriteId: string, updates: Partial<FavoriteMetadata>): Promise<FavoriteRecipe>;
+  removeFromFavorites(userId: string, recipeId: string): Promise<void>;
+  getFavoritesForMealPlanning(userId: string, preferences: UserPreferences): Promise<FavoriteRecipe[]>;
+  getFavoriteStats(userId: string): Promise<FavoriteStats>;
+  markAsCooked(favoriteId: string): Promise<FavoriteRecipe>;
+  suggestFavoritesForWeek(userId: string, weekStart: Date): Promise<FavoriteRecipe[]>;
 }
 ```
 
@@ -753,33 +818,47 @@ npx prisma db push
    - Save favorite recipes (future enhancement)
    - View recipes by original source organization
 
-5. **Set Up Meal Planning Preferences**
+5. **Manage Favorite Recipes**
+   - Add recipes to my favorites list
+   - Rate my favorite recipes (1-5 stars)
+   - Add notes about why I love each recipe
+   - Track how many times I've cooked each favorite
+   - Mark when I last cooked a favorite recipe
+   - Set preferences for when to cook favorites (meal type, day of week, season)
+   - View my favorite recipe statistics and usage patterns
+
+6. **Set Up Meal Planning Preferences**
    - Configure dietary restrictions and allergies
    - Set cooking schedule preferences (how many days to cook)
    - Choose repetition comfort level (none/smart/aggressive)
    - Set nutritional goals and targets
    - Specify preferred cuisines and disliked ingredients
+   - Choose favorite recipe integration strategy (balanced/heavy/light)
+   - Set minimum and maximum favorite recipes per week
 
-6. **Create Personalized Meal Plans**
+7. **Create Personalized Meal Plans**
    - Generate weekly/monthly meal plans based on preferences
    - Choose from my stored recipes or get suggestions
    - Customize meal repetition and batch cooking options
    - Plan around my actual cooking availability
    - Get quick meals for busy days and no-cook options
+   - Intelligently include my favorite recipes in meal plans
+   - Get suggestions for favorite recipe rotation to avoid burnout
 
-7. **Manage Shopping Lists**
+8. **Manage Shopping Lists**
    - Automatically generate shopping lists from meal plans
    - See ingredients organized by store sections
    - Add/remove items and adjust quantities
    - Mark items as purchased
    - Export shopping lists for printing or sharing
 
-8. **Track Progress**
+9. **Track Progress**
    - Mark meals as completed or skipped
    - See nutritional adherence vs. planned goals
    - Track shopping list completion
    - View weekly/monthly progress reports
    - Monitor cooking efficiency and time savings
+   - Track favorite recipe usage and rotation
 
 ### Success Metrics
 - Successful extraction rate > 80%
