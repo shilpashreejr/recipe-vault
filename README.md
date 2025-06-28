@@ -1,16 +1,39 @@
 # RecipeVault 🍳
 
-A modern recipe extraction and management website built with Next.js 14, TypeScript, and AI-powered data extraction. Extract recipes from URLs, Instagram Reels, and images with intelligent parsing and organization.
+A modern recipe extraction and management website built with Next.js 14, TypeScript, and AI-powered data extraction. Extract recipes from URLs, Instagram Reels, and images with intelligent parsing, meal planning, photo-based food logging, and smart grocery shopping lists.
 
 ## ✨ Features
 
+### Recipe Management
 - **Smart Recipe Extraction**: Automatically extract recipes from URLs, Instagram Reels, and images
 - **OCR Technology**: Extract recipe text from screenshots and food photos using Tesseract.js
+- **Multi-Source Support**: Social media, notes apps, web blogs, and handwritten recipes
 - **Organized Categories**: Browse recipes by starters, entrees, desserts, and dietary restrictions
 - **Print & Share**: Print-friendly layouts and social media sharing
+
+### Smart Meal Planning
+- **Personalized Meal Plans**: AI-powered meal planning with smart repetition strategies
+- **Dietary Preferences**: Customize plans for restrictions, allergies, and taste preferences
+- **Time Management**: Plan meals around your schedule with prep time optimization
+- **Smart Repetition**: Intelligent meal rotation to reduce food waste and save time
+
+### Photo-Based Food Logging
+- **AI-Powered Recognition**: Snap photos of meals for automatic ingredient identification
+- **Macro Tracking**: Monitor protein, carbs, and fat intake with detailed breakdowns
+- **Progress Insights**: Get personalized recommendations based on eating patterns
+- **Nutritional Goals**: Set and track macro targets with visual progress indicators
+
+### Smart Grocery Shopping
+- **Auto-Generated Lists**: Shopping lists automatically created from meal plans
+- **Inventory Management**: Track pantry and fridge contents to avoid duplicates
+- **Budget Optimization**: Price comparisons, sale alerts, and budget-friendly alternatives
+- **Waste Reduction**: Smart suggestions to minimize food waste and save money
+
+### User Experience
 - **Responsive Design**: Works perfectly on iPhone, iPad, and Mac
 - **Modern UI**: Built with shadcn/ui, Tailwind CSS, and Framer Motion
 - **Database Management**: PostgreSQL with Prisma ORM for reliable data storage
+- **Mobile-First**: Optimized for mobile food logging and grocery management
 
 ## 🛠 Tech Stack
 
@@ -22,6 +45,7 @@ A modern recipe extraction and management website built with Next.js 14, TypeScr
 - **Deployment**: Vercel with Vercel Postgres
 - **Web Scraping**: Puppeteer/Playwright
 - **OCR**: Tesseract.js
+- **AI/ML**: Photo recognition and meal planning algorithms
 - **Authentication**: NextAuth.js (planned)
 
 ## 🚀 Quick Start
@@ -106,14 +130,24 @@ For detailed deployment instructions, see [VERCEL_SETUP.md](./VERCEL_SETUP.md).
 recipe-vault/
 ├── src/
 │   ├── app/                 # Next.js app directory
+│   │   ├── api/            # API routes
+│   │   ├── recipes/        # Recipe pages
+│   │   ├── meal-plans/     # Meal planning pages
+│   │   ├── food-logs/      # Food logging pages
+│   │   └── grocery/        # Grocery shopping pages
 │   ├── components/          # React components
 │   │   ├── forms/          # Form components
 │   │   ├── layout/         # Layout components
 │   │   ├── recipe/         # Recipe-specific components
+│   │   ├── food-logging/   # Food logging components
+│   │   ├── grocery/        # Grocery shopping components
 │   │   └── ui/             # shadcn/ui components
 │   ├── hooks/              # Custom React hooks
 │   ├── lib/                # Utility functions
-│   │   └── extractors/     # Recipe extraction logic
+│   │   ├── extractors/     # Recipe extraction logic
+│   │   ├── food-logging/   # Food logging utilities
+│   │   ├── grocery/        # Grocery shopping utilities
+│   │   └── meal-planning/  # Meal planning algorithms
 │   └── types/              # TypeScript type definitions
 ├── prisma/                 # Database schema and migrations
 ├── scripts/                # Setup and deployment scripts
@@ -137,22 +171,48 @@ recipe-vault/
 - [x] Vercel deployment configuration
 - [x] Basic project structure
 
-### Phase 2: Data Extraction System (In Progress)
-- [ ] Web scraping service
-- [ ] OCR service for images
-- [ ] Recipe parsing logic
-- [ ] API endpoints for extraction
+### Phase 2: Data Extraction System ✅
+- [x] Web scraping service
+- [x] OCR service for images
+- [x] Recipe parsing logic
+- [x] API endpoints for extraction
+- [x] Social media integration
+- [x] Notes app integration
 
-### Phase 3: User Interface Development
-- [ ] Navigation and layout
-- [ ] Recipe upload interface
-- [ ] Recipe browser and cards
-- [ ] Search and filter system
+### Phase 3: User Interface Development ✅
+- [x] Navigation and layout
+- [x] Recipe upload interface
+- [x] Recipe browser and cards
+- [x] Search and filter system
+- [x] Modern design system
 
-### Phase 4: Print and Share Functionality
-- [ ] Print-friendly layouts
-- [ ] Social media sharing
-- [ ] Modern website design
+### Phase 4: Meal Planning System ✅
+- [x] Smart meal plan generation
+- [x] User preferences system
+- [x] Meal plan interface
+- [x] Shopping list generation
+- [x] Progress tracking
+
+### Phase 5: Food Logging System (In Progress)
+- [ ] Photo-based food recognition
+- [ ] Macro tracking interface
+- [ ] Nutritional goal setting
+- [ ] Progress analytics
+- [ ] Mobile-optimized logging
+
+### Phase 6: Grocery Management System (In Progress)
+- [ ] Inventory tracking
+- [ ] Smart shopping lists
+- [ ] Budget optimization
+- [ ] Waste reduction features
+- [ ] Store integration
+
+### Phase 7: Advanced Features (Planned)
+- [ ] AI-powered meal suggestions
+- [ ] Social features and sharing
+- [ ] Integration with fitness trackers
+- [ ] Restaurant meal logging
+- [ ] Voice-to-text food logging
 
 ## 🤝 Contributing
 
@@ -172,6 +232,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful UI components
 - [Prisma](https://prisma.io/) for the excellent ORM
 - [Vercel](https://vercel.com/) for seamless deployment
+- [Tesseract.js](https://tesseract.projectnaptha.com/) for OCR capabilities
 
 ## 📞 Support
 
