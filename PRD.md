@@ -22,10 +22,14 @@ A Next.js web application that automatically extracts recipe information from va
 - Social media posts (Instagram, Facebook, Twitter)
 - Instagram Reels (caption/description extraction)
 - Images/screenshots with recipe text
+- Evernote notes and notebooks
+- Apple Notes exports (.html, .txt files)
 
 **Extraction Methods:**
 - Web scraping for URLs using Puppeteer/Playwright
 - OCR (Optical Character Recognition) for images using Tesseract.js
+- Evernote API integration for direct note access
+- Apple Notes export file parsing
 - API integrations where available
 - Manual fallback for complex cases
 
@@ -68,7 +72,8 @@ CREATE TABLE recipes (
   dietary_tags TEXT[], -- ['vegetarian', 'gluten-free', etc.]
   macros JSONB, -- {calories, protein, carbs, fat}
   source_url TEXT,
-  source_type VARCHAR(50), -- 'blog', 'instagram', 'image', etc.
+  source_type VARCHAR(50), -- 'blog', 'instagram', 'image', 'evernote', 'apple_notes', etc.
+  source_metadata JSONB, -- {notebook_name, note_id, folder_path, etc.}
   extracted_at TIMESTAMP DEFAULT NOW(),
   created_by UUID REFERENCES users(id),
   created_at TIMESTAMP DEFAULT NOW(),
@@ -157,6 +162,67 @@ CREATE TABLE recipe_categories (
 - Malformed data
 - Rate limiting for external APIs
 
+#### 6. Evernote Integration
+
+**Authentication & Setup:**
+- OAuth 2.0 authentication with Evernote API
+- User authorization for note access
+- Secure token storage and refresh handling
+- Notebook permission management
+
+**Data Extraction Process:**
+1. User connects Evernote account
+2. System fetches available notebooks
+3. User selects notebooks to import from
+4. System searches for recipe-related notes
+5. Notes are parsed for recipe content
+6. Recipe data is extracted and structured
+7. Notes are imported with metadata preservation
+
+**Supported Evernote Features:**
+- Note content extraction (text, rich text)
+- Note attachments (images, PDFs)
+- Notebook organization
+- Note tags and metadata
+- Creation and modification dates
+- Note sharing and collaboration data
+
+**API Endpoints:**
+- `POST /api/extract/evernote/auth` - Initialize Evernote OAuth
+- `GET /api/extract/evernote/notebooks` - List user notebooks
+- `POST /api/extract/evernote/sync` - Sync selected notebooks
+- `GET /api/extract/evernote/status/[jobId]` - Check sync status
+
+#### 7. Apple Notes Integration
+
+**Import Process:**
+- File upload for Apple Notes exports
+- Support for .html and .txt export formats
+- Batch processing of multiple notes
+- Folder structure preservation
+
+**Data Extraction Process:**
+1. User uploads Apple Notes export file
+2. System parses HTML/TXT structure
+3. Notes are identified and categorized
+4. Recipe content is extracted from notes
+5. Images and attachments are processed
+6. Recipe data is structured and validated
+7. Notes are imported with folder organization
+
+**Supported Apple Notes Features:**
+- Rich text formatting preservation
+- Image and attachment extraction
+- Folder hierarchy maintenance
+- Note creation dates
+- Note titles and content
+- Checkbox and list formatting
+
+**API Endpoints:**
+- `POST /api/extract/apple-notes` - Process Apple Notes export
+- `GET /api/extract/apple-notes/status/[jobId]` - Check processing status
+- `GET /api/extract/apple-notes/folders` - List folder structure
+
 #### 5. Print Functionality
 
 **Print Layout Features:**
@@ -238,7 +304,11 @@ test-nextjs/
     "tesseract.js": "^4.0.0",
     "cheerio": "^1.0.0",
     "axios": "^1.0.0",
-    "react-query": "^3.0.0"
+    "react-query": "^3.0.0",
+    "evernote": "^2.0.0",
+    "jsdom": "^22.0.0",
+    "multer": "^1.4.5",
+    "formidable": "^3.5.0"
   }
 }
 ```
@@ -255,7 +325,15 @@ test-nextjs/
 **Data Extraction:**
 - `POST /api/extract/url` - Extract recipe from URL
 - `POST /api/extract/image` - Extract recipe from image
+- `POST /api/extract/evernote` - Extract recipes from Evernote
+- `POST /api/extract/apple-notes` - Extract recipes from Apple Notes export
 - `GET /api/extract/status/[jobId]` - Check extraction status
+- `POST /api/extract/evernote/auth` - Initialize Evernote OAuth
+- `GET /api/extract/evernote/notebooks` - List Evernote notebooks
+- `POST /api/extract/evernote/sync` - Sync Evernote notebooks
+- `GET /api/extract/evernote/status/[jobId]` - Check Evernote sync status
+- `GET /api/extract/apple-notes/status/[jobId]` - Check Apple Notes processing status
+- `GET /api/extract/apple-notes/folders` - List Apple Notes folder structure
 
 **Categories:**
 - `GET /api/categories` - List all categories
@@ -294,6 +372,27 @@ interface RecipeParser {
 }
 ```
 
+**Evernote Service:**
+```typescript
+interface EvernoteService {
+  authenticateUser(): Promise<AuthResult>;
+  getNotebooks(): Promise<Notebook[]>;
+  searchNotes(query: string, notebookIds?: string[]): Promise<Note[]>;
+  extractRecipeFromNote(note: Note): Promise<RecipeData>;
+  syncNotebooks(notebookIds: string[]): Promise<SyncResult>;
+}
+```
+
+**Apple Notes Service:**
+```typescript
+interface AppleNotesService {
+  parseExportFile(fileBuffer: Buffer): Promise<NoteExport>;
+  extractRecipesFromNotes(notes: Note[]): Promise<RecipeData[]>;
+  processFolderStructure(exportData: NoteExport): Promise<FolderStructure>;
+  extractImagesFromNotes(notes: Note[]): Promise<ImageData[]>;
+}
+```
+
 ### Deployment Configuration
 
 #### 1. Vercel Setup
@@ -323,6 +422,8 @@ npx prisma db push
 1. **Upload Recipe Sources**
    - Submit a URL to extract recipe data
    - Upload an image/screenshot to extract recipe
+   - Connect my Evernote account to import recipe notes
+   - Upload Apple Notes export files to import recipes
    - See progress of extraction process
    - Receive confirmation when extraction is complete
 
@@ -331,17 +432,20 @@ npx prisma db push
    - Filter recipes by category, dietary restrictions, cooking time
    - Search recipes by name, ingredients, or instructions
    - Sort recipes by various criteria
+   - Filter recipes by source (Evernote, Apple Notes, web, etc.)
 
 3. **View Recipe Details**
    - See complete recipe information
    - View nutritional information if available
    - See recipe images
    - Print recipe in a clean format
+   - View source information (Evernote notebook, Apple Notes folder, etc.)
 
 4. **Organize Recipes**
    - Browse recipes by category (starters, entrees, desserts, etc.)
    - Filter by dietary restrictions (vegetarian, gluten-free, etc.)
    - Save favorite recipes (future enhancement)
+   - View recipes by original source organization
 
 ### Success Metrics
 - Successful extraction rate > 80%

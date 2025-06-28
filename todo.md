@@ -44,6 +44,30 @@
 - [ ] Add robots.txt compliance
 - [ ] Create fallback manual extraction option
 
+### Evernote Integration
+- [ ] Set up Evernote API integration
+- [ ] Create Evernote authentication flow
+- [ ] Implement Evernote note search functionality
+- [ ] Create recipe extraction from Evernote notes
+- [ ] Add support for Evernote attachments (images)
+- [ ] Implement Evernote note synchronization
+- [ ] Create Evernote notebook filtering
+- [ ] Add Evernote note metadata extraction
+- [ ] Implement batch import from Evernote
+- [ ] Create Evernote import progress tracking
+
+### Apple Notes Integration
+- [ ] Research Apple Notes API limitations and alternatives
+- [ ] Implement Apple Notes export file parsing (.html, .txt)
+- [ ] Create Apple Notes file upload interface
+- [ ] Build parser for Apple Notes HTML format
+- [ ] Implement Apple Notes image extraction
+- [ ] Create Apple Notes folder structure parsing
+- [ ] Add support for Apple Notes rich text formatting
+- [ ] Implement Apple Notes import validation
+- [ ] Create Apple Notes import progress tracking
+- [ ] Add Apple Notes metadata preservation
+
 ### OCR Service for Images
 - [ ] Install Tesseract.js for OCR
 - [ ] Create image upload component with drag-and-drop
@@ -65,6 +89,11 @@
 - [ ] Create `/api/extract/url` endpoint
 - [ ] Create `/api/extract/image` endpoint
 - [ ] Create `/api/extract/status/[jobId]` endpoint
+- [ ] Create `/api/extract/evernote` endpoint
+- [ ] Create `/api/extract/apple-notes` endpoint
+- [ ] Create `/api/extract/evernote/auth` endpoint
+- [ ] Create `/api/extract/evernote/sync` endpoint
+- [ ] Create `/api/extract/evernote/notebooks` endpoint
 - [ ] Implement background job processing
 - [ ] Add extraction progress tracking
 - [ ] Create error handling and validation
@@ -89,13 +118,17 @@
 - [ ] Implement responsive layout for all screen sizes (iPhone, iPad, Mac)
 
 ### Recipe Upload Interface
-- [ ] Create recipe upload page with tabs (URL/Image)
+- [ ] Create recipe upload page with tabs (URL/Image/Evernote/Apple Notes)
 - [ ] Build URL input form with validation
 - [ ] Create image upload component with preview
+- [ ] Create Evernote connection interface
+- [ ] Create Apple Notes file upload interface
 - [ ] Add upload progress indicators
-- [ ] Implement drag-and-drop for images
+- [ ] Implement drag-and-drop for images and files
 - [ ] Create extraction status display
 - [ ] Add success/error notifications
+- [ ] Implement Evernote notebook selection
+- [ ] Add Apple Notes folder structure display
 
 ### Recipe Browser and Cards
 - [ ] Create recipe grid/list view component
