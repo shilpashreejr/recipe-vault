@@ -52,7 +52,7 @@
 - [X] Add support for Evernote attachments (images)
 - [X] Implement Evernote note synchronization
 - [X] Create Evernote notebook filtering
-- [ ] Add Evernote note metadata extraction
+- [X] Add Evernote note metadata extraction
 - [ ] Implement batch import from Evernote
 - [ ] Create Evernote import progress tracking
 
