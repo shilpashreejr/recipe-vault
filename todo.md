@@ -82,11 +82,11 @@
 
 ### OCR Service for Images
 - [X] Install Tesseract.js for OCR
-- [ ] Create image upload component with drag-and-drop
-- [ ] Implement image preprocessing (resize, enhance quality)
-- [ ] Create OCR service to extract text from images
-- [ ] Add support for multiple image formats (JPG, PNG, etc.)
-- [ ] Implement image validation and error handling
+- [X] Create image upload component with drag-and-drop
+- [X] Implement image preprocessing (resize, enhance quality)
+- [X] Create OCR service to extract text from images
+- [X] Add support for multiple image formats (JPG, PNG, etc.)
+- [X] Implement image validation and error handling
 
 ### Recipe Parsing Logic
 - [ ] Create recipe parser service
