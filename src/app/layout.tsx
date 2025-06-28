@@ -17,19 +17,10 @@ export const metadata: Metadata = {
   description: "Extract, organize, and manage recipes from URLs, Instagram Reels, and images with AI-powered technology.",
   keywords: ["recipes", "cooking", "food", "recipe extraction", "meal planning", "culinary"],
   authors: [{ name: "RecipeVault Team" }],
-  creator: "RecipeVault",
-  publisher: "RecipeVault",
-  robots: "index, follow",
   openGraph: {
     title: "RecipeVault - Smart Recipe Extraction & Management",
     description: "Extract, organize, and manage recipes from URLs, Instagram Reels, and images with AI-powered technology.",
     type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RecipeVault - Smart Recipe Extraction & Management",
-    description: "Extract, organize, and manage recipes from URLs, Instagram Reels, and images with AI-powered technology.",
   },
 };
 

@@ -3,12 +3,28 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/layout/Navigation";
+import { AnimatedBackground } from "@/components/ui/FloatingElements";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { AnimatedButton } from "@/components/ui/AnimatedButton";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Scroll animation hooks for different sections
+  const { elementRef: featuresRef, isVisible: featuresVisible } = useScrollAnimation();
+  const { elementRef: sourcesRef, isVisible: sourcesVisible } = useScrollAnimation();
+  const { elementRef: planningRef, isVisible: planningVisible } = useScrollAnimation();
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -17,48 +33,59 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Animated Background */}
+        <AnimatedBackground />
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
-              <span className="gradient-text">Your Ultimate</span>
-              <br />
-              <span className="text-foreground">Recipe Vault</span>
-              <br />
-              <span className="gradient-text">& Meal Planner</span>
-            </h1>
+            {/* Main heading with staggered animation */}
+            <div className="mb-6">
+              <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-tight">
+                <span className={`gradient-text animate-slide-in-top ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+                  Your Ultimate
+                </span>
+                <br />
+                <span className={`text-foreground animate-slide-in-top ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+                  Recipe Vault
+                </span>
+                <br />
+                <span className={`gradient-text animate-slide-in-top ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
+                  & Meal Planner
+                </span>
+              </h1>
+            </div>
             
-            <p className="text-foreground/70 text-lg sm:text-xl lg:text-2xl mb-8 font-body font-light max-w-3xl mx-auto leading-relaxed">
+            {/* Subtitle with fade in animation */}
+            <p className={`text-foreground/70 text-lg sm:text-xl lg:text-2xl mb-8 font-body font-light max-w-3xl mx-auto leading-relaxed animate-fade-in-up ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
               Extract recipes from anywhere - social media, blogs, notes, images - and create personalized meal plans 
               with smart repetition strategies. Your culinary journey, simplified.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Link 
+            {/* CTA Buttons with enhanced animations */}
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
+              <AnimatedButton 
                 href="/recipes/upload"
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                variant="primary"
+                size="lg"
               >
                 Start Extracting Recipes
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
-              <Link 
+              </AnimatedButton>
+              <AnimatedButton 
                 href="/meal-plans"
-                className="group glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                variant="glass"
+                size="lg"
               >
                 Create Meal Plan
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
+              </AnimatedButton>
             </div>
 
-            {/* Feature Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            {/* Feature Highlights with staggered animations */}
+            <div ref={featuresRef} className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto animate-fade-in-up ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '1.2s' }}>
+              <div className={`glass rounded-xl p-6 text-center hover-lift transition-all duration-500 ${featuresVisible ? 'animate-slide-in-bottom' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4 animate-breathe">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -66,8 +93,8 @@ export default function Home() {
                 <h3 className="font-display font-semibold text-lg mb-2">Extract from Anywhere</h3>
                 <p className="text-foreground/70 text-sm">URLs, social media, images, Evernote, Apple Notes</p>
               </div>
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <div className={`glass rounded-xl p-6 text-center hover-lift transition-all duration-500 ${featuresVisible ? 'animate-slide-in-bottom' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4 animate-breathe" style={{ animationDelay: '0.5s' }}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
@@ -75,8 +102,8 @@ export default function Home() {
                 <h3 className="font-display font-semibold text-lg mb-2">Smart Meal Planning</h3>
                 <p className="text-foreground/70 text-sm">Personalized plans with repetition strategies</p>
               </div>
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <div className={`glass rounded-xl p-6 text-center hover-lift transition-all duration-500 ${featuresVisible ? 'animate-slide-in-bottom' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mx-auto mb-4 animate-breathe" style={{ animationDelay: '1s' }}>
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -88,22 +115,22 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Enhanced Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center animate-pulse-glow">
             <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
       {/* Data Extraction Sources Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section ref={sourcesRef} className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
+            <h2 className={`font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text ${sourcesVisible ? 'animate-slide-in-top' : 'opacity-0'}`}>
               Extract Recipes from Anywhere
             </h2>
-            <p className="text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto">
+            <p className={`text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto ${sourcesVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Our advanced extraction technology works with all your favorite sources. From social media to notes apps, 
               we've got you covered.
             </p>
@@ -111,8 +138,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Social Media */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className={`group glass rounded-2xl p-8 hover-lift transition-all duration-500 ${sourcesVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.1s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-breathe">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
                 </svg>
@@ -130,8 +157,8 @@ export default function Home() {
             </div>
 
             {/* Notes Apps */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className={`group glass rounded-2xl p-8 hover-lift transition-all duration-500 ${sourcesVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-breathe" style={{ animationDelay: '0.5s' }}>
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
@@ -149,8 +176,8 @@ export default function Home() {
             </div>
 
             {/* Web & Blogs */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className={`group glass rounded-2xl p-8 hover-lift transition-all duration-500 ${sourcesVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-breathe" style={{ animationDelay: '1s' }}>
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9m0-9H3" />
                 </svg>
@@ -168,8 +195,8 @@ export default function Home() {
             </div>
 
             {/* Images & OCR */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <div className={`group glass rounded-2xl p-8 hover-lift transition-all duration-500 ${sourcesVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 animate-breathe" style={{ animationDelay: '1.5s' }}>
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -190,14 +217,14 @@ export default function Home() {
       </section>
 
       {/* Meal Planning Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section ref={planningRef} className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
+            <h2 className={`font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text ${planningVisible ? 'animate-slide-in-top' : 'opacity-0'}`}>
               Smart Meal Planning
             </h2>
-            <p className="text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto">
+            <p className={`text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto ${planningVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
               Create personalized meal plans that adapt to your lifestyle, preferences, and cooking schedule.
             </p>
           </div>
