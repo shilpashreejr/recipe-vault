@@ -57,14 +57,14 @@
 - [X] Create Evernote import progress tracking
 
 ### Apple Notes Integration
-- [ ] Research Apple Notes API limitations and alternatives
-- [ ] Implement Apple Notes export file parsing (.html, .txt)
-- [ ] Create Apple Notes file upload interface
-- [ ] Build parser for Apple Notes HTML format
-- [ ] Implement Apple Notes image extraction
-- [ ] Create Apple Notes folder structure parsing
-- [ ] Add support for Apple Notes rich text formatting
-- [ ] Implement Apple Notes import validation
+- [X] Research Apple Notes API limitations and alternatives
+- [X] Implement Apple Notes export file parsing (.html, .txt)
+- [X] Create Apple Notes file upload interface
+- [X] Build parser for Apple Notes HTML format
+- [X] Implement Apple Notes image extraction
+- [X] Create Apple Notes folder structure parsing
+- [X] Add support for Apple Notes rich text formatting
+- [X] Implement Apple Notes import validation
 - [ ] Create Apple Notes import progress tracking
 - [ ] Add Apple Notes metadata preservation
 
@@ -81,7 +81,7 @@
 - [ ] Implement social media metadata preservation
 
 ### OCR Service for Images
-- [ ] Install Tesseract.js for OCR
+- [X] Install Tesseract.js for OCR
 - [ ] Create image upload component with drag-and-drop
 - [ ] Implement image preprocessing (resize, enhance quality)
 - [ ] Create OCR service to extract text from images
