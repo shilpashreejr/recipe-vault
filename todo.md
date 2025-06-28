@@ -99,25 +99,25 @@
 
 ### API Endpoints for Extraction
 - [X] Create `/api/extract/url` endpoint
-- [ ] Create `/api/extract/image` endpoint
+- [X] Create `/api/extract/image` endpoint
 - [X] Create `/api/extract/status/[jobId]` endpoint
-- [ ] Create `/api/extract/evernote` endpoint
+- [X] Create `/api/extract/evernote` endpoint
 - [X] Create `/api/extract/apple-notes` endpoint
-- [ ] Create `/api/extract/evernote/auth` endpoint
-- [ ] Create `/api/extract/evernote/sync` endpoint
-- [ ] Create `/api/extract/evernote/notebooks` endpoint
+- [X] Create `/api/extract/evernote/auth` endpoint
+- [X] Create `/api/extract/evernote/sync` endpoint
+- [X] Create `/api/extract/evernote/notebooks` endpoint
 - [ ] Create `/api/extract/social-media` endpoint
-- [ ] Create `/api/extract/instagram` endpoint
-- [ ] Create `/api/extract/tiktok` endpoint
-- [ ] Create `/api/extract/pinterest` endpoint
-- [ ] Implement background job processing
-- [ ] Add extraction progress tracking
-- [ ] Create error handling and validation
+- [X] Create `/api/extract/instagram` endpoint
+- [X] Create `/api/extract/tiktok` endpoint
+- [X] Create `/api/extract/pinterest` endpoint
+- [X] Implement background job processing
+- [X] Add extraction progress tracking
+- [X] Create error handling and validation
 - [ ] Add duplicate recipe detection
 
 ### Data Validation and Storage
 - [X] Create Zod schemas for recipe validation
-- [ ] Implement data cleaning and normalization
+- [X] Implement data cleaning and normalization
 - [ ] Create database operations for recipe storage
 - [ ] Add image storage and URL generation
 - [ ] Implement recipe update functionality

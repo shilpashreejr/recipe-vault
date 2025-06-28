@@ -372,10 +372,13 @@ export class DataCleaner {
     sanitized = sanitized.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
     // Remove event handlers (on...=)
     sanitized = sanitized.replace(/\s*on\w+\s*=\s*(['"]).*?\1/gi, '');
-    // Remove href/src attributes that start with javascript:
-    sanitized = sanitized.replace(/(href|src)\s*=\s*(['"])javascript:[^'"]*\2/gi, '$1=""');
-    sanitized = sanitized.replace(/(href|src)\s*=\s*(['"])javascript:[^'"]*['"]/gi, '$1=""');
-    sanitized = sanitized.replace(/(href|src)\s*=\s*(['"])javascript:[^'"]*$/gi, '$1=""');
+    // Remove href/src attributes whose value starts with javascript:
+    sanitized = sanitized.replace(/(href|src)\s*=\s*(['"])(.*?)\2/gi, (match, attr, quote, value) => {
+      if (value.trim().toLowerCase().startsWith('javascript:')) {
+        return `${attr}=""`;
+      }
+      return match;
+    });
     return sanitized;
   }
 
