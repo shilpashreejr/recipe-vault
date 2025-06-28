@@ -74,7 +74,7 @@
 - [X] Add Pinterest pin recipe extraction
 - [X] Implement Facebook post recipe parsing
 - [X] Create Twitter/X post recipe extraction
-- [ ] Add YouTube video description parsing
+- [X] Add YouTube video description parsing
 - [ ] Implement WhatsApp message recipe extraction
 - [ ] Create email forward recipe parsing
 - [ ] Add social media rate limiting and compliance

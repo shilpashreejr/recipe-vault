@@ -15,6 +15,8 @@ export { TwitterScraper } from './twitter-scraper';
 export type { TwitterRecipeData } from './twitter-scraper';
 export { FoodBlogScraper } from './food-blog-scraper';
 export type { FoodBlogScrapingOptions, FoodBlogRecipe } from './food-blog-scraper';
+export { YouTubeScraper } from './youtube-scraper';
+export type { YouTubeRecipeData } from './youtube-scraper';
 
 // Rate limiting and error handling
 export { RateLimiter } from './rate-limiter';
