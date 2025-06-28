@@ -70,9 +70,9 @@
 
 ### Social Media Integration
 - [X] Implement Instagram post/reel extraction
-- [ ] Create TikTok video description parsing
-- [ ] Add Pinterest pin recipe extraction
-- [ ] Implement Facebook post recipe parsing
+- [X] Create TikTok video description parsing
+- [X] Add Pinterest pin recipe extraction
+- [X] Implement Facebook post recipe parsing
 - [ ] Create Twitter/X post recipe extraction
 - [ ] Add YouTube video description parsing
 - [ ] Implement WhatsApp message recipe extraction
@@ -491,6 +491,356 @@
 - [ ] Final deployment to production
 - [ ] Set up monitoring and alerts
 
+## Phase 7: Food Logging and Macro Tracking (Week 11-12)
+
+### Database Schema for Food Logging
+- [ ] Add FoodLog model to Prisma schema
+- [ ] Add FoodLogEntry model for individual food items
+- [ ] Add MacroLog model for nutritional tracking
+- [ ] Add FoodPhoto model for meal photos
+- [ ] Add UserGoals model for macro targets
+- [ ] Create relationships between food logs and meal plans
+- [ ] Add database migration for food logging tables
+- [ ] Create seed data for common foods and their macros
+
+### Food Photo Capture and Upload
+- [ ] Create mobile-optimized camera interface
+  - [ ] Elegant camera view with overlay guides
+  - [ ] Smooth photo capture with flash control
+  - [ ] Modern photo preview and retake functionality
+  - [ ] Elegant photo editing tools (crop, rotate, filters)
+- [ ] Implement photo upload and storage
+  - [ ] Modern drag-and-drop photo upload
+  - [ ] Smooth upload progress indicators
+  - [ ] Elegant photo gallery management
+  - [ ] Modern photo compression and optimization
+- [ ] Create photo organization system
+  - [ ] Elegant photo categorization by meal type
+  - [ ] Smooth photo tagging and labeling
+  - [ ] Modern photo search and filtering
+  - [ ] Elegant photo timeline view
+
+### Manual Macro Entry Interface
+- [ ] Design sophisticated macro input form
+  - [ ] Elegant floating label design for macro fields
+  - [ ] Smooth real-time macro calculation
+  - [ ] Modern macro validation with visual feedback
+  - [ ] Elegant serving size adjustment interface
+- [ ] Create food database integration
+  - [ ] Modern food search with autocomplete
+  - [ ] Elegant food selection interface
+  - [ ] Smooth food database lookup
+  - [ ] Modern custom food creation form
+- [ ] Implement macro calculation engine
+  - [ ] Elegant macro breakdown display
+  - [ ] Smooth macro goal comparison
+  - [ ] Modern macro deficit/surplus indicators
+  - [ ] Elegant macro trend visualization
+
+### Food Logging Dashboard
+- [ ] Design modern food logging homepage
+  - [ ] Elegant daily macro summary cards
+  - [ ] Modern meal timeline with photos
+  - [ ] Smooth macro progress visualization
+  - [ ] Elegant quick-add food buttons
+- [ ] Create sophisticated daily view
+  - [ ] Modern meal breakdown by time
+  - [ ] Elegant macro totals and goals
+  - [ ] Smooth photo integration with meals
+  - [ ] Modern meal editing and deletion
+- [ ] Design weekly/monthly analytics view
+  - [ ] Elegant macro trend charts
+  - [ ] Modern meal pattern analysis
+  - [ ] Smooth photo timeline browsing
+  - [ ] Elegant goal achievement tracking
+
+### Macro Goal Setting and Tracking
+- [ ] Create sophisticated goal setting interface
+  - [ ] Elegant macro target input forms
+  - [ ] Modern goal recommendation engine
+  - [ ] Smooth goal adjustment interface
+  - [ ] Elegant goal progress visualization
+- [ ] Implement macro tracking system
+  - [ ] Modern daily macro tracking
+  - [ ] Elegant weekly/monthly summaries
+  - [ ] Smooth goal vs. actual comparison
+  - [ ] Modern macro trend analysis
+- [ ] Design accountability features
+  - [ ] Elegant streak tracking
+  - [ ] Modern achievement badges
+  - [ ] Smooth progress notifications
+  - [ ] Elegant motivation messages
+
+### Meal Plan Integration with Food Logging
+- [ ] Create meal plan to food log conversion
+  - [ ] Elegant meal plan execution tracking
+  - [ ] Modern meal completion interface
+  - [ ] Smooth photo capture for completed meals
+  - [ ] Elegant macro comparison with planned vs. actual
+- [ ] Implement meal plan accountability
+  - [ ] Modern meal plan adherence tracking
+  - [ ] Elegant deviation logging and notes
+  - [ ] Smooth meal plan adjustment interface
+  - [ ] Modern meal plan success analytics
+
+### Advanced Analytics and Insights
+- [ ] Create comprehensive analytics dashboard
+  - [ ] Elegant macro trend analysis
+  - [ ] Modern meal pattern recognition
+  - [ ] Smooth photo-based meal analysis
+  - [ ] Elegant goal achievement insights
+- [ ] Implement smart recommendations
+  - [ ] Modern macro adjustment suggestions
+  - [ ] Elegant meal timing recommendations
+  - [ ] Smooth food variety suggestions
+  - [ ] Modern goal optimization tips
+- [ ] Design progress visualization
+  - [ ] Elegant macro progress charts
+  - [ ] Modern photo timeline visualization
+  - [ ] Smooth goal achievement graphs
+  - [ ] Elegant streak and milestone tracking
+
+### Food Logging API Endpoints
+- [ ] Create `/api/food-logs` CRUD endpoints
+- [ ] Implement `/api/food-logs/[date]/entries` endpoints
+- [ ] Add `/api/food-logs/[id]/photos` endpoints
+- [ ] Create `/api/macro-logs` endpoints
+- [ ] Implement `/api/user-goals` endpoints
+- [ ] Add `/api/food-database` search endpoint
+- [ ] Create `/api/food-logs/analytics` endpoint
+- [ ] Implement `/api/food-logs/insights` endpoint
+- [ ] Add `/api/meal-plans/[id]/log-completion` endpoint
+- [ ] Create `/api/food-logs/streaks` endpoint
+
+### Mobile-First Food Logging
+- [ ] Design mobile-optimized food logging flow
+  - [ ] Elegant mobile camera interface
+  - [ ] Modern mobile macro input forms
+  - [ ] Smooth mobile photo management
+  - [ ] Elegant mobile dashboard design
+- [ ] Implement offline food logging
+  - [ ] Modern offline data storage
+  - [ ] Elegant sync when online
+  - [ ] Smooth conflict resolution
+  - [ ] Modern offline indicator
+- [ ] Create mobile notifications
+  - [ ] Elegant meal reminder notifications
+  - [ ] Modern macro goal alerts
+  - [ ] Smooth photo capture reminders
+  - [ ] Elegant achievement notifications
+
+## Phase 8: Grocery and Inventory Management (Week 13-14)
+
+### Database Schema for Inventory Management
+- [ ] Add Inventory model to Prisma schema
+- [ ] Add InventoryItem model for individual items
+- [ ] Add InventoryPhoto model for storage photos
+- [ ] Add ShoppingList model for grocery lists
+- [ ] Add ShoppingListItem model for list items
+- [ ] Add InventoryCategory model for organization
+- [ ] Create relationships between inventory and meal plans
+- [ ] Add database migration for inventory tables
+- [ ] Create seed data for common pantry and fridge items
+
+### Photo-Based Inventory Analysis
+- [ ] Create inventory photo capture interface
+  - [ ] Elegant camera view with storage area guides
+  - [ ] Smooth photo capture for fridge, freezer, pantry
+  - [ ] Modern photo preview and retake functionality
+  - [ ] Elegant photo editing tools for inventory analysis
+- [ ] Implement AI-powered food recognition
+  - [ ] Modern food item detection from photos
+  - [ ] Elegant quantity estimation algorithms
+  - [ ] Smooth item categorization and tagging
+  - [ ] Modern expiration date detection
+- [ ] Create manual inventory verification
+  - [ ] Elegant item confirmation interface
+  - [ ] Modern quantity adjustment tools
+  - [ ] Smooth item addition and removal
+  - [ ] Elegant inventory item editing
+
+### Smart Inventory Dashboard
+- [ ] Design modern inventory homepage
+  - [ ] Elegant storage area overview cards
+  - [ ] Modern item count and status indicators
+  - [ ] Smooth inventory timeline with photos
+  - [ ] Elegant quick inventory check buttons
+- [ ] Create sophisticated storage area views
+  - [ ] Modern fridge/freezer organization view
+  - [ ] Elegant pantry shelf management
+  - [ ] Smooth item location tracking
+  - [ ] Modern expiration date alerts
+- [ ] Design inventory analytics view
+  - [ ] Elegant item usage tracking
+  - [ ] Modern waste reduction insights
+  - [ ] Smooth inventory turnover analysis
+  - [ ] Elegant storage optimization suggestions
+
+### Smart Shopping List Generation
+- [ ] Create meal plan to shopping list conversion
+  - [ ] Elegant ingredient requirement analysis
+  - [ ] Modern inventory subtraction logic
+  - [ ] Smooth shopping list generation
+  - [ ] Elegant quantity calculation and adjustment
+- [ ] Implement smart shopping recommendations
+  - [ ] Modern item availability suggestions
+  - [ ] Elegant alternative product recommendations
+  - [ ] Smooth bulk buying suggestions
+  - [ ] Modern sale and coupon integration
+- [ ] Design shopping list organization
+  - [ ] Elegant store aisle organization
+  - [ ] Modern category-based grouping
+  - [ ] Smooth priority and urgency indicators
+  - [ ] Elegant shopping list sharing functionality
+
+### Inventory Tracking and Management
+- [ ] Create automatic inventory updates
+  - [ ] Modern usage tracking from meal plans
+  - [ ] Elegant consumption logging integration
+  - [ ] Smooth inventory depletion alerts
+  - [ ] Modern restocking reminders
+- [ ] Implement expiration date management
+  - [ ] Elegant expiration date tracking
+  - [ ] Modern "use first" recommendations
+  - [ ] Smooth expiration alerts and notifications
+  - [ ] Modern food waste reduction suggestions
+- [ ] Design inventory optimization
+  - [ ] Elegant storage space utilization
+  - [ ] Modern item rotation suggestions
+  - [ ] Smooth inventory consolidation
+  - [ ] Elegant storage area organization tips
+
+### Grocery Store Integration
+- [ ] Create store-specific shopping lists
+  - [ ] Elegant store selection interface
+  - [ ] Modern aisle mapping and organization
+  - [ ] Smooth store-specific item availability
+  - [ ] Elegant store loyalty program integration
+- [ ] Implement price tracking and comparison
+  - [ ] Modern price history tracking
+  - [ ] Elegant store price comparison
+  - [ ] Smooth sale and discount detection
+  - [ ] Modern budget optimization suggestions
+- [ ] Design grocery delivery integration
+  - [ ] Elegant delivery service selection
+  - [ ] Modern order placement interface
+  - [ ] Smooth delivery tracking integration
+  - [ ] Elegant delivery confirmation and feedback
+
+### Inventory Analytics and Insights
+- [ ] Create comprehensive inventory analytics
+  - [ ] Elegant item usage patterns
+  - [ ] Modern waste tracking and reduction
+  - [ ] Smooth inventory turnover analysis
+  - [ ] Elegant storage optimization insights
+- [ ] Implement smart recommendations
+  - [ ] Modern restocking suggestions
+  - [ ] Elegant meal plan adjustments based on inventory
+  - [ ] Smooth waste reduction strategies
+  - [ ] Modern budget optimization tips
+- [ ] Design inventory forecasting
+  - [ ] Elegant usage prediction algorithms
+  - [ ] Modern seasonal inventory planning
+  - [ ] Smooth bulk buying recommendations
+  - [ ] Elegant inventory cost analysis
+
+### Inventory Management API Endpoints
+- [ ] Create `/api/inventory` CRUD endpoints
+- [ ] Implement `/api/inventory/[area]/items` endpoints
+- [ ] Add `/api/inventory/[id]/photos` endpoints
+- [ ] Create `/api/shopping-lists` CRUD endpoints
+- [ ] Implement `/api/shopping-lists/[id]/generate` endpoint
+- [ ] Add `/api/inventory/analysis` endpoint
+- [ ] Create `/api/inventory/expiration-alerts` endpoint
+- [ ] Implement `/api/shopping-lists/optimize` endpoint
+- [ ] Add `/api/inventory/forecast` endpoint
+- [ ] Create `/api/inventory/waste-tracking` endpoint
+
+### Mobile-First Inventory Management
+- [ ] Design mobile-optimized inventory flow
+  - [ ] Elegant mobile camera interface for inventory
+  - [ ] Modern mobile inventory management
+  - [ ] Smooth mobile shopping list creation
+  - [ ] Elegant mobile inventory alerts
+- [ ] Implement offline inventory tracking
+  - [ ] Modern offline inventory data storage
+  - [ ] Elegant sync when online
+  - [ ] Smooth conflict resolution for inventory
+  - [ ] Modern offline shopping list management
+- [ ] Create mobile inventory notifications
+  - [ ] Elegant low inventory alerts
+  - [ ] Modern expiration date reminders
+  - [ ] Smooth restocking notifications
+  - [ ] Elegant shopping list reminders
+
+## Phase 9: Testing and Polish (Week 15-16)
+
+### Testing
+- [ ] Write unit tests for core functions
+- [ ] Create integration tests for API endpoints
+- [ ] Implement end-to-end testing with Playwright
+- [ ] Test data extraction accuracy
+- [ ] Validate print functionality across browsers
+- [ ] Test responsive design on all devices
+- [ ] Performance testing and optimization
+- [ ] Accessibility testing (WCAG compliance)
+- [ ] Test food logging accuracy
+- [ ] Validate photo upload and storage
+- [ ] Test macro calculation precision
+- [ ] Validate mobile camera functionality
+- [ ] Test inventory photo analysis accuracy
+- [ ] Validate shopping list generation logic
+- [ ] Test inventory tracking precision
+- [ ] Validate AI food recognition accuracy
+
+### Performance Optimization
+- [ ] Implement image optimization and lazy loading
+- [ ] Add caching strategies for API responses
+- [ ] Optimize database queries
+- [ ] Implement code splitting and dynamic imports
+- [ ] Add service worker for offline functionality
+- [ ] Optimize bundle size
+- [ ] Implement CDN for static assets
+- [ ] Optimize photo upload and storage
+- [ ] Implement efficient macro calculations
+- [ ] Add mobile performance optimizations
+- [ ] Optimize inventory photo processing
+- [ ] Implement efficient shopping list generation
+- [ ] Add inventory analysis performance optimization
+- [ ] Optimize AI food recognition processing
+
+### Error Handling and Monitoring
+- [ ] Add comprehensive error boundaries
+- [ ] Implement error logging and monitoring
+- [ ] Create user-friendly error messages
+- [ ] Add retry mechanisms for failed extractions
+- [ ] Implement fallback UI for broken components
+- [ ] Add analytics and user behavior tracking
+- [ ] Handle photo upload failures gracefully
+- [ ] Implement macro calculation error handling
+- [ ] Add food logging validation errors
+- [ ] Create mobile-specific error handling
+- [ ] Handle inventory photo analysis failures
+- [ ] Implement shopping list generation error handling
+- [ ] Add inventory tracking validation errors
+- [ ] Create AI recognition error handling
+
+### Documentation and Deployment
+- [ ] Create comprehensive README.md
+- [ ] Document API endpoints
+- [ ] Create deployment guide
+- [ ] Add environment variable documentation
+- [ ] Create user manual
+- [ ] Final deployment to production
+- [ ] Set up monitoring and alerts
+- [ ] Document food logging features
+- [ ] Create mobile app deployment guide
+- [ ] Add photo storage configuration docs
+- [ ] Document inventory management features
+- [ ] Create AI model deployment guide
+- [ ] Add inventory analysis configuration docs
+- [ ] Create shopping list optimization guide
+
 ## Additional Features (Future Phases)
 
 ### User Management
@@ -503,6 +853,8 @@
 - [ ] Create favorite recipe management interface
 - [ ] Implement favorite recipe statistics and analytics
 - [ ] Add favorite recipe sharing functionality
+- [ ] Create user macro goal sharing
+- [ ] Implement social food logging features
 
 ### Advanced Features
 - [ ] Recipe scaling (adjust servings)
@@ -511,6 +863,20 @@
 - [ ] Recipe recommendations
 - [ ] Social features (comments, sharing)
 - [ ] Integration with grocery delivery services
+- [ ] AI-powered macro estimation from photos
+- [ ] Barcode scanning for packaged foods
+- [ ] Voice-to-text food logging
+- [ ] Integration with fitness trackers
+- [ ] Meal prep planning and tracking
+- [ ] Restaurant meal logging with photo recognition
+- [ ] Photo-based inventory analysis
+- [ ] Smart shopping list optimization
+- [ ] Inventory waste tracking and reduction
+- [ ] Expiration date management and alerts
+- [ ] Store-specific shopping list organization
+- [ ] Price tracking and budget optimization
+- [ ] Grocery delivery service integration
+- [ ] Inventory forecasting and planning
 
 ### Mobile App Features
 - [ ] Create PWA (Progressive Web App)
@@ -518,6 +884,39 @@
 - [ ] Implement push notifications
 - [ ] Add camera integration for recipe photos
 - [ ] Create mobile-optimized upload flow
+- [ ] Implement mobile food logging
+- [ ] Add mobile macro tracking
+- [ ] Create mobile photo management
+- [ ] Implement mobile notifications for meals
+- [ ] Add mobile offline food logging
+- [ ] Implement mobile inventory management
+- [ ] Add mobile shopping list creation
+- [ ] Create mobile inventory photo capture
+- [ ] Implement mobile barcode scanning
+- [ ] Add mobile grocery store navigation
+- [ ] Create mobile price comparison tools
+
+### AI and Machine Learning Features
+- [ ] Implement photo-based macro estimation
+- [ ] Create smart meal suggestions
+- [ ] Add food recognition from photos
+- [ ] Implement personalized macro recommendations
+- [ ] Create meal pattern analysis
+- [ ] Add predictive meal planning
+- [ ] Implement smart shopping list generation
+- [ ] Create food waste tracking and reduction
+- [ ] Add nutritional deficiency detection
+- [ ] Implement meal optimization algorithms
+- [ ] Create AI-powered inventory photo analysis
+- [ ] Implement food item detection and counting
+- [ ] Add quantity estimation from photos
+- [ ] Create expiration date detection from labels
+- [ ] Implement inventory forecasting algorithms
+- [ ] Add smart restocking recommendations
+- [ ] Create waste prediction and prevention
+- [ ] Implement price optimization algorithms
+- [ ] Add seasonal inventory planning
+- [ ] Create personalized shopping recommendations
 
 ## Notes
 - Each task should be completed and tested before moving to the next
@@ -527,4 +926,8 @@
 - User feedback should be collected and incorporated
 - Design system should be consistently applied across all components
 - Animations should be smooth and purposeful, enhancing user experience
-- Typography should be elegant and highly readable across all devices 
+- Typography should be elegant and highly readable across all devices
+- Mobile-first design should be prioritized for food logging features
+- Photo upload and storage should be optimized for performance and cost
+- Macro calculations should be accurate and user-friendly
+- Privacy and data security should be prioritized for food logging data 

@@ -5,6 +5,12 @@ export type { ScrapedRecipe, ScrapingOptions } from './web-scraper';
 // Specialized scrapers
 export { InstagramScraper } from './instagram-scraper';
 export type { InstagramScrapingOptions } from './instagram-scraper';
+export { TikTokScraper } from './tiktok-scraper';
+export type { TikTokScrapingOptions, TikTokRecipe } from './tiktok-scraper';
+export { PinterestScraper } from './pinterest-scraper';
+export type { PinterestScrapingOptions, PinterestRecipe } from './pinterest-scraper';
+export { FacebookScraper } from './facebook-scraper';
+export type { FacebookScrapingOptions, FacebookRecipe } from './facebook-scraper';
 export { FoodBlogScraper } from './food-blog-scraper';
 export type { FoodBlogScrapingOptions, FoodBlogRecipe } from './food-blog-scraper';
 

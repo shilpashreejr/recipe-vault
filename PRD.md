@@ -1,8 +1,8 @@
 # Product Requirements Document (PRD)
-## Recipe Extraction and Management Website
+## Comprehensive Food Management Ecosystem
 
 ### Project Overview
-A Next.js web application that automatically extracts recipe information from various sources (food blogs, recipe websites, social media posts, Instagram Reels, Evernote notes, Apple Notes exports, and images) and organizes them into a searchable database with categorization, print functionality, and personalized meal planning with smart repetition strategies.
+A Next.js web application that creates a complete food management ecosystem, automatically extracting recipe information from various sources (food blogs, recipe websites, social media posts, Instagram Reels, Evernote notes, Apple Notes exports, and images), organizing them into a searchable database, and providing comprehensive meal planning, food logging, macro tracking, and inventory management with photo-based analysis and AI-powered insights.
 
 ### Tech Stack
 - **Frontend**: Next.js 14 with TypeScript
@@ -13,6 +13,9 @@ A Next.js web application that automatically extracts recipe information from va
 - **Deployment**: Vercel with Vercel Postgres
 - **Data Extraction**: Automated scraping with OCR capabilities
 - **Integration**: Evernote API, Apple Notes parsing, Social media scraping
+- **AI/ML**: Photo-based food recognition, macro estimation, inventory analysis
+- **Image Processing**: Advanced photo capture, editing, and analysis
+- **Mobile**: PWA with offline capabilities and camera integration
 
 ### Core Features
 
@@ -52,496 +55,94 @@ A Next.js web application that automatically extracts recipe information from va
 - Source attribution and metadata
 - User ratings and reviews (if available)
 
-#### 2. Database Schema
+#### 2. Smart Meal Planning System
+**Personalized Meal Planning Features:**
+- Generate weekly/monthly plans based on user preferences
+- Smart repetition strategies (None/Smart/Aggressive)
+- Cooking schedule optimization around availability
+- Batch cooking and meal prep planning
+- Quick meals (15-minute) for busy days
+- No-cook options for zero-cooking days
+- Favorite recipe integration with rotation strategies
+- Nutritional goal balancing and adherence
 
-```sql
--- Users table
-CREATE TABLE users (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  email VARCHAR(255) UNIQUE NOT NULL,
-  name VARCHAR(255),
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+**Meal Plan Intelligence:**
+- Day type assignment (cooking, quick, leftovers, no-cook)
+- Batch cooking optimization for efficiency
+- Leftover utilization strategies
+- Cooking time and serving size matching
+- Favorite recipe rotation to prevent burnout
+- Nutritional balancing across the week
 
--- User Preferences table
-CREATE TABLE user_preferences (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id) ON DELETE CASCADE UNIQUE,
-  
-  -- Dietary Restrictions
-  is_vegetarian BOOLEAN DEFAULT FALSE,
-  is_vegan BOOLEAN DEFAULT FALSE,
-  is_gluten_free BOOLEAN DEFAULT FALSE,
-  is_dairy_free BOOLEAN DEFAULT FALSE,
-  is_nut_free BOOLEAN DEFAULT FALSE,
-  is_keto BOOLEAN DEFAULT FALSE,
-  is_paleo BOOLEAN DEFAULT FALSE,
-  is_low_carb BOOLEAN DEFAULT FALSE,
-  
-  -- Allergies & Intolerances
-  allergies TEXT[], -- Array of allergy strings
-  intolerances TEXT[], -- Array of intolerance strings
-  
-  -- Cooking Preferences
-  preferred_cuisines TEXT[], -- Array of cuisine types
-  disliked_ingredients TEXT[], -- Array of disliked ingredients
-  max_cooking_time INTEGER, -- Maximum cooking time in minutes
-  preferred_servings INTEGER, -- Preferred number of servings
-  
-  -- Nutritional Goals
-  target_calories INTEGER, -- Daily calorie target
-  target_protein INTEGER, -- Daily protein target in grams
-  target_carbs INTEGER, -- Daily carbs target in grams
-  target_fat INTEGER, -- Daily fat target in grams
-  
-  -- Meal Planning Preferences
-  meals_per_day INTEGER DEFAULT 3, -- 2, 3, or 4 meals
-  plan_duration INTEGER DEFAULT 7, -- Days to plan for (7, 14, 30)
-  include_snacks BOOLEAN DEFAULT FALSE,
-  leftovers_preference VARCHAR(50), -- "love", "tolerate", "avoid"
-  
-  -- Smart Meal Repetition Preferences
-  allow_meal_repetition BOOLEAN DEFAULT TRUE,
-  repetition_strategy VARCHAR(50) DEFAULT 'smart', -- "none", "smart", "aggressive"
-  max_repetitions_per_week INTEGER DEFAULT 3, -- Maximum times a meal can repeat
-  repetition_spacing INTEGER DEFAULT 2, -- Minimum days between same meal
-  batch_cooking_preference VARCHAR(50) DEFAULT 'moderate', -- "none", "moderate", "heavy"
-  meal_prep_days TEXT[], -- ["sunday", "wednesday"] - preferred prep days
-  
-  -- Cooking Schedule Preferences
-  cooking_days_per_week INTEGER DEFAULT 4, -- How many days willing to cook
-  quick_meal_days INTEGER DEFAULT 2, -- Days for 15-min meals
-  no_cook_days INTEGER DEFAULT 1, -- Days for leftovers/takeout
-  weekend_cooking BOOLEAN DEFAULT TRUE, -- Willing to cook on weekends
-  
-  -- Favorite Recipe Preferences
-  prefer_favorites_in_meal_plan BOOLEAN DEFAULT TRUE, -- Use favorites when planning
-  min_favorites_per_week INTEGER DEFAULT 3, -- Minimum favorite recipes per week
-  max_favorites_per_week INTEGER DEFAULT 7, -- Maximum favorite recipes per week
-  favorite_rotation_strategy VARCHAR(50) DEFAULT 'balanced', -- "balanced", "heavy", "light"
-  
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+#### 3. Food Logging and Macro Tracking
+**Photo-Based Food Logging:**
+- Mobile-optimized camera interface for meal photos
+- AI-powered food recognition from photos
+- Manual macro entry with sophisticated forms
+- Real-time macro calculation and goal comparison
+- Food database integration with autocomplete
+- Custom food creation and management
 
--- Recipes table
-CREATE TABLE recipes (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  title VARCHAR(255) NOT NULL,
-  description TEXT,
-  ingredients JSONB NOT NULL,
-  instructions JSONB NOT NULL,
-  prep_time INTEGER, -- in minutes
-  cook_time INTEGER, -- in minutes
-  servings INTEGER,
-  difficulty VARCHAR(50),
-  cuisine_type VARCHAR(100),
-  dietary_tags TEXT[], -- ['vegetarian', 'gluten-free', etc.]
-  macros JSONB, -- {calories, protein, carbs, fat}
-  source_url TEXT,
-  source_type VARCHAR(50), -- 'blog', 'instagram', 'image', 'evernote', 'apple_notes', etc.
-  source_metadata JSONB, -- {notebook_name, note_id, folder_path, etc.}
-  extracted_at TIMESTAMP DEFAULT NOW(),
-  created_by UUID REFERENCES users(id),
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+**Comprehensive Tracking:**
+- Daily macro summaries and progress visualization
+- Meal timeline with photo integration
+- Weekly/monthly analytics and trend analysis
+- Goal setting and achievement tracking
+- Streak tracking and accountability features
+- Meal plan execution tracking vs. actual consumption
 
--- Recipe images table
-CREATE TABLE recipe_images (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
-  image_url TEXT NOT NULL,
-  alt_text VARCHAR(255),
-  is_primary BOOLEAN DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT NOW()
-);
+#### 4. Inventory Management and Smart Shopping
+**Photo-Based Inventory Analysis:**
+- AI-powered food recognition from fridge/freezer/pantry photos
+- Automatic quantity estimation and item categorization
+- Expiration date detection from labels
+- Manual verification and adjustment interface
+- Storage area organization and optimization
 
--- Categories table
-CREATE TABLE categories (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name VARCHAR(100) NOT NULL,
-  slug VARCHAR(100) UNIQUE NOT NULL,
-  description TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
-);
+**Smart Shopping List Generation:**
+- Automatic generation from meal plans with inventory subtraction
+- Store-specific organization with aisle mapping
+- Price tracking and budget optimization
+- Sale detection and bulk buying suggestions
+- Grocery delivery service integration
+- Shopping list sharing and collaboration
 
--- Recipe categories junction table
-CREATE TABLE recipe_categories (
-  recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
-  category_id UUID REFERENCES categories(id) ON DELETE CASCADE,
-  PRIMARY KEY (recipe_id, category_id)
-);
+**Inventory Intelligence:**
+- Usage tracking and waste reduction insights
+- Expiration date management and alerts
+- Restocking recommendations and forecasting
+- Storage optimization suggestions
+- Cost analysis and budget tracking
 
--- Favorite Recipes table
-CREATE TABLE favorite_recipes (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-  recipe_id UUID REFERENCES recipes(id) ON DELETE CASCADE,
-  
-  -- Favorite metadata
-  favorite_notes TEXT, -- User notes about why they love this recipe
-  favorite_rating INTEGER CHECK (favorite_rating >= 1 AND favorite_rating <= 5), -- 1-5 star rating
-  last_cooked_date DATE, -- When they last made this recipe
-  cook_count INTEGER DEFAULT 0, -- How many times they've cooked this recipe
-  is_meal_plan_favorite BOOLEAN DEFAULT TRUE, -- Include in meal planning suggestions
-  
-  -- Usage preferences
-  preferred_meal_type VARCHAR(50), -- "breakfast", "lunch", "dinner", "snack"
-  preferred_day_of_week VARCHAR(50), -- "monday", "tuesday", etc.
-  preferred_season VARCHAR(50), -- "spring", "summer", "fall", "winter", "any"
-  
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW(),
-  
-  UNIQUE(user_id, recipe_id)
-);
+#### 5. Advanced Analytics and Insights
+**Comprehensive Analytics Dashboard:**
+- Macro trend analysis and goal achievement
+- Meal pattern recognition and optimization
+- Inventory turnover and waste tracking
+- Shopping efficiency and cost analysis
+- Recipe usage and favorite rotation insights
 
--- Meal Plans table
-CREATE TABLE meal_plans (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-  name VARCHAR(255) NOT NULL, -- "Week of March 1st", "Summer Meal Plan", etc.
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL,
-  is_active BOOLEAN DEFAULT TRUE,
-  
-  -- Plan Settings
-  total_calories INTEGER,
-  total_protein INTEGER,
-  total_carbs INTEGER,
-  total_fat INTEGER,
-  
-  -- Plan Strategy
-  repetition_strategy VARCHAR(50) DEFAULT 'smart', -- "none", "smart", "aggressive"
-  batch_cooking_enabled BOOLEAN DEFAULT TRUE,
-  meal_prep_days TEXT[], -- Days when batch cooking happens
-  
-  -- Plan Status
-  status VARCHAR(50) DEFAULT 'draft', -- "draft", "active", "completed", "archived"
-  
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+**AI-Powered Recommendations:**
+- Smart meal suggestions based on preferences and inventory
+- Macro adjustment recommendations
+- Meal timing and variety suggestions
+- Waste reduction strategies
+- Budget optimization tips
 
--- Meal Plan Days table
-CREATE TABLE meal_plan_days (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  meal_plan_id UUID REFERENCES meal_plans(id) ON DELETE CASCADE,
-  date DATE NOT NULL,
-  day_of_week VARCHAR(50) NOT NULL, -- "monday", "tuesday", etc.
-  
-  -- Day Type for Smart Planning
-  day_type VARCHAR(50) DEFAULT 'normal', -- "cooking", "quick", "leftovers", "no-cook"
-  cooking_time INTEGER, -- Estimated cooking time for the day
-  
-  -- Nutritional totals for the day
-  total_calories INTEGER,
-  total_protein INTEGER,
-  total_carbs INTEGER,
-  total_fat INTEGER,
-  
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW(),
-  
-  UNIQUE(meal_plan_id, date)
-);
+#### 6. Mobile-First Experience
+**Progressive Web App Features:**
+- Offline functionality for all core features
+- Mobile-optimized camera interface
+- Touch-friendly photo capture and editing
+- Push notifications for meals, inventory, and goals
+- Native app-like experience with smooth animations
 
--- Meal Plan Meals table
-CREATE TABLE meal_plan_meals (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  meal_plan_day_id UUID REFERENCES meal_plan_days(id) ON DELETE CASCADE,
-  meal_type VARCHAR(50) NOT NULL, -- "breakfast", "lunch", "dinner", "snack"
-  meal_time VARCHAR(50), -- "8:00 AM", "12:30 PM", etc.
-  
-  -- Recipe assignment
-  recipe_id UUID REFERENCES recipes(id),
-  
-  -- Custom meal (if no recipe assigned)
-  custom_meal_name VARCHAR(255),
-  custom_ingredients TEXT,
-  custom_instructions TEXT,
-  
-  -- Meal Planning Strategy
-  is_batch_cooked BOOLEAN DEFAULT FALSE, -- Made in advance
-  is_leftover BOOLEAN DEFAULT FALSE, -- Using leftovers
-  is_quick_meal BOOLEAN DEFAULT FALSE, -- 15-min or less
-  is_no_cook BOOLEAN DEFAULT FALSE, -- No cooking required
-  repetition_count INTEGER DEFAULT 0, -- How many times this meal appears in plan
-  
-  -- Nutritional info
-  calories INTEGER,
-  protein INTEGER,
-  carbs INTEGER,
-  fat INTEGER,
-  
-  -- User notes
-  notes TEXT,
-  
-  -- Meal status
-  is_completed BOOLEAN DEFAULT FALSE,
-  is_skipped BOOLEAN DEFAULT FALSE,
-  
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-
--- Shopping Lists table
-CREATE TABLE shopping_lists (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-  name VARCHAR(255) NOT NULL, -- "Week of March 1st Shopping List"
-  meal_plan_id UUID REFERENCES meal_plans(id),
-  is_active BOOLEAN DEFAULT TRUE,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-
--- Shopping List Items table
-CREATE TABLE shopping_list_items (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  shopping_list_id UUID REFERENCES shopping_lists(id) ON DELETE CASCADE,
-  ingredient_name VARCHAR(255) NOT NULL,
-  quantity VARCHAR(100) NOT NULL, -- "2 cups", "1 lb", etc.
-  unit VARCHAR(50),
-  category VARCHAR(100), -- "produce", "dairy", "meat", "pantry", etc.
-  is_checked BOOLEAN DEFAULT FALSE,
-  notes TEXT,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-#### 3. User Interface Layout & Design
-
-**Design System & Typography:**
-- **Elegant Typography System**: 
-  - Primary font: Inter (clean, modern, highly readable for body text)
-  - Secondary font: Playfair Display (elegant serif for headings and titles)
-  - Accent font: Poppins (for special elements, CTAs, and navigation)
-  - Consistent font hierarchy with proper line heights and letter spacing
-- **Sophisticated Color Palette**:
-  - Primary: Deep navy (#1a1a2e) and warm cream (#f8f6f1)
-  - Secondary: Sage green (#7c9885) and terracotta (#d2691e)
-  - Accent: Gold (#d4af37) and soft coral (#ff6b6b)
-  - Neutral: Charcoal (#2c3e50) and light gray (#ecf0f1)
-- **Modern Visual Elements**:
-  - Gradient backgrounds with subtle patterns
-  - Elegant shadows and depth effects
-  - Smooth micro-interactions and hover states
-  - Sophisticated loading animations and transitions
-
-**Homepage Hero Section:**
-- **Elegant Hero Banner**: Large, bold headline with gradient text effects and subtle parallax scrolling
-- **Floating Recipe Cards**: Animated recipe previews with hover effects and smooth transitions
-- **Feature Highlights**: Animated icons for each extraction source with smooth reveal animations
-- **Elegant CTA Buttons**: Modern button design with micro-interactions and hover effects
-- **Social Proof Section**: Animated statistics counters and elegant testimonial cards with avatars
-- **Integration Status Indicators**: Modern status badges with animated connection states
-
-**Navigation & Header:**
-- **Modern Navigation Bar**: Clean, minimal design with subtle shadows and smooth hover animations
-- **Elegant Dropdown Menus**: Backdrop blur effects with smooth transitions
-- **Global Search**: Elegant search input with icon and smooth dropdown for results
-- **User Profile Menu**: Modern avatar component with elegant dropdown and smooth transitions
-- **Mobile Menu**: Responsive hamburger menu with smooth animations
-- **Breadcrumb Navigation**: Clean, minimal design with smooth hover effects
-
-**Recipe Upload Interface:**
-- **Modern Tabbed Interface**: Elegant tab design with smooth transitions and active state indicators
-- **Floating Label Forms**: Modern form inputs with floating labels and real-time validation
-- **Elegant Drag & Drop**: Sophisticated file upload areas with visual feedback and smooth animations
-- **Progress Indicators**: Modern progress bars with smooth animations and elegant loading states
-- **Preview & Edit**: Elegant preview interface with smooth transitions and modern editing tools
-
-**Recipe Browser & Cards:**
-- **Sophisticated Recipe Cards**: Modern card design with subtle shadows, elegant image hover effects, and smooth favorite button animations
-- **Modern Grid/List Toggle**: Elegant toggle switch design with smooth transition animations
-- **Advanced Filtering**: Clean, minimal filter design with elegant checkbox styles and smooth application animations
-- **Infinite Scroll**: Modern skeleton loading design with smooth scroll animations and elegant "load more" button
-
-**Meal Planning Dashboard:**
-- **Elegant Calendar View**: Modern calendar design with elegant typography, smooth day selection animations, and sophisticated meal assignment indicators
-- **Modern Drag & Drop**: Elegant drag-and-drop interface with smooth animations and visual feedback
-- **Meal Plan Creation Wizard**: Elegant multi-step form design with smooth step transitions and modern progress indicators
-- **Recipe Selection Modal**: Sophisticated modal design with smooth filtering animations and modern recipe cards
-
-**Recipe Detail Page:**
-- **Elegant Recipe Header**: Large, sophisticated typography for recipe titles with smooth image gallery and elegant metadata display
-- **Modern Ingredients Section**: Elegant list design with checkboxes, sophisticated quantity styling, and smooth hover effects
-- **Sophisticated Instructions**: Modern numbered list design with elegant step-by-step layout and smooth reveal animations
-- **Action Buttons**: Elegant favorite button with heart animation, modern print button, and sophisticated share functionality
-- **Nutritional Display**: Modern progress bar design with elegant macro breakdown and smooth reveal animations
-
-**Favorites Management:**
-- **Modern Favorites Page**: Elegant page header with statistics, sophisticated grid layout, and smooth sorting animations
-- **Rating System**: Modern star rating component with smooth rating animations and elegant display
-- **Usage Tracking**: Modern statistics cards with elegant charts and smooth data visualization animations
-
-**Print & Share Functionality:**
-- **Elegant Print Layout**: Modern typography for print, clean minimal layout, and sophisticated ingredient formatting
-- **Modern Share Interface**: Elegant share button design with smooth dropdown animations and modern social media icons
-- **Sophisticated Export**: Elegant PDF export interface with modern preview functionality
-
-**Mobile Optimization:**
-- **Responsive Design**: Optimized for all screen sizes with elegant typography scaling
-- **Touch-Friendly Interface**: Large buttons with smooth touch feedback and intuitive gestures
-- **Elegant Mobile Navigation**: Sophisticated mobile menu with smooth animations and modern design
-- **Progressive Web App**: Install as native app with elegant splash screens and smooth transitions
-
-**Advanced Visual Features:**
-- **Smooth Animations**: Page transitions, scroll animations, and elegant loading states throughout the application
-- **Modern Loading States**: Elegant skeleton loading, smooth progress indicators, and sophisticated loading animations
-- **Dark/Light Mode**: Elegant theme switching with smooth color transitions and modern theme persistence
-- **Background Elements**: Subtle geometric patterns, modern gradient overlays, and sophisticated texture elements
-
-#### 4. Meal Planning System
-
-**Smart Meal Planning Features:**
-- **Personalized Meal Plans**: Generate weekly/monthly plans based on user preferences
-- **Smart Repetition**: Choose repetition comfort level (None/Smart/Aggressive)
-- **Cooking Schedule**: Plan around actual availability and cooking preferences
-- **Batch Cooking**: Strategic meal prep and leftover utilization
-- **Quick Meals**: 15-minute meals for busy days
-- **No-Cook Options**: Zero-cooking days when needed
-- **Favorite Recipe Integration**: Intelligently include favorite recipes in meal plans
-- **Favorite Recipe Management**: Add, rate, and organize favorite recipes
-
-**Repetition Strategies:**
-1. **No Repetition** - Every meal is unique (traditional approach)
-2. **Smart Repetition** - Balanced approach with strategic repetition
-3. **Aggressive Repetition** - Heavy batch cooking for maximum efficiency
-
-**Favorite Recipe Strategies:**
-1. **Balanced** - Mix of favorites and new recipes
-2. **Heavy Favorites** - Primarily use favorite recipes
-3. **Light Favorites** - Use favorites sparingly, focus on variety
-
-**Day Type Assignment:**
-- **Cooking Days** - Full recipes with normal prep time
-- **Quick Meal Days** - 15-minute or less recipes
-- **Leftover Days** - Reheated meals from previous days
-- **No-Cook Days** - Salads, sandwiches, takeout
-
-**Shopping List Generation:**
-- Automatic generation from meal plans
-- Ingredient consolidation and categorization
-- Smart quantities for batch cooking
-- Manual editing and customization
-- Export to PDF or print
-
-**Progress Tracking:**
-- Meal completion tracking
-- Nutritional adherence monitoring
-- Shopping list completion
-- Cooking efficiency analytics
-- Weekly/monthly progress reports
-- Favorite recipe usage tracking
-
-#### 5. Data Extraction Workflow
-
-**URL Processing:**
-1. User submits URL
-2. System validates URL format
-3. Web scraper extracts content
-4. AI/ML model identifies recipe components
-5. Data is structured and validated
-6. Recipe is saved to database
-7. User receives confirmation
-
-**Image Processing:**
-1. User uploads image
-2. Image is processed for OCR
-3. Text is extracted and cleaned
-4. Recipe data is parsed and structured
-5. Data is validated and saved
-6. User receives confirmation
-
-**Error Handling:**
-- Invalid URLs/images
-- Failed extractions
-- Duplicate recipes
-- Malformed data
-- Rate limiting for external APIs
-
-#### 6. Evernote Integration
-
-**Authentication & Setup:**
-- OAuth 2.0 authentication with Evernote API
-- User authorization for note access
-- Secure token storage and refresh handling
-- Notebook permission management
-
-**Data Extraction Process:**
-1. User connects Evernote account
-2. System fetches available notebooks
-3. User selects notebooks to import from
-4. System searches for recipe-related notes
-5. Notes are parsed for recipe content
-6. Recipe data is extracted and structured
-7. Notes are imported with metadata preservation
-
-**Supported Evernote Features:**
-- Note content extraction (text, rich text)
-- Note attachments (images, PDFs)
-- Notebook organization
-- Note tags and metadata
-- Creation and modification dates
-- Note sharing and collaboration data
-
-**API Endpoints:**
-- `POST /api/extract/evernote/auth` - Initialize Evernote OAuth
-- `GET /api/extract/evernote/notebooks` - List user notebooks
-- `POST /api/extract/evernote/sync` - Sync selected notebooks
-- `GET /api/extract/evernote/status/[jobId]` - Check sync status
-
-#### 7. Apple Notes Integration
-
-**Import Process:**
-- File upload for Apple Notes exports
-- Support for .html and .txt export formats
-- Batch processing of multiple notes
-- Folder structure preservation
-
-**Data Extraction Process:**
-1. User uploads Apple Notes export file
-2. System parses HTML/TXT structure
-3. Notes are identified and categorized
-4. Recipe content is extracted from notes
-5. Images and attachments are processed
-6. Recipe data is structured and validated
-7. Notes are imported with folder organization
-
-**Supported Apple Notes Features:**
-- Rich text formatting preservation
-- Image and attachment extraction
-- Folder hierarchy maintenance
-- Note creation dates
-- Note titles and content
-- Checkbox and list formatting
-
-**API Endpoints:**
-- `POST /api/extract/apple-notes` - Process Apple Notes export
-- `GET /api/extract/apple-notes/status/[jobId]` - Check processing status
-- `GET /api/extract/apple-notes/folders` - List folder structure
-
-#### 8. Print Functionality
-
-**Print Layout Features:**
-- Clean, printer-friendly design
-- Recipe name prominently displayed
-- Ingredients list with checkboxes
-- Numbered cooking instructions
-- Nutritional information (if available)
-- Cooking time and servings
-- Optional: QR code linking back to online version
-
-**Print Options:**
-- Print single recipe
-- Print multiple recipes
-- Custom print layouts
-- PDF export option
+**Mobile-Specific Features:**
+- Barcode scanning for packaged foods
+- Voice-to-text food logging
+- Mobile grocery store navigation
+- Price comparison tools
+- Offline inventory tracking with sync
 
 ### Technical Implementation
 
