@@ -257,3 +257,5 @@ If you have any questions or need help, please open an issue on GitHub or contac
 ---
 
 Built with ❤️ using Next.js, TypeScript, and modern web technologies.
+
+- **Modern Visuals**: The homepage hero section now features a vibrant, healthy, vegetarian food spread image with a dark overlay for maximum text readability and a modern, inviting look.

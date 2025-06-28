@@ -17,10 +17,18 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Food Background Image */}
+        <img 
+          src="/images/backgrounds/hero-food.jpg" 
+          alt="Colorful vegetarian food spread" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0" 
+          style={{ filter: 'brightness(0.55) blur(0px)' }}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-transparent z-0"></div>
+        {/* Optionally keep the animated blobs for extra style */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse z-0"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000 z-0"></div>
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">

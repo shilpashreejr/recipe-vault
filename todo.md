@@ -937,4 +937,7 @@
 - Mobile-first design should be prioritized for food logging features
 - Photo upload and storage should be optimized for performance and cost
 - Macro calculations should be accurate and user-friendly
-- Privacy and data security should be prioritized for food logging data 
+- Privacy and data security should be prioritized for food logging data
+- [X] Add modern, healthy, colorful vegetarian food spread image as homepage hero background
+- [X] Ensure text readability with dark/gradient overlay and blending
+- [X] Update documentation to reflect new visual direction 
