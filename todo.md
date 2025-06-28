@@ -98,11 +98,11 @@
 - [X] Add dietary restriction detection (vegetarian, gluten-free, etc.)
 
 ### API Endpoints for Extraction
-- [ ] Create `/api/extract/url` endpoint
+- [X] Create `/api/extract/url` endpoint
 - [ ] Create `/api/extract/image` endpoint
-- [ ] Create `/api/extract/status/[jobId]` endpoint
+- [X] Create `/api/extract/status/[jobId]` endpoint
 - [ ] Create `/api/extract/evernote` endpoint
-- [ ] Create `/api/extract/apple-notes` endpoint
+- [X] Create `/api/extract/apple-notes` endpoint
 - [ ] Create `/api/extract/evernote/auth` endpoint
 - [ ] Create `/api/extract/evernote/sync` endpoint
 - [ ] Create `/api/extract/evernote/notebooks` endpoint
@@ -116,7 +116,7 @@
 - [ ] Add duplicate recipe detection
 
 ### Data Validation and Storage
-- [ ] Create Zod schemas for recipe validation
+- [X] Create Zod schemas for recipe validation
 - [ ] Implement data cleaning and normalization
 - [ ] Create database operations for recipe storage
 - [ ] Add image storage and URL generation
