@@ -43,7 +43,15 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="w-full py-4 px-6 bg-gray-100 border-b mb-4">
+          <nav>
+            <span className="font-bold text-xl tracking-tight">RecipeVault</span>
+            {/* Navigation links will go here */}
+          </nav>
+        </header>
+        <main className="max-w-4xl mx-auto px-4">
+          {children}
+        </main>
       </body>
     </html>
   );

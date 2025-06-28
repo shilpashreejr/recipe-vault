@@ -28,7 +28,7 @@
 ### Basic Project Structure
 - [X] Create folder structure as per PRD
 - [X] Set up app directory with basic routing
-- [ ] Create basic layout component
+- [X] Create basic layout component
 - [ ] Set up global CSS with Tailwind
 - [ ] Create basic navigation component
 - [ ] Set up TypeScript types for recipes, users, categories
