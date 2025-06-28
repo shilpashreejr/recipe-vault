@@ -19,8 +19,8 @@
 - [X] Set up seed data for categories (starters, entrees, desserts, etc.)
 
 ### Vercel Deployment Setup
-- [ ] Create Vercel account and connect repository
-- [ ] Set up Vercel Postgres database
+- [X] Create Vercel account and connect repository
+- [X] Set up Vercel Postgres database
 - [ ] Configure environment variables in Vercel
 - [ ] Set up build settings and deployment pipeline
 - [ ] Test deployment with basic "Hello World" page
