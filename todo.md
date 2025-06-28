@@ -77,7 +77,7 @@
 - [X] Add YouTube video description parsing
 - [X] Implement WhatsApp message recipe extraction
 - [X] Create email forward recipe parsing
-- [ ] Add social media rate limiting and compliance
+- [X] Add social media rate limiting and compliance
 - [ ] Implement social media metadata preservation
 
 ### OCR Service for Images

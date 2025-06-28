@@ -36,4 +36,7 @@ export type { RobotsTxtData, RobotsTxtRule } from './robots-txt';
 
 // Manual extraction fallback
 export { ManualExtractor } from './manual-extractor';
-export type { ManualRecipeInput, ManualExtractionValidation } from './manual-extractor'; 
+export type { ManualRecipeInput, ManualExtractionValidation } from './manual-extractor';
+
+export { SocialMediaRateLimiter } from './social-media-rate-limiter';
+export type { SocialMediaRateLimitConfig, ComplianceConfig } from './social-media-rate-limiter'; 
