@@ -29,8 +29,8 @@
 - [X] Create folder structure as per PRD
 - [X] Set up app directory with basic routing
 - [X] Create basic layout component
-- [ ] Set up global CSS with Tailwind
-- [ ] Create basic navigation component
+- [X] Set up global CSS with Tailwind
+- [X] Create basic navigation component
 - [ ] Set up TypeScript types for recipes, users, categories
 
 ## Phase 2: Data Extraction System (Week 3-4)

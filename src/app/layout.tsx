@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/layout/Navigation";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -44,10 +45,10 @@ export default function RootLayout({
         className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
         <header className="w-full py-4 px-6 bg-gray-100 border-b mb-4">
-          <nav>
+          <div className="flex items-center justify-between">
             <span className="font-bold text-xl tracking-tight">RecipeVault</span>
-            {/* Navigation links will go here */}
-          </nav>
+            <Navigation />
+          </div>
         </header>
         <main className="max-w-4xl mx-auto px-4">
           {children}
