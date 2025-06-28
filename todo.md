@@ -65,8 +65,8 @@
 - [X] Create Apple Notes folder structure parsing
 - [X] Add support for Apple Notes rich text formatting
 - [X] Implement Apple Notes import validation
-- [ ] Create Apple Notes import progress tracking
-- [ ] Add Apple Notes metadata preservation
+- [X] Create Apple Notes import progress tracking
+- [X] Add Apple Notes metadata preservation
 
 ### Social Media Integration
 - [ ] Implement Instagram post/reel extraction
