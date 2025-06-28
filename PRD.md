@@ -315,147 +315,86 @@ CREATE TABLE shopping_list_items (
 
 #### 3. User Interface Layout & Design
 
+**Design System & Typography:**
+- **Elegant Typography System**: 
+  - Primary font: Inter (clean, modern, highly readable for body text)
+  - Secondary font: Playfair Display (elegant serif for headings and titles)
+  - Accent font: Poppins (for special elements, CTAs, and navigation)
+  - Consistent font hierarchy with proper line heights and letter spacing
+- **Sophisticated Color Palette**:
+  - Primary: Deep navy (#1a1a2e) and warm cream (#f8f6f1)
+  - Secondary: Sage green (#7c9885) and terracotta (#d2691e)
+  - Accent: Gold (#d4af37) and soft coral (#ff6b6b)
+  - Neutral: Charcoal (#2c3e50) and light gray (#ecf0f1)
+- **Modern Visual Elements**:
+  - Gradient backgrounds with subtle patterns
+  - Elegant shadows and depth effects
+  - Smooth micro-interactions and hover states
+  - Sophisticated loading animations and transitions
+
 **Homepage Hero Section:**
-- **Dynamic Hero Banner**: Showcase the app's core value proposition with animated elements
-- **Feature Highlights**: Prominent display of key capabilities:
-  - "Extract from Any Source" - URL, social media, images, notes
-  - "Smart Meal Planning" - Personalized plans with repetition strategies
-  - "Organize & Share" - Categories, favorites, print functionality
-- **Quick Action Buttons**: Upload recipe, browse recipes, start meal planning
-- **Social Proof**: User statistics and testimonials
-- **Visual Elements**: Recipe imagery, cooking animations, gradient backgrounds
+- **Elegant Hero Banner**: Large, bold headline with gradient text effects and subtle parallax scrolling
+- **Floating Recipe Cards**: Animated recipe previews with hover effects and smooth transitions
+- **Feature Highlights**: Animated icons for each extraction source with smooth reveal animations
+- **Elegant CTA Buttons**: Modern button design with micro-interactions and hover effects
+- **Social Proof Section**: Animated statistics counters and elegant testimonial cards with avatars
+- **Integration Status Indicators**: Modern status badges with animated connection states
 
 **Navigation & Header:**
-- **Responsive Navigation**: Works seamlessly on iPhone, iPad, and Mac
-- **Main Menu Items**:
-  - Browse Recipes (with search)
-  - Upload Recipe (multi-source)
-  - Meal Planning (dashboard)
-  - Favorites (management)
-  - Categories (organization)
-  - User Profile (preferences)
-- **Search Bar**: Global search with autocomplete
-- **User Actions**: Login/Register, profile menu, notifications
-- **Mobile Menu**: Hamburger menu with smooth animations
+- **Modern Navigation Bar**: Clean, minimal design with subtle shadows and smooth hover animations
+- **Elegant Dropdown Menus**: Backdrop blur effects with smooth transitions
+- **Global Search**: Elegant search input with icon and smooth dropdown for results
+- **User Profile Menu**: Modern avatar component with elegant dropdown and smooth transitions
+- **Mobile Menu**: Responsive hamburger menu with smooth animations
+- **Breadcrumb Navigation**: Clean, minimal design with smooth hover effects
 
 **Recipe Upload Interface:**
-- **Multi-Source Upload Tabs**:
-  - URL Input (blogs, social media, websites)
-  - Image Upload (drag & drop, OCR processing)
-  - Evernote Integration (connect account, select notebooks)
-  - Apple Notes Import (file upload, folder parsing)
-  - Social Media Links (Instagram, TikTok, Pinterest)
-- **Upload Progress**: Real-time extraction status with visual indicators
-- **Preview & Edit**: Review extracted data before saving
-- **Batch Upload**: Multiple sources at once
-- **Source Attribution**: Automatic tracking of recipe origins
+- **Modern Tabbed Interface**: Elegant tab design with smooth transitions and active state indicators
+- **Floating Label Forms**: Modern form inputs with floating labels and real-time validation
+- **Elegant Drag & Drop**: Sophisticated file upload areas with visual feedback and smooth animations
+- **Progress Indicators**: Modern progress bars with smooth animations and elegant loading states
+- **Preview & Edit**: Elegant preview interface with smooth transitions and modern editing tools
 
 **Recipe Browser & Cards:**
-- **Grid/List View**: Toggle between layout options
-- **Enhanced Recipe Cards**:
-  - High-quality images with fallback generation
-  - Recipe name and key details
-  - Cooking time and difficulty indicators
-  - Dietary restriction badges
-  - Source attribution (Evernote, Instagram, etc.)
-  - Favorite status and ratings
-  - Quick actions (view, favorite, add to meal plan)
-- **Advanced Filtering**:
-  - Text search (name, ingredients, instructions)
-  - Category filters (starters, entrees, desserts)
-  - Dietary restrictions (vegetarian, gluten-free, etc.)
-  - Cooking time ranges
-  - Source type (Evernote, social media, web, etc.)
-  - Difficulty levels
-  - Cuisine types
-  - Meal planning filters (quick meals, meal prep friendly)
+- **Sophisticated Recipe Cards**: Modern card design with subtle shadows, elegant image hover effects, and smooth favorite button animations
+- **Modern Grid/List Toggle**: Elegant toggle switch design with smooth transition animations
+- **Advanced Filtering**: Clean, minimal filter design with elegant checkbox styles and smooth application animations
+- **Infinite Scroll**: Modern skeleton loading design with smooth scroll animations and elegant "load more" button
 
 **Meal Planning Dashboard:**
-- **Calendar View**: Weekly/monthly calendar with drag-and-drop
-- **Smart Plan Generation**: AI-powered meal suggestions
-- **Repetition Controls**: Choose comfort level (None/Smart/Aggressive)
-- **Day Type Management**: Cooking, quick, leftovers, no-cook days
-- **Favorite Integration**: Automatic inclusion of favorite recipes
-- **Nutritional Tracking**: Daily/weekly nutritional goals
-- **Shopping List Generation**: Automatic from meal plans
-- **Progress Tracking**: Meal completion and adherence metrics
+- **Elegant Calendar View**: Modern calendar design with elegant typography, smooth day selection animations, and sophisticated meal assignment indicators
+- **Modern Drag & Drop**: Elegant drag-and-drop interface with smooth animations and visual feedback
+- **Meal Plan Creation Wizard**: Elegant multi-step form design with smooth step transitions and modern progress indicators
+- **Recipe Selection Modal**: Sophisticated modal design with smooth filtering animations and modern recipe cards
 
 **Recipe Detail Page:**
-- **Comprehensive Recipe View**:
-  - High-resolution images with gallery
-  - Detailed ingredients with quantities
-  - Step-by-step instructions with timing
-  - Nutritional information display
-  - Cooking time and servings
-  - Source attribution and metadata
-  - User ratings and reviews
-- **Interactive Features**:
-  - Edit recipe name and details
-  - Add to favorites with rating
-  - Add to meal plan
-  - Scale recipe servings
-  - Print-friendly layout
-  - Share functionality
-- **Related Recipes**: Suggestions based on ingredients or cuisine
+- **Elegant Recipe Header**: Large, sophisticated typography for recipe titles with smooth image gallery and elegant metadata display
+- **Modern Ingredients Section**: Elegant list design with checkboxes, sophisticated quantity styling, and smooth hover effects
+- **Sophisticated Instructions**: Modern numbered list design with elegant step-by-step layout and smooth reveal animations
+- **Action Buttons**: Elegant favorite button with heart animation, modern print button, and sophisticated share functionality
+- **Nutritional Display**: Modern progress bar design with elegant macro breakdown and smooth reveal animations
 
 **Favorites Management:**
-- **Favorite Recipe Cards**: Enhanced cards with ratings and notes
-- **Rating System**: 1-5 star ratings with review notes
-- **Usage Tracking**: Cook count and last cooked date
-- **Organization**: Filter by rating, cuisine, meal type
-- **Meal Planning Integration**: Automatic suggestions for meal plans
-- **Statistics Dashboard**: Usage patterns and preferences
-- **Bulk Actions**: Manage multiple favorites at once
-
-**Categories & Organization:**
-- **Category Pages**: Dedicated pages for each cuisine type
-- **Visual Category Cards**: Images and descriptions
-- **Hierarchical Organization**: Main categories with subcategories
-- **Smart Categorization**: Automatic assignment based on content
-- **Custom Categories**: User-defined organization
-- **Cross-Category Navigation**: Related categories and cuisines
-
-**User Preferences & Settings:**
-- **Multi-Step Setup**: Guided preferences configuration
-- **Dietary Restrictions**: Comprehensive allergy and preference management
-- **Cooking Preferences**: Schedule, time constraints, skill level
-- **Meal Planning Settings**: Repetition strategies, nutritional goals
-- **Favorite Recipe Preferences**: Integration and rotation strategies
-- **Notification Settings**: Email and in-app notifications
-- **Privacy Controls**: Data sharing and visibility options
+- **Modern Favorites Page**: Elegant page header with statistics, sophisticated grid layout, and smooth sorting animations
+- **Rating System**: Modern star rating component with smooth rating animations and elegant display
+- **Usage Tracking**: Modern statistics cards with elegant charts and smooth data visualization animations
 
 **Print & Share Functionality:**
-- **Print-Friendly Layout**: Clean, printer-optimized design
-- **Customizable Print Options**: Single recipe, multiple recipes, meal plans
-- **PDF Export**: High-quality PDF generation
-- **Share Features**: Social media, email, messaging apps
-- **QR Code Integration**: Link back to online version
-- **Recipe Cards**: Compact, shareable recipe summaries
+- **Elegant Print Layout**: Modern typography for print, clean minimal layout, and sophisticated ingredient formatting
+- **Modern Share Interface**: Elegant share button design with smooth dropdown animations and modern social media icons
+- **Sophisticated Export**: Elegant PDF export interface with modern preview functionality
 
 **Mobile Optimization:**
-- **Responsive Design**: Optimized for all screen sizes
-- **Touch-Friendly Interface**: Large buttons and intuitive gestures
-- **Offline Capabilities**: Access saved recipes without internet
-- **Camera Integration**: Direct photo upload for recipe extraction
-- **Progressive Web App**: Install as native app on mobile devices
-- **Push Notifications**: Meal reminders and updates
+- **Responsive Design**: Optimized for all screen sizes with elegant typography scaling
+- **Touch-Friendly Interface**: Large buttons with smooth touch feedback and intuitive gestures
+- **Elegant Mobile Navigation**: Sophisticated mobile menu with smooth animations and modern design
+- **Progressive Web App**: Install as native app with elegant splash screens and smooth transitions
 
-**Advanced Features Display:**
-- **Integration Status**: Show connected accounts (Evernote, etc.)
-- **Extraction Statistics**: Success rates and processing times
-- **Meal Planning Analytics**: Adherence rates and time savings
-- **Favorite Recipe Insights**: Usage patterns and recommendations
-- **Social Features**: Recipe sharing and community features
-- **AI Recommendations**: Personalized recipe suggestions
-
-**Visual Design Elements:**
-- **Modern Aesthetic**: Clean, minimalist design with culinary themes
-- **Color Scheme**: Warm, appetizing colors with good contrast
-- **Typography**: Readable fonts optimized for recipe content
-- **Animations**: Smooth transitions and micro-interactions
-- **Icons**: Intuitive iconography for cooking and food
-- **Loading States**: Engaging loading animations
-- **Error Handling**: User-friendly error messages and recovery
+**Advanced Visual Features:**
+- **Smooth Animations**: Page transitions, scroll animations, and elegant loading states throughout the application
+- **Modern Loading States**: Elegant skeleton loading, smooth progress indicators, and sophisticated loading animations
+- **Dark/Light Mode**: Elegant theme switching with smooth color transitions and modern theme persistence
+- **Background Elements**: Subtle geometric patterns, modern gradient overlays, and sophisticated texture elements
 
 #### 4. Meal Planning System
 
@@ -687,12 +626,213 @@ test-nextjs/
     "formidable": "^3.5.0",
     "date-fns": "^2.30.0",
     "react-beautiful-dnd": "^13.1.1",
-    "recharts": "^2.8.0"
+    "recharts": "^2.8.0",
+    "@next/font": "^14.0.0",
+    "lucide-react": "^0.294.0",
+    "react-intersection-observer": "^9.5.2",
+    "react-hot-toast": "^2.4.1",
+    "react-dropzone": "^14.2.3",
+    "react-image-crop": "^10.1.8",
+    "react-syntax-highlighter": "^15.5.0"
   }
 }
 ```
 
-#### 3. API Endpoints
+#### 3. Design System Configuration
+
+**Typography Setup (next.config.js):**
+```javascript
+const { Inter, Playfair_Display, Poppins } = require('@next/font/google');
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+```
+
+**Tailwind CSS Configuration (tailwind.config.js):**
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        accent: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        primary: {
+          navy: '#1a1a2e',
+          cream: '#f8f6f1',
+        },
+        secondary: {
+          sage: '#7c9885',
+          terracotta: '#d2691e',
+        },
+        accent: {
+          gold: '#d4af37',
+          coral: '#ff6b6b',
+        },
+        neutral: {
+          charcoal: '#2c3e50',
+          light: '#ecf0f1',
+        },
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+        'scale-in': 'scaleIn 0.2s ease-out',
+        'float': 'float 6s ease-in-out infinite',
+        'gradient': 'gradient 15s ease infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-pattern': "url('/images/hero-pattern.svg')",
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+**Global CSS (globals.css):**
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-navy to-secondary-sage text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-primary-navy border-2 border-primary-navy px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-primary-navy hover:text-white focus:outline-none focus:ring-2 focus:ring-accent-gold focus:ring-offset-2;
+  }
+  
+  .card-elegant {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-light;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-navy to-secondary-sage bg-clip-text text-transparent;
+  }
+  
+  .floating-animation {
+    @apply animate-float;
+  }
+  
+  .fade-in {
+    @apply animate-fade-in;
+  }
+  
+  .slide-up {
+    @apply animate-slide-up;
+  }
+}
+```
+
+#### 4. API Endpoints
 
 **Recipe Management:**
 - `GET /api/recipes` - List recipes with filters
@@ -772,7 +912,7 @@ test-nextjs/
 - `GET /api/recipes/meal-prep-friendly` - Get meal prep friendly recipes
 - `GET /api/recipes/leftover-friendly` - Get leftover friendly recipes
 
-#### 4. Data Extraction Services
+#### 5. Data Extraction Services
 
 **Web Scraper:**
 ```typescript
@@ -823,7 +963,7 @@ interface AppleNotesService {
 }
 ```
 
-#### 5. Meal Planning Services
+#### 6. Meal Planning Services
 
 **Meal Plan Generator:**
 ```typescript
@@ -972,6 +1112,12 @@ npx prisma db push
 - Search results returned in < 1 second
 - Mobile responsiveness score > 95
 - User satisfaction with print layout
+- **Design & UX Metrics:**
+  - User satisfaction with visual design > 90%
+  - Animation performance score > 95 (60fps)
+  - Typography readability score > 98%
+  - Color contrast compliance (WCAG AA) > 99%
+  - User engagement with interactive elements > 85%
 - **Meal Planning Metrics:**
   - Meal plan adherence rate > 70%
   - User satisfaction with repetition options > 85%
@@ -981,6 +1127,13 @@ npx prisma db push
 ### Future Enhancements
 - User accounts and favorites
 - Recipe sharing functionality
+- **Advanced Design Features:**
+  - Advanced animation library with Lottie integration
+  - Custom illustration system for recipe categories
+  - Advanced micro-interactions and haptic feedback
+  - AI-powered design personalization
+  - Advanced accessibility features (screen reader optimization)
+  - Multi-language typography support
 - **Advanced Meal Planning Features:**
   - AI-powered recipe recommendations
   - Meal plan templates for different diets
@@ -989,6 +1142,12 @@ npx prisma db push
   - Recipe scaling (adjust servings)
   - Social features (comments, ratings)
   - Recipe recommendations based on meal plan history
+- **Advanced Visual Features:**
+  - 3D recipe card interactions
+  - Advanced image processing and enhancement
+  - Custom recipe visualization tools
+  - Advanced print layout customization
+  - Recipe video integration and editing
 
 ### Development Phases
 
