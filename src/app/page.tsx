@@ -106,8 +106,16 @@ export default function Home() {
       </section>
 
       {/* Data Extraction Sources Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Image for Recipe Extraction */}
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" 
+             style={{
+               backgroundImage: "url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+             }}>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/70 to-background/80"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
               Extract Recipes from Anywhere
@@ -200,6 +208,12 @@ export default function Home() {
 
       {/* Food Logging Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Image for Food Logging */}
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" 
+             style={{
+               backgroundImage: "url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80')"
+             }}>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -258,6 +272,12 @@ export default function Home() {
 
       {/* Smart Grocery Shopping Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Image for Smart Grocery */}
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" 
+             style={{
+               backgroundImage: "url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')"
+             }}>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -315,6 +335,12 @@ export default function Home() {
 
       {/* Meal Planning Features Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Image for Meal Planning */}
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" 
+             style={{
+               backgroundImage: "url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
+             }}>
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
