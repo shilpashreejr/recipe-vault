@@ -2,7 +2,7 @@
 ## Recipe Extraction and Management Website
 
 ### Project Overview
-A Next.js web application that automatically extracts recipe information from various sources (food blogs, recipe websites, social media posts, Instagram Reels, and images) and organizes them into a searchable database with categorization, print functionality, and personalized meal planning.
+A Next.js web application that automatically extracts recipe information from various sources (food blogs, recipe websites, social media posts, Instagram Reels, Evernote notes, Apple Notes exports, and images) and organizes them into a searchable database with categorization, print functionality, and personalized meal planning with smart repetition strategies.
 
 ### Tech Stack
 - **Frontend**: Next.js 14 with TypeScript
@@ -12,38 +12,45 @@ A Next.js web application that automatically extracts recipe information from va
 - **Database**: PostgreSQL with Prisma ORM
 - **Deployment**: Vercel with Vercel Postgres
 - **Data Extraction**: Automated scraping with OCR capabilities
+- **Integration**: Evernote API, Apple Notes parsing, Social media scraping
 
 ### Core Features
 
 #### 1. Data Extraction System
 **Sources Supported:**
-- Food blog URLs
-- Recipe website URLs
-- Social media posts (Instagram, Facebook, Twitter)
+- Food blog URLs and recipe websites
+- Social media posts (Instagram, Facebook, Twitter, TikTok)
 - Instagram Reels (caption/description extraction)
-- Images/screenshots with recipe text
-- Evernote notes and notebooks
+- Images/screenshots with recipe text (OCR)
+- Evernote notes and notebooks (API integration)
 - Apple Notes exports (.html, .txt files)
+- Pinterest recipe pins
+- YouTube cooking videos (description extraction)
+- WhatsApp recipe messages
+- Email recipe forwards
 
 **Extraction Methods:**
 - Web scraping for URLs using Puppeteer/Playwright
 - OCR (Optical Character Recognition) for images using Tesseract.js
 - Evernote API integration for direct note access
 - Apple Notes export file parsing
-- API integrations where available
+- Social media API integrations where available
 - Manual fallback for complex cases
+- Rate limiting and robots.txt compliance
 
 **Data Points to Extract:**
-- Recipe name
-- Ingredients list with quantities
-- Cooking instructions/steps
-- Cooking time (prep + cook)
-- Servings/yield
-- Difficulty level (if available)
+- Recipe name and description
+- Ingredients list with quantities and units
+- Cooking instructions/steps with timing
+- Cooking time (prep + cook + total)
+- Servings/yield information
+- Difficulty level assessment
 - Nutritional information/macros (if available)
-- Cuisine type
-- Dietary restrictions (vegetarian, gluten-free, etc.)
-- Associated images
+- Cuisine type and origin
+- Dietary restrictions (vegetarian, vegan, gluten-free, etc.)
+- Associated images and media
+- Source attribution and metadata
+- User ratings and reviews (if available)
 
 #### 2. Database Schema
 
@@ -306,50 +313,149 @@ CREATE TABLE shopping_list_items (
 );
 ```
 
-#### 3. User Interface Features
+#### 3. User Interface Layout & Design
 
-**Main Pages:**
-1. **Homepage** - Featured recipes, search bar, category navigation
-2. **Recipe Upload** - Form to submit URLs or upload images
-3. **Recipe Browser** - Grid/list view of all recipes with filters
-4. **Recipe Detail** - Full recipe view with print option
-5. **Search Results** - Filtered recipe listings
-6. **Categories** - Recipes organized by category
-7. **Meal Planning Dashboard** - Weekly/monthly meal plans
-8. **Preferences Setup** - User preferences and dietary restrictions
-9. **Shopping Lists** - Generated and manual shopping lists
-10. **Progress Tracking** - Meal plan adherence and analytics
-11. **Favorites** - User's favorite recipes with ratings and notes
+**Homepage Hero Section:**
+- **Dynamic Hero Banner**: Showcase the app's core value proposition with animated elements
+- **Feature Highlights**: Prominent display of key capabilities:
+  - "Extract from Any Source" - URL, social media, images, notes
+  - "Smart Meal Planning" - Personalized plans with repetition strategies
+  - "Organize & Share" - Categories, favorites, print functionality
+- **Quick Action Buttons**: Upload recipe, browse recipes, start meal planning
+- **Social Proof**: User statistics and testimonials
+- **Visual Elements**: Recipe imagery, cooking animations, gradient backgrounds
 
-**Key UI Components:**
-- Responsive navigation with search so that it works on all devices like iphones, ipads and mac
-- Recipe cards with images and key info, if the image is not available generate one or look up on the internet
-- Advanced search/filter sidebar
-- website layout should be fancy looking, but also have a print/share button to get to a Print-friendly recipe layout and print it from there or share it
-- Upload progress indicators
-- Loading states and error handling
-- Mobile-optimized interface
-- I should also have an option to edit the recipe name
-- **Meal Plan Calendar** - Weekly/monthly calendar with drag-and-drop meal assignment
-- **Preferences Form** - Multi-step form for dietary and cooking preferences
-- **Shopping List Editor** - Interactive shopping list with categories
-- **Progress Tracker** - Visual progress indicators for meal completion
-- **Favorites Manager** - Add, rate, and organize favorite recipes
-- **Favorite Recipe Cards** - Enhanced recipe cards with favorite status and ratings
+**Navigation & Header:**
+- **Responsive Navigation**: Works seamlessly on iPhone, iPad, and Mac
+- **Main Menu Items**:
+  - Browse Recipes (with search)
+  - Upload Recipe (multi-source)
+  - Meal Planning (dashboard)
+  - Favorites (management)
+  - Categories (organization)
+  - User Profile (preferences)
+- **Search Bar**: Global search with autocomplete
+- **User Actions**: Login/Register, profile menu, notifications
+- **Mobile Menu**: Hamburger menu with smooth animations
 
-**Search & Filter Options:**
-- Text search (recipe name, ingredients, instructions)
-- Category filter (starters, entrees, desserts, etc.)
-- Dietary restrictions (vegetarian, gluten-free, etc.)
-- Cooking time range
-- Difficulty level
-- Cuisine type
-- Servings size
-- **Meal Planning Filters:**
-  - Quick meals (15-min or less)
-  - Meal prep friendly
-  - Leftover friendly
-  - Batch cooking recipes
+**Recipe Upload Interface:**
+- **Multi-Source Upload Tabs**:
+  - URL Input (blogs, social media, websites)
+  - Image Upload (drag & drop, OCR processing)
+  - Evernote Integration (connect account, select notebooks)
+  - Apple Notes Import (file upload, folder parsing)
+  - Social Media Links (Instagram, TikTok, Pinterest)
+- **Upload Progress**: Real-time extraction status with visual indicators
+- **Preview & Edit**: Review extracted data before saving
+- **Batch Upload**: Multiple sources at once
+- **Source Attribution**: Automatic tracking of recipe origins
+
+**Recipe Browser & Cards:**
+- **Grid/List View**: Toggle between layout options
+- **Enhanced Recipe Cards**:
+  - High-quality images with fallback generation
+  - Recipe name and key details
+  - Cooking time and difficulty indicators
+  - Dietary restriction badges
+  - Source attribution (Evernote, Instagram, etc.)
+  - Favorite status and ratings
+  - Quick actions (view, favorite, add to meal plan)
+- **Advanced Filtering**:
+  - Text search (name, ingredients, instructions)
+  - Category filters (starters, entrees, desserts)
+  - Dietary restrictions (vegetarian, gluten-free, etc.)
+  - Cooking time ranges
+  - Source type (Evernote, social media, web, etc.)
+  - Difficulty levels
+  - Cuisine types
+  - Meal planning filters (quick meals, meal prep friendly)
+
+**Meal Planning Dashboard:**
+- **Calendar View**: Weekly/monthly calendar with drag-and-drop
+- **Smart Plan Generation**: AI-powered meal suggestions
+- **Repetition Controls**: Choose comfort level (None/Smart/Aggressive)
+- **Day Type Management**: Cooking, quick, leftovers, no-cook days
+- **Favorite Integration**: Automatic inclusion of favorite recipes
+- **Nutritional Tracking**: Daily/weekly nutritional goals
+- **Shopping List Generation**: Automatic from meal plans
+- **Progress Tracking**: Meal completion and adherence metrics
+
+**Recipe Detail Page:**
+- **Comprehensive Recipe View**:
+  - High-resolution images with gallery
+  - Detailed ingredients with quantities
+  - Step-by-step instructions with timing
+  - Nutritional information display
+  - Cooking time and servings
+  - Source attribution and metadata
+  - User ratings and reviews
+- **Interactive Features**:
+  - Edit recipe name and details
+  - Add to favorites with rating
+  - Add to meal plan
+  - Scale recipe servings
+  - Print-friendly layout
+  - Share functionality
+- **Related Recipes**: Suggestions based on ingredients or cuisine
+
+**Favorites Management:**
+- **Favorite Recipe Cards**: Enhanced cards with ratings and notes
+- **Rating System**: 1-5 star ratings with review notes
+- **Usage Tracking**: Cook count and last cooked date
+- **Organization**: Filter by rating, cuisine, meal type
+- **Meal Planning Integration**: Automatic suggestions for meal plans
+- **Statistics Dashboard**: Usage patterns and preferences
+- **Bulk Actions**: Manage multiple favorites at once
+
+**Categories & Organization:**
+- **Category Pages**: Dedicated pages for each cuisine type
+- **Visual Category Cards**: Images and descriptions
+- **Hierarchical Organization**: Main categories with subcategories
+- **Smart Categorization**: Automatic assignment based on content
+- **Custom Categories**: User-defined organization
+- **Cross-Category Navigation**: Related categories and cuisines
+
+**User Preferences & Settings:**
+- **Multi-Step Setup**: Guided preferences configuration
+- **Dietary Restrictions**: Comprehensive allergy and preference management
+- **Cooking Preferences**: Schedule, time constraints, skill level
+- **Meal Planning Settings**: Repetition strategies, nutritional goals
+- **Favorite Recipe Preferences**: Integration and rotation strategies
+- **Notification Settings**: Email and in-app notifications
+- **Privacy Controls**: Data sharing and visibility options
+
+**Print & Share Functionality:**
+- **Print-Friendly Layout**: Clean, printer-optimized design
+- **Customizable Print Options**: Single recipe, multiple recipes, meal plans
+- **PDF Export**: High-quality PDF generation
+- **Share Features**: Social media, email, messaging apps
+- **QR Code Integration**: Link back to online version
+- **Recipe Cards**: Compact, shareable recipe summaries
+
+**Mobile Optimization:**
+- **Responsive Design**: Optimized for all screen sizes
+- **Touch-Friendly Interface**: Large buttons and intuitive gestures
+- **Offline Capabilities**: Access saved recipes without internet
+- **Camera Integration**: Direct photo upload for recipe extraction
+- **Progressive Web App**: Install as native app on mobile devices
+- **Push Notifications**: Meal reminders and updates
+
+**Advanced Features Display:**
+- **Integration Status**: Show connected accounts (Evernote, etc.)
+- **Extraction Statistics**: Success rates and processing times
+- **Meal Planning Analytics**: Adherence rates and time savings
+- **Favorite Recipe Insights**: Usage patterns and recommendations
+- **Social Features**: Recipe sharing and community features
+- **AI Recommendations**: Personalized recipe suggestions
+
+**Visual Design Elements:**
+- **Modern Aesthetic**: Clean, minimalist design with culinary themes
+- **Color Scheme**: Warm, appetizing colors with good contrast
+- **Typography**: Readable fonts optimized for recipe content
+- **Animations**: Smooth transitions and micro-interactions
+- **Icons**: Intuitive iconography for cooking and food
+- **Loading States**: Engaging loading animations
+- **Error Handling**: User-friendly error messages and recovery
 
 #### 4. Meal Planning System
 

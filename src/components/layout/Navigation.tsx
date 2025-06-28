@@ -31,7 +31,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             <Link 
               href="/recipes" 
               className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium relative group"
@@ -44,6 +44,20 @@ export default function Navigation() {
               className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium relative group"
             >
               Upload Recipe
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link 
+              href="/meal-plans" 
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium relative group"
+            >
+              Meal Planning
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link 
+              href="/favorites" 
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium relative group"
+            >
+              Favorites
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link 
@@ -65,6 +79,28 @@ export default function Navigation() {
               className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-body font-medium hover:bg-primary/90 transition-all duration-300 hover:scale-105"
             >
               Sign Up
+            </Link>
+          </div>
+
+          {/* Tablet Navigation (simplified) */}
+          <div className="hidden md:flex lg:hidden items-center space-x-6">
+            <Link 
+              href="/recipes" 
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium"
+            >
+              Recipes
+            </Link>
+            <Link 
+              href="/meal-plans" 
+              className="text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium"
+            >
+              Meal Plans
+            </Link>
+            <Link 
+              href="/recipes/upload" 
+              className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-body font-medium hover:bg-primary/90 transition-all duration-300"
+            >
+              Upload
             </Link>
           </div>
 
@@ -105,6 +141,20 @@ export default function Navigation() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Upload Recipe
+            </Link>
+            <Link 
+              href="/meal-plans" 
+              className="block text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Meal Planning
+            </Link>
+            <Link 
+              href="/favorites" 
+              className="block text-foreground/80 hover:text-primary transition-colors duration-300 font-body font-medium py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Favorites
             </Link>
             <Link 
               href="/categories" 

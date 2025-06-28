@@ -68,6 +68,18 @@
 - [ ] Create Apple Notes import progress tracking
 - [ ] Add Apple Notes metadata preservation
 
+### Social Media Integration
+- [ ] Implement Instagram post/reel extraction
+- [ ] Create TikTok video description parsing
+- [ ] Add Pinterest pin recipe extraction
+- [ ] Implement Facebook post recipe parsing
+- [ ] Create Twitter/X post recipe extraction
+- [ ] Add YouTube video description parsing
+- [ ] Implement WhatsApp message recipe extraction
+- [ ] Create email forward recipe parsing
+- [ ] Add social media rate limiting and compliance
+- [ ] Implement social media metadata preservation
+
 ### OCR Service for Images
 - [ ] Install Tesseract.js for OCR
 - [ ] Create image upload component with drag-and-drop
@@ -94,6 +106,10 @@
 - [ ] Create `/api/extract/evernote/auth` endpoint
 - [ ] Create `/api/extract/evernote/sync` endpoint
 - [ ] Create `/api/extract/evernote/notebooks` endpoint
+- [ ] Create `/api/extract/social-media` endpoint
+- [ ] Create `/api/extract/instagram` endpoint
+- [ ] Create `/api/extract/tiktok` endpoint
+- [ ] Create `/api/extract/pinterest` endpoint
 - [ ] Implement background job processing
 - [ ] Add extraction progress tracking
 - [ ] Create error handling and validation
@@ -107,87 +123,81 @@
 - [ ] Implement recipe update functionality
 - [ ] Add soft delete for recipes
 
-## Phase 3: User Interface Development (Week 5-6)
+## Phase 3: Enhanced User Interface Development (Week 5-6)
 
-### Navigation and Layout
-- [ ] Create responsive navigation component
-- [ ] Implement search bar in navigation
-- [ ] Create mobile-friendly hamburger menu
-- [ ] Add breadcrumb navigation
-- [ ] Create footer component
-- [ ] Implement responsive layout for all screen sizes (iPhone, iPad, Mac)
+### Updated Homepage Layout
+- [ ] Redesign hero section to showcase all extraction sources
+- [ ] Add feature highlights for meal planning capabilities
+- [ ] Create animated showcase of data extraction sources
+- [ ] Add social proof section with user statistics
+- [ ] Implement dynamic recipe preview carousel
+- [ ] Create integration status indicators (Evernote, etc.)
+- [ ] Add quick action buttons for all major features
+- [ ] Implement responsive design for all devices (iPhone, iPad, Mac)
 
-### Recipe Upload Interface
-- [ ] Create recipe upload page with tabs (URL/Image/Evernote/Apple Notes)
-- [ ] Build URL input form with validation
-- [ ] Create image upload component with preview
-- [ ] Create Evernote connection interface
-- [ ] Create Apple Notes file upload interface
-- [ ] Add upload progress indicators
-- [ ] Implement drag-and-drop for images and files
-- [ ] Create extraction status display
-- [ ] Add success/error notifications
-- [ ] Implement Evernote notebook selection
-- [ ] Add Apple Notes folder structure display
+### Enhanced Navigation System
+- [ ] Update navigation to include meal planning section
+- [ ] Add favorites management to main navigation
+- [ ] Create dropdown menus for advanced features
+- [ ] Implement global search with autocomplete
+- [ ] Add user profile and preferences menu
+- [ ] Create mobile-optimized navigation menu
+- [ ] Add notification system for extraction progress
+- [ ] Implement breadcrumb navigation
 
-### Recipe Browser and Cards
-- [ ] Create recipe grid/list view component
-- [ ] Build recipe cards with images and key info
-- [ ] Implement image fallback (generate placeholder or fetch from internet)
-- [ ] Add recipe card hover effects and animations
-- [ ] Create loading skeletons for recipe cards
+### Multi-Source Upload Interface
+- [ ] Create tabbed upload interface with all sources
+- [ ] Build URL input form with social media detection
+- [ ] Create image upload with drag-and-drop and OCR preview
+- [ ] Build Evernote connection interface with notebook selection
+- [ ] Create Apple Notes file upload with folder structure display
+- [ ] Add social media link input (Instagram, TikTok, Pinterest)
+- [ ] Implement batch upload functionality
+- [ ] Create upload progress indicators for each source type
+- [ ] Add source attribution display
+- [ ] Implement preview and edit functionality before saving
+
+### Enhanced Recipe Browser
+- [ ] Create grid/list view toggle
+- [ ] Build enhanced recipe cards with source attribution
+- [ ] Add favorite status and ratings to recipe cards
+- [ ] Implement quick actions (favorite, add to meal plan)
+- [ ] Create advanced filtering sidebar
+- [ ] Add source type filters (Evernote, social media, web, etc.)
+- [ ] Implement meal planning filters (quick meals, meal prep friendly)
+- [ ] Add dietary restriction badges
+- [ ] Create cooking time and difficulty indicators
 - [ ] Implement infinite scroll or pagination
-- [ ] Add recipe card click handlers
-- [ ] Add favorite button to recipe cards
-- [ ] Create favorite recipe indicators
-- [ ] Implement favorite recipe filtering
 
-### Recipe Detail Page
-- [ ] Create detailed recipe view page
-- [ ] Display recipe images with gallery
-- [ ] Show ingredients with quantities
-- [ ] Display numbered cooking instructions
-- [ ] Show nutritional information if available
-- [ ] Add cooking time and servings display
-- [ ] Implement edit recipe name functionality
-- [ ] Add recipe metadata (source, extraction date, etc.)
-- [ ] Add favorite/unfavorite button
-- [ ] Display favorite status and rating
-- [ ] Add "Mark as Cooked" button for favorites
+### Recipe Detail Page Enhancements
+- [ ] Add source attribution and metadata display
+- [ ] Create edit recipe name functionality
+- [ ] Build favorite rating and review system
+- [ ] Add meal planning integration
+- [ ] Create recipe scaling functionality
+- [ ] Implement print-friendly layout
+- [ ] Add social sharing functionality
+- [ ] Create related recipes suggestions
+- [ ] Add nutritional information display
+- [ ] Implement recipe image gallery
 
-### Favorites Management System
-- [ ] Create favorites page with grid/list view
-- [ ] Build favorite recipe cards with ratings and notes
-- [ ] Implement add to favorites functionality
-- [ ] Create favorite recipe rating system (1-5 stars)
-- [ ] Add favorite recipe notes/description field
-- [ ] Implement favorite recipe filtering and sorting
-- [ ] Create favorite recipe statistics dashboard
-- [ ] Add "Mark as Cooked" functionality
-- [ ] Implement favorite recipe usage tracking
-- [ ] Create favorite recipe preferences (meal type, day, season)
-- [ ] Add bulk favorite management actions
-
-### Search and Filter System
-- [ ] Create advanced search component
-- [ ] Implement text search (recipe name, ingredients, instructions)
-- [ ] Build filter sidebar with categories
-- [ ] Add dietary restriction filters
-- [ ] Implement cooking time range filter
-- [ ] Add difficulty level filter
-- [ ] Create cuisine type filter
-- [ ] Implement search results page
-- [ ] Add search history and suggestions
-- [ ] Add favorite recipe filters
-- [ ] Implement favorite status in search results
+### Favorites Management Interface
+- [ ] Create favorites page with enhanced cards
+- [ ] Build rating system with star ratings and notes
+- [ ] Add usage tracking (cook count, last cooked date)
+- [ ] Implement favorites filtering and sorting
+- [ ] Create favorites statistics dashboard
+- [ ] Add bulk actions for favorites management
+- [ ] Build meal planning integration for favorites
+- [ ] Create favorite recipe rotation suggestions
 
 ### Categories and Organization
-- [ ] Create categories page
-- [ ] Build category navigation
-- [ ] Implement category-based recipe filtering
-- [ ] Add category descriptions and images
-- [ ] Create category management (admin only)
-- [ ] Implement recipe categorization display
+- [ ] Create visual category pages with images
+- [ ] Build hierarchical category organization
+- [ ] Implement smart categorization
+- [ ] Add custom category creation
+- [ ] Create cross-category navigation
+- [ ] Build category-based recipe filtering
 
 ## Phase 4: Meal Planning System (Week 7-8)
 

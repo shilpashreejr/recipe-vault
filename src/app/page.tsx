@@ -23,36 +23,67 @@ export default function Home() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
-              <span className="gradient-text">Culinary</span>
+              <span className="gradient-text">Your Ultimate</span>
               <br />
-              <span className="text-foreground">Excellence</span>
+              <span className="text-foreground">Recipe Vault</span>
               <br />
-              <span className="gradient-text">Awaits</span>
+              <span className="gradient-text">& Meal Planner</span>
             </h1>
             
-            <p className="text-foreground/70 text-lg sm:text-xl lg:text-2xl mb-8 font-body font-light max-w-2xl mx-auto leading-relaxed">
-              Discover, extract, and organize the world's finest recipes. From traditional classics to modern innovations, 
-              your culinary journey starts here.
+            <p className="text-foreground/70 text-lg sm:text-xl lg:text-2xl mb-8 font-body font-light max-w-3xl mx-auto leading-relaxed">
+              Extract recipes from anywhere - social media, blogs, notes, images - and create personalized meal plans 
+              with smart repetition strategies. Your culinary journey, simplified.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/recipes"
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Explore Recipes
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Link 
                 href="/recipes/upload"
-                className="group glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                Upload Recipe
+                Start Extracting Recipes
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Link>
+              <Link 
+                href="/meal-plans"
+                className="group glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              >
+                Create Meal Plan
+                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </Link>
+            </div>
+
+            {/* Feature Highlights */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="glass rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="font-display font-semibold text-lg mb-2">Extract from Anywhere</h3>
+                <p className="text-foreground/70 text-sm">URLs, social media, images, Evernote, Apple Notes</p>
+              </div>
+              <div className="glass rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <h3 className="font-display font-semibold text-lg mb-2">Smart Meal Planning</h3>
+                <p className="text-foreground/70 text-sm">Personalized plans with repetition strategies</p>
+              </div>
+              <div className="glass rounded-xl p-6 text-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-display font-semibold text-lg mb-2">Organize & Share</h3>
+                <p className="text-foreground/70 text-sm">Favorites, categories, print & share</p>
+              </div>
             </div>
           </div>
         </div>
@@ -65,56 +96,227 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Data Extraction Sources Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
-              Why Choose RecipeVault?
+              Extract Recipes from Anywhere
             </h2>
-            <p className="text-foreground/70 text-lg font-body font-light max-w-2xl mx-auto">
-              Experience the future of recipe management with our cutting-edge features and elegant design.
+            <p className="text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto">
+              Our advanced extraction technology works with all your favorite sources. From social media to notes apps, 
+              we've got you covered.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Social Media */}
             <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
                 </svg>
               </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Smart Extraction</h3>
-              <p className="text-foreground/70 font-body leading-relaxed">
-                Extract recipes from any URL, Instagram Reel, or image with our advanced AI-powered technology.
+              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Social Media</h3>
+              <p className="text-foreground/70 font-body leading-relaxed mb-4">
+                Instagram, TikTok, Pinterest, Facebook, Twitter, YouTube
               </p>
+              <ul className="text-foreground/60 text-sm space-y-1">
+                <li>• Instagram Reels & Posts</li>
+                <li>• TikTok Video Descriptions</li>
+                <li>• Pinterest Recipe Pins</li>
+                <li>• Facebook Recipe Posts</li>
+              </ul>
             </div>
 
-            {/* Feature 2 */}
+            {/* Notes Apps */}
             <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Organized Collections</h3>
-              <p className="text-foreground/70 font-body leading-relaxed">
-                Keep your recipes beautifully organized by categories, dietary preferences, and cooking styles.
+              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Notes Apps</h3>
+              <p className="text-foreground/70 font-body leading-relaxed mb-4">
+                Evernote, Apple Notes, and more
               </p>
+              <ul className="text-foreground/60 text-sm space-y-1">
+                <li>• Evernote API Integration</li>
+                <li>• Apple Notes Export</li>
+                <li>• Notebook Organization</li>
+                <li>• Rich Text Support</li>
+              </ul>
             </div>
 
-            {/* Feature 3 */}
+            {/* Web & Blogs */}
             <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9m0-9H3" />
                 </svg>
               </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Customizable Experience</h3>
-              <p className="text-foreground/70 font-body leading-relaxed">
-                Personalize your cooking experience with custom categories, tags, and recipe modifications.
+              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Web & Blogs</h3>
+              <p className="text-foreground/70 font-body leading-relaxed mb-4">
+                Any recipe website or food blog
               </p>
+              <ul className="text-foreground/60 text-sm space-y-1">
+                <li>• Food Blog URLs</li>
+                <li>• Recipe Websites</li>
+                <li>• Cooking Blogs</li>
+                <li>• Restaurant Sites</li>
+              </ul>
+            </div>
+
+            {/* Images & OCR */}
+            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Images & OCR</h3>
+              <p className="text-foreground/70 font-body leading-relaxed mb-4">
+                Screenshots, photos, handwritten notes
+              </p>
+              <ul className="text-foreground/60 text-sm space-y-1">
+                <li>• Photo Screenshots</li>
+                <li>• Handwritten Recipes</li>
+                <li>• Recipe Cards</li>
+                <li>• Menu Photos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meal Planning Features Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
+              Smart Meal Planning
+            </h2>
+            <p className="text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto">
+              Create personalized meal plans that adapt to your lifestyle, preferences, and cooking schedule.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Features List */}
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl mb-2 text-foreground">Smart Repetition Strategies</h3>
+                  <p className="text-foreground/70 font-body leading-relaxed">
+                    Choose your comfort level: No repetition, Smart repetition, or Aggressive repetition for maximum efficiency.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl mb-2 text-foreground">Favorite Recipe Integration</h3>
+                  <p className="text-foreground/70 font-body leading-relaxed">
+                    Automatically include your favorite recipes in meal plans with intelligent rotation to prevent burnout.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl mb-2 text-foreground">Flexible Cooking Schedule</h3>
+                  <p className="text-foreground/70 font-body leading-relaxed">
+                    Plan around your availability with cooking days, quick meal days, leftovers, and no-cook options.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl mb-2 text-foreground">Automatic Shopping Lists</h3>
+                  <p className="text-foreground/70 font-body leading-relaxed">
+                    Generate organized shopping lists from your meal plans with smart ingredient consolidation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual Preview */}
+            <div className="glass rounded-2xl p-8">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-display font-semibold text-lg text-foreground">Sample Meal Plan</h3>
+                  <span className="text-sm text-foreground/60">Week of March 1st</span>
+                </div>
+                <div className="space-y-3">
+                  {['Monday - Cooking Day', 'Tuesday - Quick Meals', 'Wednesday - Leftovers', 'Thursday - Cooking Day', 'Friday - No Cook'].map((day, index) => (
+                    <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/5">
+                      <div className="w-3 h-3 bg-primary rounded-full"></div>
+                      <span className="text-foreground/80 text-sm">{day}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-4 border-t border-border">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-foreground/60">Favorites included:</span>
+                    <span className="text-primary font-medium">4 recipes</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm mt-1">
+                    <span className="text-foreground/60">Repetition strategy:</span>
+                    <span className="text-primary font-medium">Smart</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
+              Trusted by Home Chefs
+            </h2>
+            <p className="text-foreground/70 text-lg font-body font-light max-w-2xl mx-auto">
+              Join thousands of users who have transformed their cooking experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-display font-bold text-primary mb-2">10,000+</div>
+              <div className="text-foreground/70 font-body">Recipes Extracted</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-display font-bold text-primary mb-2">5,000+</div>
+              <div className="text-foreground/70 font-body">Meal Plans Created</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-display font-bold text-primary mb-2">98%</div>
+              <div className="text-foreground/70 font-body">Extraction Success Rate</div>
             </div>
           </div>
         </div>
@@ -128,20 +330,20 @@ export default function Home() {
             Ready to Transform Your Cooking?
           </h2>
           <p className="text-foreground/70 text-lg font-body font-light mb-8 max-w-2xl mx-auto">
-            Join thousands of home chefs who have already discovered the joy of organized recipe management.
+            Start extracting recipes from anywhere and create personalized meal plans that fit your lifestyle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
-              href="/(auth)/register"
+              href="/recipes/upload"
               className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              Get Started Free
+              Start Extracting Recipes
             </Link>
             <Link 
-              href="/recipes"
+              href="/meal-plans"
               className="glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
             >
-              Browse Recipes
+              Create Meal Plan
             </Link>
           </div>
         </div>
@@ -159,6 +361,8 @@ export default function Home() {
             </div>
             <div className="flex space-x-6 text-foreground/60 font-body">
               <Link href="/recipes" className="hover:text-primary transition-colors duration-300">Recipes</Link>
+              <Link href="/meal-plans" className="hover:text-primary transition-colors duration-300">Meal Plans</Link>
+              <Link href="/favorites" className="hover:text-primary transition-colors duration-300">Favorites</Link>
               <Link href="/categories" className="hover:text-primary transition-colors duration-300">Categories</Link>
               <Link href="/recipes/upload" className="hover:text-primary transition-colors duration-300">Upload</Link>
               <Link href="/(auth)/login" className="hover:text-primary transition-colors duration-300">Login</Link>
