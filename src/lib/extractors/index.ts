@@ -17,6 +17,8 @@ export { FoodBlogScraper } from './food-blog-scraper';
 export type { FoodBlogScrapingOptions, FoodBlogRecipe } from './food-blog-scraper';
 export { YouTubeScraper } from './youtube-scraper';
 export type { YouTubeRecipeData } from './youtube-scraper';
+export { WhatsAppScraper } from './whatsapp-scraper';
+export type { WhatsAppRecipeData } from './whatsapp-scraper';
 
 // Rate limiting and error handling
 export { RateLimiter } from './rate-limiter';
