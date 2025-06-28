@@ -143,9 +143,8 @@
 ### Sophisticated Homepage Design
 - [ ] Create hero section with elegant typography and animations
   - [ ] Large, bold headline with gradient text effect
-  - [ ] Subtle parallax scrolling effects
-  - [ ] Floating recipe cards with hover animations
-  - [ ] Elegant CTA buttons with micro-interactions
+  - [ ] Modern, AI-generated background image of a rustic or ultra-modern vegetarian meal spread
+  - [ ] Gradient overlay for text readability
 - [ ] Design feature showcase section
   - [ ] Animated icons for each extraction source
   - [ ] Smooth reveal animations on scroll

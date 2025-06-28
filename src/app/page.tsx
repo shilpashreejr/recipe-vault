@@ -17,11 +17,17 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/hero/vegetarian-meal-spread.jpg" 
+            alt="Rustic or Ultra-Modern Vegetarian Meal Spread" 
+            className="w-full h-full object-cover object-center brightness-80" 
+            style={{ zIndex: 0 }}
+          />
+          {/* Gradient Overlay for Readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" style={{zIndex: 1}}></div>
+        </div>
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

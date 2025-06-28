@@ -796,4 +796,9 @@ npx prisma db push
 - **Meal Planning Complexity**: Start with basic features and iterate based on user feedback
 - **User Adoption**: Provide clear onboarding and tutorials for meal planning features
 
-This PRD provides a comprehensive roadmap for building the recipe extraction and management website with advanced meal planning capabilities. The technical specifications are detailed enough for a junior developer to implement without additional questions. 
+This PRD provides a comprehensive roadmap for building the recipe extraction and management website with advanced meal planning capabilities. The technical specifications are detailed enough for a junior developer to implement without additional questions.
+
+### Homepage Hero Section
+- The homepage now features a visually stunning hero section with an AI-generated image of a rustic or ultra-modern vegetarian meal spread.
+- The image is vibrant, inviting, and designed to blend with the site's modern aesthetic.
+- A gradient overlay ensures all text remains easily readable on top of the image. 

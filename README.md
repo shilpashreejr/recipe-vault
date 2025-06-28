@@ -10,6 +10,7 @@ A modern recipe extraction and management website built with Next.js 14, TypeScr
 - **Multi-Source Support**: Social media, notes apps, web blogs, and handwritten recipes
 - **Organized Categories**: Browse recipes by starters, entrees, desserts, and dietary restrictions
 - **Print & Share**: Print-friendly layouts and social media sharing
+- **Modern Hero Section**: The homepage features a vibrant, AI-generated image of a rustic or ultra-modern vegetarian meal spread, with a gradient overlay for optimal text readability and a welcoming, healthy vibe.
 
 ### Smart Meal Planning (In Development)
 - **Personalized Meal Plans**: AI-powered meal planning with smart repetition strategies
