@@ -11,6 +11,8 @@ export { PinterestScraper } from './pinterest-scraper';
 export type { PinterestScrapingOptions, PinterestRecipe } from './pinterest-scraper';
 export { FacebookScraper } from './facebook-scraper';
 export type { FacebookScrapingOptions, FacebookRecipe } from './facebook-scraper';
+export { TwitterScraper } from './twitter-scraper';
+export type { TwitterRecipeData } from './twitter-scraper';
 export { FoodBlogScraper } from './food-blog-scraper';
 export type { FoodBlogScrapingOptions, FoodBlogRecipe } from './food-blog-scraper';
 

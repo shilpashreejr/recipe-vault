@@ -73,7 +73,7 @@
 - [X] Create TikTok video description parsing
 - [X] Add Pinterest pin recipe extraction
 - [X] Implement Facebook post recipe parsing
-- [ ] Create Twitter/X post recipe extraction
+- [X] Create Twitter/X post recipe extraction
 - [ ] Add YouTube video description parsing
 - [ ] Implement WhatsApp message recipe extraction
 - [ ] Create email forward recipe parsing
