@@ -19,6 +19,8 @@ export { YouTubeScraper } from './youtube-scraper';
 export type { YouTubeRecipeData } from './youtube-scraper';
 export { WhatsAppScraper } from './whatsapp-scraper';
 export type { WhatsAppRecipeData } from './whatsapp-scraper';
+export { EmailScraper } from './email-scraper';
+export type { EmailRecipeData } from './email-scraper';
 
 // Rate limiting and error handling
 export { RateLimiter } from './rate-limiter';
