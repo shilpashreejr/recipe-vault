@@ -21,9 +21,9 @@
 ### Vercel Deployment Setup
 - [X] Create Vercel account and connect repository
 - [X] Set up Vercel Postgres database
-- [ ] Configure environment variables in Vercel
-- [ ] Set up build settings and deployment pipeline
-- [ ] Test deployment with basic "Hello World" page
+- [X] Configure environment variables in Vercel
+- [X] Set up build settings and deployment pipeline
+- [X] Test deployment with basic "Hello World" page
 
 ### Basic Project Structure
 - [ ] Create folder structure as per PRD
