@@ -89,13 +89,13 @@
 - [X] Implement image validation and error handling
 
 ### Recipe Parsing Logic
-- [ ] Create recipe parser service
-- [ ] Implement ingredient parsing with quantities
-- [ ] Implement instruction parsing with step numbering
-- [ ] Create cooking time extraction logic
-- [ ] Implement nutritional information parsing
-- [ ] Create recipe categorization logic
-- [ ] Add dietary restriction detection (vegetarian, gluten-free, etc.)
+- [X] Create recipe parser service
+- [X] Implement ingredient parsing with quantities
+- [X] Implement instruction parsing with step numbering
+- [X] Create cooking time extraction logic
+- [X] Implement nutritional information parsing
+- [X] Create recipe categorization logic
+- [X] Add dietary restriction detection (vegetarian, gluten-free, etc.)
 
 ### API Endpoints for Extraction
 - [ ] Create `/api/extract/url` endpoint
@@ -789,9 +789,9 @@
 - [ ] Test macro calculation precision
 - [ ] Validate mobile camera functionality
 - [ ] Test inventory photo analysis accuracy
-- [ ] Validate shopping list generation logic
+- [ ] Test shopping list generation logic
 - [ ] Test inventory tracking precision
-- [ ] Validate AI food recognition accuracy
+- [ ] Test AI food recognition accuracy
 
 ### Performance Optimization
 - [ ] Implement image optimization and lazy loading

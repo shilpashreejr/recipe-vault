@@ -4,32 +4,32 @@ A modern recipe extraction and management website built with Next.js 14, TypeScr
 
 ## ✨ Features
 
-### Recipe Management
+### Recipe Management ✅
 - **Smart Recipe Extraction**: Automatically extract recipes from URLs, Instagram Reels, and images
 - **OCR Technology**: Extract recipe text from screenshots and food photos using Tesseract.js
 - **Multi-Source Support**: Social media, notes apps, web blogs, and handwritten recipes
 - **Organized Categories**: Browse recipes by starters, entrees, desserts, and dietary restrictions
 - **Print & Share**: Print-friendly layouts and social media sharing
 
-### Smart Meal Planning
+### Smart Meal Planning (In Development)
 - **Personalized Meal Plans**: AI-powered meal planning with smart repetition strategies
 - **Dietary Preferences**: Customize plans for restrictions, allergies, and taste preferences
 - **Time Management**: Plan meals around your schedule with prep time optimization
 - **Smart Repetition**: Intelligent meal rotation to reduce food waste and save time
 
-### Photo-Based Food Logging
+### Photo-Based Food Logging (Planned)
 - **AI-Powered Recognition**: Snap photos of meals for automatic ingredient identification
 - **Macro Tracking**: Monitor protein, carbs, and fat intake with detailed breakdowns
 - **Progress Insights**: Get personalized recommendations based on eating patterns
 - **Nutritional Goals**: Set and track macro targets with visual progress indicators
 
-### Smart Grocery Shopping
+### Smart Grocery Shopping (Planned)
 - **Auto-Generated Lists**: Shopping lists automatically created from meal plans
 - **Inventory Management**: Track pantry and fridge contents to avoid duplicates
 - **Budget Optimization**: Price comparisons, sale alerts, and budget-friendly alternatives
 - **Waste Reduction**: Smart suggestions to minimize food waste and save money
 
-### User Experience
+### User Experience ✅
 - **Responsive Design**: Works perfectly on iPhone, iPad, and Mac
 - **Modern UI**: Built with shadcn/ui, Tailwind CSS, and Framer Motion
 - **Database Management**: PostgreSQL with Prisma ORM for reliable data storage
@@ -131,28 +131,37 @@ recipe-vault/
 ├── src/
 │   ├── app/                 # Next.js app directory
 │   │   ├── api/            # API routes
+│   │   │   ├── extract/    # Recipe extraction endpoints
+│   │   │   │   ├── evernote/ # Evernote integration
+│   │   │   │   ├── image/  # OCR and image processing
+│   │   │   │   └── social-media/ # Social media scrapers
+│   │   │   ├── recipes/    # Recipe management endpoints
+│   │   │   └── upload/     # File upload endpoints
 │   │   ├── recipes/        # Recipe pages
-│   │   ├── meal-plans/     # Meal planning pages
-│   │   ├── food-logs/      # Food logging pages
-│   │   └── grocery/        # Grocery shopping pages
+│   │   │   ├── upload/     # Recipe upload interface
+│   │   │   ├── search/     # Recipe search and filtering
+│   │   │   └── [id]/       # Individual recipe pages
+│   │   ├── categories/     # Recipe category pages
+│   │   └── test-scrapers/  # Testing interface for scrapers
 │   ├── components/          # React components
-│   │   ├── forms/          # Form components
-│   │   ├── layout/         # Layout components
-│   │   ├── recipe/         # Recipe-specific components
-│   │   ├── food-logging/   # Food logging components
-│   │   ├── grocery/        # Grocery shopping components
+│   │   ├── forms/          # Form components (ImageUpload, AppleNotesUpload)
+│   │   ├── layout/         # Layout components (Navigation)
+│   │   ├── recipe/         # Recipe-specific components (RecipeCard)
 │   │   └── ui/             # shadcn/ui components
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility functions
+│   ├── lib/                # Utility functions and services
 │   │   ├── extractors/     # Recipe extraction logic
-│   │   ├── food-logging/   # Food logging utilities
-│   │   ├── grocery/        # Grocery shopping utilities
-│   │   └── meal-planning/  # Meal planning algorithms
+│   │   │   ├── web-scraper.ts
+│   │   │   ├── social-media/ # Social media scrapers
+│   │   │   ├── rate-limiter.ts
+│   │   │   └── error-handler.ts
+│   │   ├── evernote/       # Evernote integration
+│   │   ├── apple-notes/    # Apple Notes integration
+│   │   ├── ocr/            # OCR service with Tesseract.js
+│   │   └── recipe-parser/  # Recipe parsing logic
 │   └── types/              # TypeScript type definitions
 ├── prisma/                 # Database schema and migrations
 ├── scripts/                # Setup and deployment scripts
-├── public/                 # Static assets
-└── docs/                   # Documentation
+└── public/                 # Static assets
 ```
 
 ## 🔧 Available Scripts
@@ -186,21 +195,21 @@ recipe-vault/
 - [x] Search and filter system
 - [x] Modern design system
 
-### Phase 4: Meal Planning System ✅
-- [x] Smart meal plan generation
-- [x] User preferences system
-- [x] Meal plan interface
-- [x] Shopping list generation
-- [x] Progress tracking
+### Phase 4: Meal Planning System (In Progress)
+- [ ] Smart meal plan generation
+- [ ] User preferences system
+- [ ] Meal plan interface
+- [ ] Shopping list generation
+- [ ] Progress tracking
 
-### Phase 5: Food Logging System (In Progress)
+### Phase 5: Food Logging System (Planned)
 - [ ] Photo-based food recognition
 - [ ] Macro tracking interface
 - [ ] Nutritional goal setting
 - [ ] Progress analytics
 - [ ] Mobile-optimized logging
 
-### Phase 6: Grocery Management System (In Progress)
+### Phase 6: Grocery Management System (Planned)
 - [ ] Inventory tracking
 - [ ] Smart shopping lists
 - [ ] Budget optimization
