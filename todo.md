@@ -78,7 +78,7 @@
 - [X] Implement WhatsApp message recipe extraction
 - [X] Create email forward recipe parsing
 - [X] Add social media rate limiting and compliance
-- [ ] Implement social media metadata preservation
+- [X] Implement social media metadata preservation
 
 ### OCR Service for Images
 - [X] Install Tesseract.js for OCR

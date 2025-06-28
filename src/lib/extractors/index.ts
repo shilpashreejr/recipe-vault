@@ -39,4 +39,7 @@ export { ManualExtractor } from './manual-extractor';
 export type { ManualRecipeInput, ManualExtractionValidation } from './manual-extractor';
 
 export { SocialMediaRateLimiter } from './social-media-rate-limiter';
-export type { SocialMediaRateLimitConfig, ComplianceConfig } from './social-media-rate-limiter'; 
+export type { SocialMediaRateLimitConfig, ComplianceConfig } from './social-media-rate-limiter';
+
+export { SocialMediaMetadataPreservation } from './social-media-metadata';
+export type { SocialMediaMetadata, MetadataPreservationConfig } from './social-media-metadata'; 
