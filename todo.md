@@ -26,7 +26,7 @@
 - [X] Test deployment with basic "Hello World" page
 
 ### Basic Project Structure
-- [ ] Create folder structure as per PRD
+- [X] Create folder structure as per PRD
 - [ ] Set up app directory with basic routing
 - [ ] Create basic layout component
 - [ ] Set up global CSS with Tailwind
