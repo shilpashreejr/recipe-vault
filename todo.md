@@ -48,7 +48,7 @@
 - [X] Set up Evernote API integration
 - [X] Create Evernote authentication flow
 - [X] Implement Evernote note search functionality
-- [ ] Create recipe extraction from Evernote notes
+- [X] Create recipe extraction from Evernote notes
 - [ ] Add support for Evernote attachments (images)
 - [ ] Implement Evernote note synchronization
 - [ ] Create Evernote notebook filtering
@@ -186,17 +186,21 @@
 - [ ] Create cooking preferences form
 - [ ] Build nutritional goals setup
 - [ ] Add meal planning preferences (meals per day, plan duration)
+- [ ] Create smart repetition preferences (allow repetition, strategy, max repetitions)
+- [ ] Add cooking schedule preferences (cooking days, quick meal days, no-cook days)
 - [ ] Create preferences onboarding flow
 - [ ] Implement preferences validation and storage
 
-### Meal Plan Generation Engine
-- [ ] Create meal plan generation algorithm
+### Smart Meal Plan Generation Engine
+- [ ] Create smart meal plan generation algorithm
 - [ ] Implement recipe filtering by dietary restrictions
 - [ ] Add nutritional balancing logic
-- [ ] Create variety optimization to avoid repetitive meals
+- [ ] Create smart repetition logic (respect user preferences)
+- [ ] Implement day type assignment (cooking, quick, leftovers, no-cook)
+- [ ] Add batch cooking and meal prep logic
+- [ ] Create leftover utilization strategy
 - [ ] Implement cooking time and serving size matching
-- [ ] Add leftovers and meal prep consideration
-- [ ] Create meal plan generation API endpoint
+- [ ] Add meal plan generation API endpoint
 - [ ] Implement background job processing for plan generation
 - [ ] Add meal plan validation and error handling
 
@@ -207,9 +211,10 @@
 - [ ] Add drag-and-drop functionality for meal reordering
 - [ ] Create quick edit modal for meal changes
 - [ ] Implement bulk actions (copy, swap, clear)
-- [ ] Add meal plan creation wizard
+- [ ] Add meal plan creation wizard with repetition options
 - [ ] Create meal plan editing interface
 - [ ] Implement meal plan status management
+- [ ] Add smart suggestions for meal optimization
 
 ### Recipe Integration for Meal Planning
 - [ ] Create recipe browser for meal plan selection
@@ -220,6 +225,8 @@
 - [ ] Add recipe nutritional calculation
 - [ ] Create recipe selection modal
 - [ ] Implement favorite recipes functionality
+- [ ] Add recipe tagging (quick, meal-prep-friendly, leftover-friendly)
+- [ ] Create quick meal recipe filter (15-min or less)
 
 ### Shopping List System
 - [ ] Create shopping list generation from meal plans
@@ -231,6 +238,7 @@
 - [ ] Create shopping list export (print, PDF)
 - [ ] Implement shopping list sharing
 - [ ] Add shopping progress tracking
+- [ ] Implement smart quantities for batch cooking
 
 ### Progress Tracking
 - [ ] Create meal completion tracking
@@ -240,6 +248,7 @@
 - [ ] Implement meal plan adherence analytics
 - [ ] Add progress visualization (charts, graphs)
 - [ ] Create progress sharing functionality
+- [ ] Add cooking efficiency tracking
 
 ### Meal Planning API Endpoints
 - [ ] Create `/api/meal-plans` CRUD endpoints
@@ -251,6 +260,9 @@
 - [ ] Create `/api/recipes/for-meal-plan` endpoint
 - [ ] Implement `/api/recipes/suggestions` endpoint
 - [ ] Add `/api/preferences` endpoints
+- [ ] Create `/api/meal-plans/[id]/optimize-repetition` endpoint
+- [ ] Add `/api/recipes/quick-meals` endpoint
+- [ ] Implement `/api/recipes/meal-prep-friendly` endpoint
 
 ## Phase 5: Print and Share Functionality (Week 9)
 
