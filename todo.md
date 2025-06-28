@@ -4,19 +4,19 @@
 
 ### Project Setup
 - [X] Initialize Next.js 14 project with TypeScript
-- [ ] Set up Tailwind CSS configuration
-- [ ] Install and configure shadcn/ui components
-- [ ] Set up Framer Motion for animations
-- [ ] Configure ESLint and Prettier
-- [ ] Set up Git repository and initial commit
+- [X] Set up Tailwind CSS configuration
+- [X] Install and configure shadcn/ui components
+- [X] Set up Framer Motion for animations
+- [X] Configure ESLint and Prettier
+- [X] Set up Git repository and initial commit
 
 ### Database Setup
-- [ ] Install Prisma ORM
-- [ ] Set up PostgreSQL database (local development)
-- [ ] Create Prisma schema with all tables (users, recipes, recipe_images, categories, recipe_categories)
-- [ ] Generate Prisma client
-- [ ] Create initial database migration
-- [ ] Set up seed data for categories (starters, entrees, desserts, etc.)
+- [X] Install Prisma ORM
+- [X] Set up PostgreSQL database (local development)
+- [X] Create Prisma schema with all tables (users, recipes, recipe_images, categories, recipe_categories)
+- [X] Generate Prisma client
+- [X] Create initial database migration
+- [X] Set up seed data for categories (starters, entrees, desserts, etc.)
 
 ### Vercel Deployment Setup
 - [ ] Create Vercel account and connect repository

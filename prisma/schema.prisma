@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  recipes   Recipe[]
+
+  @@map("users")
+}
+
+model Recipe {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  ingredients Json     // Array of ingredient objects
+  instructions Json    // Array of instruction objects
+  cookingTime Int?     // in minutes
+  servings    Int?
+  difficulty  String?  // easy, medium, hard
+  cuisine     String?
+  source      String?  // URL where recipe was extracted from
+  sourceType  String?  // instagram, blog, manual, etc.
+  isVegetarian Boolean @default(false)
+  isGlutenFree Boolean @default(false)
+  isVegan     Boolean @default(false)
+  nutritionalInfo Json? // Nutritional information object
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime? // Soft delete
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id])
+  images      RecipeImage[]
+  categories  RecipeCategory[]
+
+  @@map("recipes")
+}
+
+model RecipeImage {
+  id       String @id @default(cuid())
+  url      String
+  alt      String?
+  isPrimary Boolean @default(false)
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@map("recipe_images")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  recipes     RecipeCategory[]
+
+  @@map("categories")
+}
+
+model RecipeCategory {
+  id         String   @id @default(cuid())
+  recipeId   String
+  categoryId String
+  recipe     Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@unique([recipeId, categoryId])
+  @@map("recipe_categories")
+}

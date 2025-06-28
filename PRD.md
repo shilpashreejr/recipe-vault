@@ -113,13 +113,14 @@ CREATE TABLE recipe_categories (
 6. **Categories** - Recipes organized by category
 
 **Key UI Components:**
-- Responsive navigation with search
-- Recipe cards with images and key info
+- Responsive navigation with search so that it works on all devices like iphones, ipads and mac
+- Recipe cards with images and key info, if the image is not available generate one or look up on the internet
 - Advanced search/filter sidebar
-- Print-friendly recipe layout
+- website layout should be fancy looking, but also have a print/share button to get to a Print-friendly recipe layout and print it from there or share it
 - Upload progress indicators
 - Loading states and error handling
 - Mobile-optimized interface
+- I should also have an option to edit the recipe name
 
 **Search & Filter Options:**
 - Text search (recipe name, ingredients, instructions)
