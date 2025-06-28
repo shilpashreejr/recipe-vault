@@ -47,7 +47,7 @@
 ### Evernote Integration
 - [X] Set up Evernote API integration
 - [X] Create Evernote authentication flow
-- [ ] Implement Evernote note search functionality
+- [X] Implement Evernote note search functionality
 - [ ] Create recipe extraction from Evernote notes
 - [ ] Add support for Evernote attachments (images)
 - [ ] Implement Evernote note synchronization
@@ -168,7 +168,91 @@
 - [ ] Create category management (admin only)
 - [ ] Implement recipe categorization display
 
-## Phase 4: Print and Share Functionality (Week 7)
+## Phase 4: Meal Planning System (Week 7-8)
+
+### Database Schema for Meal Planning
+- [ ] Add UserPreferences model to Prisma schema
+- [ ] Add MealPlan, MealPlanDay, MealPlanMeal models
+- [ ] Add ShoppingList, ShoppingListItem models
+- [ ] Update User and Recipe models with meal planning relations
+- [ ] Create database migration for meal planning tables
+- [ ] Add seed data for common dietary restrictions and allergies
+
+### User Preferences System
+- [ ] Create UserPreferences API endpoints
+- [ ] Build multi-step preferences setup form
+- [ ] Implement dietary restrictions selection
+- [ ] Add allergies and intolerances management
+- [ ] Create cooking preferences form
+- [ ] Build nutritional goals setup
+- [ ] Add meal planning preferences (meals per day, plan duration)
+- [ ] Create preferences onboarding flow
+- [ ] Implement preferences validation and storage
+
+### Meal Plan Generation Engine
+- [ ] Create meal plan generation algorithm
+- [ ] Implement recipe filtering by dietary restrictions
+- [ ] Add nutritional balancing logic
+- [ ] Create variety optimization to avoid repetitive meals
+- [ ] Implement cooking time and serving size matching
+- [ ] Add leftovers and meal prep consideration
+- [ ] Create meal plan generation API endpoint
+- [ ] Implement background job processing for plan generation
+- [ ] Add meal plan validation and error handling
+
+### Meal Plan Interface
+- [ ] Create meal plan dashboard page
+- [ ] Build calendar view with meal assignments
+- [ ] Implement list view for meal plans
+- [ ] Add drag-and-drop functionality for meal reordering
+- [ ] Create quick edit modal for meal changes
+- [ ] Implement bulk actions (copy, swap, clear)
+- [ ] Add meal plan creation wizard
+- [ ] Create meal plan editing interface
+- [ ] Implement meal plan status management
+
+### Recipe Integration for Meal Planning
+- [ ] Create recipe browser for meal plan selection
+- [ ] Implement recipe filtering for meal planning
+- [ ] Add recipe suggestions based on user preferences
+- [ ] Create recipe substitution suggestions
+- [ ] Implement recipe scaling for different serving sizes
+- [ ] Add recipe nutritional calculation
+- [ ] Create recipe selection modal
+- [ ] Implement favorite recipes functionality
+
+### Shopping List System
+- [ ] Create shopping list generation from meal plans
+- [ ] Implement ingredient consolidation logic
+- [ ] Add category organization (produce, dairy, meat, etc.)
+- [ ] Create shopping list editing interface
+- [ ] Implement manual item addition/removal
+- [ ] Add quantity adjustment functionality
+- [ ] Create shopping list export (print, PDF)
+- [ ] Implement shopping list sharing
+- [ ] Add shopping progress tracking
+
+### Progress Tracking
+- [ ] Create meal completion tracking
+- [ ] Implement nutritional tracking vs. planned
+- [ ] Add shopping list completion tracking
+- [ ] Create weekly/monthly progress reports
+- [ ] Implement meal plan adherence analytics
+- [ ] Add progress visualization (charts, graphs)
+- [ ] Create progress sharing functionality
+
+### Meal Planning API Endpoints
+- [ ] Create `/api/meal-plans` CRUD endpoints
+- [ ] Implement `/api/meal-plans/[id]/generate` endpoint
+- [ ] Add `/api/meal-plans/[id]/days` endpoints
+- [ ] Create `/api/meal-plans/[id]/days/[date]/meals` endpoints
+- [ ] Implement `/api/shopping-lists` CRUD endpoints
+- [ ] Add `/api/shopping-lists/[id]/generate` endpoint
+- [ ] Create `/api/recipes/for-meal-plan` endpoint
+- [ ] Implement `/api/recipes/suggestions` endpoint
+- [ ] Add `/api/preferences` endpoints
+
+## Phase 5: Print and Share Functionality (Week 9)
 
 ### Print-Friendly Layout
 - [ ] Create print-specific CSS styles
@@ -199,7 +283,7 @@
 - [ ] Create attractive loading states
 - [ ] Add background patterns and gradients
 
-## Phase 5: Testing and Polish (Week 8)
+## Phase 6: Testing and Polish (Week 10)
 
 ### Testing
 - [ ] Write unit tests for core functions
