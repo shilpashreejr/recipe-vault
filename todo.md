@@ -69,7 +69,7 @@
 - [X] Add Apple Notes metadata preservation
 
 ### Social Media Integration
-- [ ] Implement Instagram post/reel extraction
+- [X] Implement Instagram post/reel extraction
 - [ ] Create TikTok video description parsing
 - [ ] Add Pinterest pin recipe extraction
 - [ ] Implement Facebook post recipe parsing
