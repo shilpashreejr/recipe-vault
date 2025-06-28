@@ -49,7 +49,7 @@
 - [X] Create Evernote authentication flow
 - [X] Implement Evernote note search functionality
 - [X] Create recipe extraction from Evernote notes
-- [ ] Add support for Evernote attachments (images)
+- [X] Add support for Evernote attachments (images)
 - [ ] Implement Evernote note synchronization
 - [ ] Create Evernote notebook filtering
 - [ ] Add Evernote note metadata extraction
