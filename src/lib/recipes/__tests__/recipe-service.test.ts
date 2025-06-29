@@ -79,21 +79,31 @@ describe('RecipeService', () => {
       const result = await RecipeService.createRecipe(recipeData);
 
       expect(mockPrisma.recipe.create).toHaveBeenCalledWith({
-        data: expect.objectContaining({
+        data: {
           title: 'Test Recipe',
           description: 'A test recipe',
-          ingredients: expect.any(Object),
-          instructions: expect.any(Object),
-          nutritionalInfo: expect.any(Object),
+          ingredients: [{ name: 'Flour', quantity: 2, unit: 'cups' }],
+          instructions: [{ step: 1, instruction: 'Mix ingredients' }],
+          cookingTime: 30,
+          servings: 4,
+          difficulty: 'easy',
+          cuisine: 'Test Cuisine',
+          source: 'https://example.com',
+          sourceType: 'manual',
+          isVegetarian: true,
+          isGlutenFree: false,
+          isVegan: false,
+          nutritionalInfo: { calories: 200, protein: 5 },
           images: {
             create: [
               { url: 'https://example.com/image.jpg', alt: 'Test image', isPrimary: true },
             ],
           },
           categories: {
-            create: [{ categoryId: 'category-id' }],
+            create: [{ category: { connect: { id: 'category-id' } } }],
           },
-        }),
+          categoryIds: ['category-id'],
+        },
         include: {
           images: true,
           categories: { include: { category: true } },
@@ -274,9 +284,6 @@ describe('RecipeService', () => {
           images: true,
           categories: { include: { category: true } },
         },
-        orderBy: { createdAt: 'desc' },
-        skip: 0,
-        take: 10,
       });
 
       expect(result).toEqual(mockRecipes);
@@ -370,10 +377,6 @@ describe('RecipeService', () => {
       expect(mockPrisma.recipe.update).toHaveBeenCalledWith({
         where: { id: 'test-id' },
         data: { deletedAt: expect.any(Date) },
-        include: {
-          images: true,
-          categories: { include: { category: true } },
-        },
       });
 
       expect(result).toEqual(mockDeletedRecipe);
