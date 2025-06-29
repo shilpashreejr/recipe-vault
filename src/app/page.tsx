@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import HeroSection from "@/components/ui/HeroSection";
 import FeatureShowcase from "@/components/ui/FeatureShowcase";
+import AnimatedStatistics from "@/components/ui/AnimatedStatistics";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -12,6 +13,31 @@ export default function Home() {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const statistics = [
+    {
+      value: 15000,
+      label: 'Recipes Extracted',
+      icon: '🍳',
+    },
+    {
+      value: 8500,
+      label: 'Happy Users',
+      suffix: '+',
+      icon: '👥',
+    },
+    {
+      value: 45,
+      label: 'Countries',
+      icon: '🌍',
+    },
+    {
+      value: 99,
+      label: 'Success Rate',
+      suffix: '%',
+      icon: '⭐',
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -22,6 +48,13 @@ export default function Home() {
 
       {/* Feature Showcase Section with Animated Icons */}
       <FeatureShowcase />
+
+      {/* Social Proof Section with Animated Statistics */}
+      <AnimatedStatistics 
+        statistics={statistics}
+        title="Trusted by Recipe Enthusiasts Worldwide"
+        subtitle="Join thousands of users who have transformed their cooking experience with our intelligent recipe extraction platform"
+      />
 
       {/* Food Logging Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
