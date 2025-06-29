@@ -3,6 +3,7 @@ import { TypographyShowcase } from '@/components/ui/Typography';
 import { ColorPalette } from '@/components/ui/ColorPalette';
 import { GradientPatterns } from '@/components/ui/GradientPatterns';
 import { ButtonShowcase } from '@/components/ui/ButtonShowcase';
+import { FormInputShowcase } from '@/components/ui/FormInputShowcase';
 
 export default function DesignSystemPage() {
   return (
@@ -27,6 +28,10 @@ export default function DesignSystemPage() {
           
           <section>
             <ButtonShowcase />
+          </section>
+          
+          <section>
+            <FormInputShowcase />
           </section>
         </div>
       </div>
