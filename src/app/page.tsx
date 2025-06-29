@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/layout/Navigation";
+import HeroSection from "@/components/ui/HeroSection";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,95 +16,8 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <div className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
-              <span className="gradient-text">Your Complete</span>
-              <br />
-              <span className="text-foreground">Food Management</span>
-              <br />
-              <span className="gradient-text">Ecosystem</span>
-            </h1>
-            
-            <p className="text-foreground/70 text-lg sm:text-xl lg:text-2xl mb-8 font-body font-light max-w-3xl mx-auto leading-relaxed">
-              AI-powered recipe extraction from anywhere, intelligent meal planning with personalized preferences, 
-              photo-based nutrition tracking, and smart inventory management. Your ultimate culinary companion.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Link 
-                href="/recipes/upload"
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Start Extracting Recipes
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
-              <Link 
-                href="/meal-plans"
-                className="group glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              >
-                Create Meal Plan
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
-            </div>
-
-            {/* Feature Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="font-display font-semibold text-lg mb-2">AI-Powered Extraction</h3>
-                <p className="text-foreground/70 text-sm">From URLs, social media, images & notes</p>
-              </div>
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  </svg>
-                </div>
-                <h3 className="font-display font-semibold text-lg mb-2">Intelligent Meal Planning</h3>
-                <p className="text-foreground/70 text-sm">Personalized with smart repetition</p>
-              </div>
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <h3 className="font-display font-semibold text-lg mb-2">Photo-Based Tracking</h3>
-                <p className="text-foreground/70 text-sm">AI food recognition & macro analysis</p>
-              </div>
-              <div className="glass rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
-                  </svg>
-                </div>
-                <h3 className="font-display font-semibold text-lg mb-2">Smart Inventory & Shopping</h3>
-                <p className="text-foreground/70 text-sm">AI-powered analysis & auto-lists</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <HeroSection />
 
       {/* Data Extraction Sources Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
