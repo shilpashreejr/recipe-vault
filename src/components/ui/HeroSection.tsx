@@ -1,5 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChefHat, BookOpen, Heart, Star, Clock, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -123,33 +126,23 @@ export const GradientText: React.FC<{
   );
 };
 
-// Main Hero Section Component
-export const HeroSection: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+interface HeroSectionProps {
+  className?: string;
+}
+
+export default function HeroSection({ className = "" }: HeroSectionProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { scrollY } = useScroll();
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  
-  const [isInView, setIsInView] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
-  
+  // Parallax effects
+  const titleY = useTransform(scrollY, [0, 500], [0, -100]);
+  const subtitleY = useTransform(scrollY, [0, 500], [0, -50]);
+  const backgroundY = useTransform(scrollY, [0, 500], [0, 200]);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-    
-    return () => observer.disconnect();
+    setIsLoaded(true);
   }, []);
-  
+
   const floatingCards = [
     {
       title: "Creamy Mushroom Risotto",
@@ -178,177 +171,265 @@ export const HeroSection: React.FC = () => {
   ];
   
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
-      <div className="absolute inset-0 pattern-dots opacity-5" />
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-24 ${className}`}>
+      {/* Enhanced Background Elements with Parallax */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20"
+        style={{ y: backgroundY }}
+      />
       
-      {/* Parallax Background Elements */}
-      <motion.div
-        style={{ y }}
-        className="absolute inset-0"
-      >
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl" />
-        <div className="absolute top-40 right-20 w-24 h-24 bg-secondary/10 rounded-full blur-xl" />
-        <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-accent/10 rounded-full blur-xl" />
-        <div className="absolute bottom-40 right-1/3 w-28 h-28 bg-primary/10 rounded-full blur-xl" />
-      </motion.div>
+      {/* Floating Background Orbs */}
+      <motion.div 
+        className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      />
       
-      {/* Main Content */}
-      <motion.div
-        ref={heroRef}
-        style={{ opacity }}
-        className="relative z-10 container mx-auto px-4 py-20"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Column - Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8"
+      {/* Additional Floating Elements */}
+      <motion.div 
+        className="absolute top-1/3 right-1/4 w-32 h-32 bg-secondary/20 rounded-full blur-2xl"
+        animate={{
+          y: [-20, 20, -20],
+          x: [-10, 10, -10],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      {/* Hero Content */}
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <motion.div 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          {/* Main Headline with Enhanced Typography */}
+          <motion.div 
+            className="space-y-4"
+            style={{ y: titleY }}
+          >
+            <motion.h1 
+              className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Badge */}
+              <motion.span 
+                className="gradient-text block"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Your Complete
+              </motion.span>
+              <motion.span 
+                className="text-foreground block"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Food Management
+              </motion.span>
+              <motion.span 
+                className="gradient-text block"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                Ecosystem
+              </motion.span>
+            </motion.h1>
+          </motion.div>
+          
+          {/* Enhanced Subtitle */}
+          <motion.p 
+            className="text-foreground/70 text-lg sm:text-xl lg:text-2xl xl:text-3xl font-body font-light max-w-4xl mx-auto leading-relaxed"
+            style={{ y: subtitleY }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            AI-powered recipe extraction from anywhere, intelligent meal planning with personalized preferences, 
+            photo-based nutrition tracking, and smart inventory management. Your ultimate culinary companion.
+          </motion.p>
+          
+          {/* Enhanced CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href="/recipes/upload"
+                className="group bg-primary text-primary-foreground px-10 py-5 rounded-full font-accent font-semibold text-lg hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center">
+                  Start Extracting Recipes
+                  <motion.span 
+                    className="inline-block ml-3"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80 rounded-full"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link 
+                href="/meal-plans"
+                className="group glass px-10 py-5 rounded-full font-accent font-semibold text-lg hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center">
+                  Create Meal Plan
+                  <motion.span 
+                    className="inline-block ml-3"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Enhanced Feature Highlights */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+          >
+            {[
+              {
+                icon: "⚡",
+                title: "AI-Powered Extraction",
+                description: "From URLs, social media, images & notes",
+                gradient: "from-blue-500 to-purple-600",
+                delay: 0.1
+              },
+              {
+                icon: "🧠",
+                title: "Intelligent Meal Planning",
+                description: "Personalized with smart repetition",
+                gradient: "from-green-500 to-teal-600",
+                delay: 0.2
+              },
+              {
+                icon: "📸",
+                title: "Photo-Based Tracking",
+                description: "AI food recognition & macro analysis",
+                gradient: "from-orange-500 to-red-600",
+                delay: 0.3
+              },
+              {
+                icon: "🛒",
+                title: "Smart Inventory & Shopping",
+                description: "AI-powered analysis & auto-lists",
+                gradient: "from-purple-500 to-pink-600",
+                delay: 0.4
+              }
+            ].map((feature, index) => (
               <motion.div
+                key={index}
+                className="glass rounded-xl p-6 text-center group cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.6 + feature.delay }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
               >
-                <BookOpen className="w-4 h-4" />
-                <span>Extract recipes from anywhere</span>
-              </motion.div>
-              
-              {/* Main Headline */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="space-y-4"
-              >
-                <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                  Transform Your{' '}
-                  <GradientText className="text-6xl lg:text-8xl">
-                    Recipe Collection
-                  </GradientText>
-                </h1>
-                <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-                  Extract, organize, and discover recipes from social media, blogs, and your favorite apps with our intelligent recipe management platform.
+                <motion.div 
+                  className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-lg flex items-center justify-center mx-auto mb-4 text-2xl`}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {feature.icon}
+                </motion.div>
+                <h3 className="font-display font-semibold text-lg mb-2 text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="text-foreground/70 text-sm leading-relaxed">
+                  {feature.description}
                 </p>
               </motion.div>
-              
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <AnimatedCTAButton variant="primary">
-                  Start Extracting Recipes
-                </AnimatedCTAButton>
-                <AnimatedCTAButton variant="secondary">
-                  Watch Demo
-                </AnimatedCTAButton>
-              </motion.div>
-              
-              {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                className="flex items-center space-x-8 pt-8"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">10K+</div>
-                  <div className="text-sm text-muted-foreground">Recipes Extracted</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-secondary">50+</div>
-                  <div className="text-sm text-muted-foreground">Sources Supported</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">99%</div>
-                  <div className="text-sm text-muted-foreground">Accuracy Rate</div>
-                </div>
-              </motion.div>
-            </motion.div>
-            
-            {/* Right Column - Floating Cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              className="relative"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-                {floatingCards.map((card, index) => (
-                  <div
-                    key={index}
-                    className={cn(
-                      "flex justify-center",
-                      index === 1 ? "lg:translate-x-8" : "",
-                      index === 2 ? "lg:-translate-x-4" : ""
-                    )}
-                  >
-                    <FloatingRecipeCard {...card} />
-                  </div>
-                ))}
-              </div>
-              
-              {/* Decorative Elements */}
-              <motion.div
-                animate={{ 
-                  rotate: [0, 360],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{ 
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute -top-10 -right-10 w-20 h-20 bg-accent/20 rounded-full blur-sm"
-              />
-              <motion.div
-                animate={{ 
-                  rotate: [360, 0],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{ 
-                  duration: 15,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute -bottom-8 -left-8 w-16 h-16 bg-secondary/20 rounded-full blur-sm"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-      
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Enhanced Scroll Indicator */}
+      <motion.div 
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 2 }}
       >
-        <motion.div
+        <motion.div 
+          className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center cursor-pointer"
           animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center"
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          whileHover={{ scale: 1.1 }}
         >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
+          <motion.div 
+            className="w-1 h-3 bg-primary rounded-full mt-2"
+            animate={{ 
+              opacity: [0.5, 1, 0.5],
+              scaleY: [1, 1.5, 1]
+            }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
-};
-
-export default HeroSection; 
+} 
