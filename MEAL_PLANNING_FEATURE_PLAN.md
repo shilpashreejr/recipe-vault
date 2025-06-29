@@ -1,7 +1,26 @@
-# Personalized Meal Planning Feature - Implementation Plan
+# Comprehensive Meal Planning Feature - Implementation Plan
 
 ## Overview
 A comprehensive meal planning system that creates personalized weekly/monthly meal plans based on user preferences, dietary restrictions, and their stored recipes. The system will intelligently select meals from the user's recipe collection and suggest new recipes that match their preferences, with smart meal repetition options for realistic busy schedules.
+
+## Core Value Propositions
+
+### 1. **"Meal Planning That Fits Your Life"**
+- Customize your cooking schedule (cook every day vs. meal prep once a week)
+- Choose your repetition comfort level (none/smart/aggressive)
+- Plan around your busy days with quick meals and no-cook options
+
+### 2. **"Smart Repetition for Real People"**
+- No judgment about meal repetition - it's practical and time-saving
+- Batch cooking for efficiency and cost savings
+- Leftover-friendly planning to reduce food waste
+- Smart variety to prevent burnout
+
+### 3. **"Your Cooking Style, Your Way"**
+- From "cook every day" to "meal prep once a week"
+- Quick meals for busy weekdays
+- No-cook options when you need a break
+- Flexible planning that adapts to your lifestyle
 
 ## Database Schema Extensions
 
@@ -60,6 +79,11 @@ model UserPreferences {
   noCookDays          Int     @default(1) // Days for leftovers/takeout
   weekendCooking      Boolean @default(true) // Willing to cook on weekends
   
+  // Favorite Recipe Integration
+  favoriteIntegrationStrategy String @default("balanced") // "balanced", "heavy", "light"
+  minFavoritesPerWeek Int     @default(1) // Minimum favorite recipes per week
+  maxFavoritesPerWeek Int     @default(3) // Maximum favorite recipes per week
+  
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
@@ -95,6 +119,7 @@ model MealPlan {
   updatedAt   DateTime @updatedAt
   
   days        MealPlanDay[]
+  shoppingList ShoppingList?
 
   @@map("meal_plans")
 }
@@ -209,6 +234,39 @@ model ShoppingListItem {
 
   @@map("shopping_list_items")
 }
+
+// Favorite Recipes with Enhanced Metadata
+model FavoriteRecipe {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipeId    String
+  recipe      Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  
+  // User Rating & Notes
+  rating      Int?     // 1-5 stars
+  notes       String?  // Why they love this recipe
+  
+  // Usage Tracking
+  timesCooked Int      @default(0)
+  lastCooked  DateTime?
+  
+  // Meal Planning Preferences
+  preferredMealType String? // "breakfast", "lunch", "dinner", "snack"
+  preferredDays     String[] // ["monday", "wednesday", "friday"]
+  preferredSeasons  String[] // ["spring", "summer", "fall", "winter"]
+  
+  // Cooking Preferences
+  isQuickMeal       Boolean @default(false) // 15-min or less
+  isMealPrepFriendly Boolean @default(false) // Good for batch cooking
+  isLeftoverFriendly Boolean @default(false) // Reheats well
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, recipeId])
+  @@map("favorite_recipes")
+}
 ```
 
 ### Updates to Existing Tables
@@ -220,20 +278,45 @@ model User {
   preferences     UserPreferences?
   mealPlans       MealPlan[]
   shoppingLists   ShoppingList[]
+  favoriteRecipes FavoriteRecipe[]
 }
 
 // Add to Recipe model
 model Recipe {
   // ... existing fields ...
   mealPlanMeals   MealPlanMeal[]
-}
-
-// Add to MealPlan model
-model MealPlan {
-  // ... existing fields ...
-  shoppingList    ShoppingList?
+  favoriteRecipes FavoriteRecipe[]
+  
+  // Recipe tags for meal planning
+  isQuickMeal       Boolean @default(false) // 15-min or less
+  isMealPrepFriendly Boolean @default(false) // Good for batch cooking
+  isLeftoverFriendly Boolean @default(false) // Reheats well
+  isFreezerFriendly Boolean @default(false) // Can be frozen
 }
 ```
+
+## Smart Repetition Strategies
+
+### 1. **No Repetition** (Traditional)
+- Every meal is unique
+- Maximum variety
+- Higher cooking time and complexity
+- Best for: Food enthusiasts, those with lots of time
+
+### 2. **Smart Repetition** (Recommended)
+- Strategic meal repetition based on user preferences
+- Batch cooking on designated prep days
+- Leftovers used 1-2 days later
+- Quick meals on busy days
+- Balance between variety and practicality
+- Best for: Most users, realistic busy schedules
+
+### 3. **Aggressive Repetition** (Time-Saving)
+- Heavy batch cooking
+- Same meal appears 2-3 times per week
+- Maximum time efficiency
+- Minimal cooking days
+- Best for: Very busy users, meal prep enthusiasts
 
 ## Feature Components
 
@@ -255,6 +338,9 @@ model MealPlan {
   - Days for quick meals (15-min or less)
   - Days for leftovers/no-cook
   - Weekend cooking preference
+- **Favorite Recipe Integration**:
+  - Integration strategy (balanced/heavy/light)
+  - Minimum and maximum favorites per week
 
 ### 2. Smart Meal Plan Generation Engine
 - **Recipe Selection Algorithm**: 
@@ -275,8 +361,9 @@ model MealPlan {
   - No-cook days (salads, sandwiches, etc.)
 - **Nutritional Balancing**: Ensure daily/weekly nutritional targets are met
 - **Variety Optimization**: Smart variety based on repetition preferences
+- **Favorite Recipe Integration**: Intelligent inclusion of user favorites
 
-### 3. Meal Plan Interface
+### 3. Modern Meal Plan Interface
 - **Calendar View**: Weekly/monthly calendar with meal assignments
 - **List View**: Simple list of planned meals
 - **Drag & Drop**: Reorder meals within days or between days
@@ -286,6 +373,8 @@ model MealPlan {
   - "Make double batch for leftovers"
   - "This meal works well for meal prep"
   - "Consider this quick alternative"
+- **Progress Tracking**: Visual indicators for completed meals
+- **Nutritional Overview**: Daily/weekly macro summaries
 
 ### 4. Recipe Integration
 - **Recipe Browser**: Browse user's recipes with filtering
@@ -312,52 +401,6 @@ model MealPlan {
 - **Shopping Progress**: Track shopping list completion
 - **Analytics**: Weekly/monthly reports on adherence
 - **Cooking Efficiency**: Track time spent cooking vs. planned
-
-## Smart Repetition Strategies
-
-### 1. **No Repetition** (Traditional)
-- Every meal is unique
-- Maximum variety
-- Higher cooking time and complexity
-
-### 2. **Smart Repetition** (Recommended)
-- Strategic meal repetition based on user preferences
-- Batch cooking on designated prep days
-- Leftovers used 1-2 days later
-- Quick meals on busy days
-- Balance between variety and practicality
-
-### 3. **Aggressive Repetition** (Time-Saving)
-- Heavy batch cooking
-- Same meal appears 2-3 times per week
-- Maximum time efficiency
-- Minimal cooking days
-
-## Marketing Messaging
-
-### Primary Value Propositions:
-1. **"Meal Planning That Fits Your Life"**
-   - Customize your cooking schedule
-   - Choose your repetition comfort level
-   - Plan around your busy days
-
-2. **"Smart Repetition for Real People"**
-   - No judgment about meal repetition
-   - Batch cooking for efficiency
-   - Leftover-friendly planning
-
-3. **"Your Cooking Style, Your Way"**
-   - From "cook every day" to "meal prep once a week"
-   - Quick meals for busy days
-   - No-cook options when needed
-
-### Feature Highlights:
-- **Flexible Repetition**: Choose how often you're okay with repeating meals
-- **Smart Scheduling**: Plan cooking around your actual availability
-- **Batch Cooking**: Make once, eat multiple times
-- **Leftover Strategy**: Turn yesterday's dinner into today's lunch
-- **Quick Meal Days**: 15-minute meals for busy weekdays
-- **No-Cook Options**: Zero-cooking days when you need a break
 
 ## API Endpoints
 
@@ -413,6 +456,17 @@ GET    /api/recipes/meal-prep-friendly
 GET    /api/recipes/leftover-friendly
 ```
 
+### Favorites Management
+```
+GET    /api/favorites
+POST   /api/favorites
+PUT    /api/favorites/[id]
+DELETE /api/favorites/[id]
+GET    /api/favorites/stats
+POST   /api/favorites/[id]/cook
+GET    /api/favorites/meal-plan-suggestions
+```
+
 ## Frontend Pages & Components
 
 ### Pages
@@ -422,6 +476,7 @@ GET    /api/recipes/leftover-friendly
 4. **Edit Meal Plan** (`/meal-plans/[id]`)
 5. **Shopping Lists** (`/shopping-lists`)
 6. **Progress Tracking** (`/progress`)
+7. **Favorites Management** (`/favorites`)
 
 ### Components
 1. **PreferencesForm** - Multi-step form for user preferences
@@ -435,6 +490,8 @@ GET    /api/recipes/leftover-friendly
 9. **NutritionalSummary** - Daily/weekly nutritional overview
 10. **ProgressTracker** - Meal completion tracking
 11. **SmartSuggestions** - AI-powered meal planning tips
+12. **FavoritesManager** - Manage favorite recipes
+13. **FavoriteRecipeCard** - Display favorite recipe with metadata
 
 ## Implementation Phases
 
@@ -443,6 +500,7 @@ GET    /api/recipes/leftover-friendly
 - [ ] User preferences model and API
 - [ ] Basic meal plan CRUD operations
 - [ ] Preferences setup page with repetition options
+- [ ] Favorites management system
 
 ### Phase 2: Core Meal Planning (Week 3-4)
 - [ ] Smart meal plan generation algorithm
@@ -450,18 +508,21 @@ GET    /api/recipes/leftover-friendly
 - [ ] Calendar and list views
 - [ ] Recipe integration and selection
 - [ ] Drag & drop functionality
+- [ ] Favorite recipe integration
 
 ### Phase 3: Shopping & Tracking (Week 5-6)
 - [ ] Shopping list generation
 - [ ] Progress tracking system
 - [ ] Nutritional calculations
 - [ ] Export and sharing features
+- [ ] Meal completion tracking
 
 ### Phase 4: Advanced Features (Week 7-8)
 - [ ] AI-powered recipe suggestions
 - [ ] Meal plan templates
 - [ ] Social features (share meal plans)
 - [ ] Mobile optimization
+- [ ] Advanced analytics
 
 ## Technical Considerations
 
@@ -493,10 +554,59 @@ GET    /api/recipes/leftover-friendly
 - **Progress Analytics**: Detailed tracking and insights
 - **Social Features**: Share meal plans with family/friends
 - **Custom Repetition Strategies**: Advanced repetition algorithms
+- **Family Planning**: Multiple users, shared meal plans
 
 ### Pricing Tiers
 - **Free**: Basic meal planning (7-day plans, limited recipes, basic repetition)
 - **Premium** ($8/month): Advanced features, unlimited plans, AI suggestions, smart repetition
 - **Family** ($15/month): Multiple users, shared meal plans, family shopping lists, custom repetition strategies
 
-This meal planning feature will significantly enhance the value proposition of Recipe Vault by providing a complete solution from recipe storage to meal execution, with realistic meal planning that respects busy schedules and cooking preferences. 
+## Success Metrics
+
+### User Engagement
+- Meal plan creation rate > 60%
+- Meal plan completion rate > 70%
+- Shopping list usage > 80%
+- User retention after first meal plan > 85%
+
+### Technical Performance
+- Meal plan generation time < 5 seconds
+- Page load time < 3 seconds
+- API response time < 500ms
+- Mobile responsiveness score > 95
+
+### Business Metrics
+- User satisfaction with repetition options > 85%
+- Shopping list accuracy > 90%
+- Time saved in meal planning > 2 hours/week
+- Feature adoption rate > 70%
+
+## Marketing Messaging
+
+### Primary Value Propositions:
+1. **"Meal Planning That Fits Your Life"**
+   - Customize your cooking schedule
+   - Choose your repetition comfort level
+   - Plan around your busy days
+
+2. **"Smart Repetition for Real People"**
+   - No judgment about meal repetition
+   - Batch cooking for efficiency
+   - Leftover-friendly planning
+
+3. **"Your Cooking Style, Your Way"**
+   - From "cook every day" to "meal prep once a week"
+   - Quick meals for busy days
+   - No-cook options when needed
+
+### Feature Highlights:
+- **Flexible Repetition**: Choose how often you're okay with repeating meals
+- **Smart Scheduling**: Plan cooking around your actual availability
+- **Batch Cooking**: Make once, eat multiple times
+- **Leftover Strategy**: Turn yesterday's dinner into today's lunch
+- **Quick Meal Days**: 15-minute meals for busy weekdays
+- **No-Cook Options**: Zero-cooking days when you need a break
+- **Favorite Integration**: Intelligently include your favorite recipes
+- **Smart Shopping**: Auto-generated lists from your meal plans
+
+This comprehensive meal planning feature will significantly enhance the value proposition of Recipe Vault by providing a complete solution from recipe storage to meal execution, with realistic meal planning that respects busy schedules and cooking preferences. 

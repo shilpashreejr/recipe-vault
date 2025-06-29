@@ -106,7 +106,7 @@
 - [X] Create `/api/extract/evernote/auth` endpoint
 - [X] Create `/api/extract/evernote/sync` endpoint
 - [X] Create `/api/extract/evernote/notebooks` endpoint
-- [ ] Create `/api/extract/social-media` endpoint
+- [X] Create `/api/extract/social-media` endpoint
 - [X] Create `/api/extract/instagram` endpoint
 - [X] Create `/api/extract/tiktok` endpoint
 - [X] Create `/api/extract/pinterest` endpoint
