@@ -4,11 +4,15 @@ module.exports = {
   roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.test.ts', '**/__tests__/**/*.test.tsx'],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
-    '^.+\\.tsx$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: {
+        jsx: 'react-jsx',
+      },
+    }],
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   collectCoverageFrom: [
     'src/**/*.ts',
@@ -19,7 +23,9 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
   setupFilesAfterEnv: [
-    '<rootDir>/src/lib/evernote/__tests__/setup.ts',
     '<rootDir>/src/test-setup.ts'
   ],
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 }; 
