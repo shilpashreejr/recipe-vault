@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { handleSocialMediaExtraction } from './handler';
+import { SocialMediaRateLimiter } from '@/lib/extractors/social-media-rate-limiter';
+
+// Global instance of the social media rate limiter
+const socialMediaRateLimiter = new SocialMediaRateLimiter();
 
 export async function POST(request: NextRequest) {
   const { url, platform, options = {} } = await request.json();

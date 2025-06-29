@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Navigation from "@/components/layout/Navigation";
 import HeroSection from "@/components/ui/HeroSection";
+import FeatureShowcase from "@/components/ui/FeatureShowcase";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,98 +20,8 @@ export default function Home() {
       {/* Enhanced Hero Section */}
       <HeroSection />
 
-      {/* Data Extraction Sources Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display font-bold text-4xl sm:text-5xl mb-6 gradient-text">
-              AI-Powered Recipe Extraction
-            </h2>
-            <p className="text-foreground/70 text-lg font-body font-light max-w-3xl mx-auto">
-              Our advanced AI technology extracts recipes from all your favorite sources with intelligent parsing, 
-              OCR capabilities, and smart data organization.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Social Media */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2" />
-                </svg>
-              </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Social Media</h3>
-              <p className="text-foreground/70 font-body leading-relaxed mb-4">
-                Instagram, TikTok, Pinterest, Facebook, Twitter, YouTube
-              </p>
-              <ul className="text-foreground/60 text-sm space-y-1">
-                <li>• Instagram Reels & Posts</li>
-                <li>• TikTok Video Descriptions</li>
-                <li>• Pinterest Recipe Pins</li>
-                <li>• Facebook Recipe Posts</li>
-              </ul>
-            </div>
-
-            {/* Notes Apps */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Notes Apps</h3>
-              <p className="text-foreground/70 font-body leading-relaxed mb-4">
-                Evernote, Apple Notes, and more
-              </p>
-              <ul className="text-foreground/60 text-sm space-y-1">
-                <li>• Evernote API Integration</li>
-                <li>• Apple Notes Export</li>
-                <li>• Notebook Organization</li>
-                <li>• Rich Text Support</li>
-              </ul>
-            </div>
-
-            {/* Web & Blogs */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9m0-9H3" />
-                </svg>
-              </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Web & Blogs</h3>
-              <p className="text-foreground/70 font-body leading-relaxed mb-4">
-                Any recipe website or food blog
-              </p>
-              <ul className="text-foreground/60 text-sm space-y-1">
-                <li>• Food Blog URLs</li>
-                <li>• Recipe Websites</li>
-                <li>• Cooking Blogs</li>
-                <li>• Restaurant Sites</li>
-              </ul>
-            </div>
-
-            {/* Images & OCR */}
-            <div className="group glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="font-display font-semibold text-xl mb-4 text-foreground">Images & OCR</h3>
-              <p className="text-foreground/70 font-body leading-relaxed mb-4">
-                Screenshots, photos, handwritten notes
-              </p>
-              <ul className="text-foreground/60 text-sm space-y-1">
-                <li>• Photo Screenshots</li>
-                <li>• Handwritten Recipes</li>
-                <li>• Recipe Cards</li>
-                <li>• Menu Photos</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Feature Showcase Section with Animated Icons */}
+      <FeatureShowcase />
 
       {/* Food Logging Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">

@@ -147,11 +147,11 @@
   - [X] Subtle parallax scrolling effects
   - [X] Floating recipe cards with hover animations
   - [X] Elegant CTA buttons with micro-interactions
-- [ ] Design feature showcase section
-  - [ ] Animated icons for each extraction source
-  - [ ] Smooth reveal animations on scroll
-  - [ ] Interactive hover states for feature cards
-  - [ ] Elegant typography hierarchy
+- [X] Design feature showcase section
+  - [X] Animated icons for each extraction source
+  - [X] Smooth reveal animations on scroll
+  - [X] Interactive hover states for feature cards
+  - [X] Elegant typography hierarchy
 - [ ] Create social proof section
   - [ ] Animated statistics counters
   - [ ] Elegant testimonial cards with avatars

@@ -165,17 +165,11 @@ export default function HeroSection() {
           >
             <Link 
               href="/recipes/upload"
-              className="group relative bg-primary text-white px-10 py-5 rounded-full font-body font-semibold text-lg shadow-2xl hover:shadow-primary/25 transition-all duration-300 overflow-hidden"
+              className="bg-primary text-white px-10 py-5 rounded-full font-body font-semibold text-xl shadow-xl hover:shadow-2xl transition-all duration-200"
             >
-              <span className="relative z-10 flex items-center text-white">
+              <span className="flex items-center">
                 Start Extracting Recipes
-                <motion.span 
-                  className="inline-block ml-3 text-white"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
+                <span className="inline-block ml-3">→</span>
               </span>
             </Link>
           </motion.div>

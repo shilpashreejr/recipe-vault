@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getJobStatus } from './job-status';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function GET(
   req: NextRequest,
-  { params }: { params: { jobId: string } }
+  context: any
 ) {
   try {
-    const { jobId } = params;
+    const { jobId } = context.params;
     const result = await getJobStatus(jobId);
     return NextResponse.json(result.body, { status: result.status });
   } catch (error) {

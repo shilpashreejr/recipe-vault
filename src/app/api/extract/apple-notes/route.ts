@@ -75,7 +75,6 @@ export async function POST(req: NextRequest) {
       success: true,
       data: {
         notes: notes.length,
-        recipes: recipes.length,
         folders: folderStructure.totalFolders,
         format: validation.format,
         metadata: exportMetadata,
