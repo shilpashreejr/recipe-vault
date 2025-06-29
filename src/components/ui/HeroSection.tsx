@@ -131,17 +131,12 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ className = "" }: HeroSectionProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
   const { scrollY } = useScroll();
   
   // Parallax effects
   const titleY = useTransform(scrollY, [0, 500], [0, -100]);
   const subtitleY = useTransform(scrollY, [0, 500], [0, -50]);
   const backgroundY = useTransform(scrollY, [0, 500], [0, 200]);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const floatingCards = [
     {
@@ -221,57 +216,20 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
       
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div 
-          className="space-y-8"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
+        <motion.div className="space-y-8">
           {/* Main Headline with Enhanced Typography */}
-          <motion.div 
-            className="space-y-4"
-            style={{ y: titleY }}
-          >
-            <motion.h1 
-              className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <motion.span 
-                className="gradient-text block"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Your Complete
-              </motion.span>
-              <motion.span 
-                className="text-foreground block"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                Food Management
-              </motion.span>
-              <motion.span 
-                className="gradient-text block"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                Ecosystem
-              </motion.span>
-            </motion.h1>
+          <motion.div className="space-y-4" style={{ y: titleY }}>
+            <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-tight tracking-tight">
+              <span className="gradient-text block">Your Complete</span>
+              <span className="text-foreground block">Food Management</span>
+              <span className="gradient-text block">Ecosystem</span>
+            </h1>
           </motion.div>
           
           {/* Enhanced Subtitle */}
           <motion.p 
             className="text-foreground/70 text-lg sm:text-xl lg:text-2xl xl:text-3xl font-body font-light max-w-4xl mx-auto leading-relaxed"
             style={{ y: subtitleY }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
           >
             AI-powered recipe extraction from anywhere, intelligent meal planning with personalized preferences, 
             photo-based nutrition tracking, and smart inventory management. Your ultimate culinary companion.
@@ -279,20 +237,14 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           
           {/* Enhanced CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            className="flex flex-col gap-6 justify-center items-center w-full relative z-30 bg-background/80 py-4"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-full">
               <Link 
                 href="/recipes/upload"
-                className="group bg-primary text-primary-foreground px-10 py-5 rounded-full font-accent font-semibold text-lg hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-accent font-semibold text-lg hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden min-w-0 w-full text-center"
               >
-                <span className="relative z-10 flex items-center">
+                <span className="relative z-10 flex items-center justify-center">
                   Start Extracting Recipes
                   <motion.span 
                     className="inline-block ml-3"
@@ -302,24 +254,14 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                     →
                   </motion.span>
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary/80 to-accent/80 rounded-full"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "0%" }}
-                  transition={{ duration: 0.3 }}
-                />
               </Link>
             </motion.div>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-full">
               <Link 
                 href="/meal-plans"
-                className="group glass px-10 py-5 rounded-full font-accent font-semibold text-lg hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+                className="group glass px-8 py-4 rounded-full font-accent font-semibold text-lg hover:bg-white/10 transition-all duration-300 relative overflow-hidden min-w-0 w-full text-center"
               >
-                <span className="relative z-10 flex items-center">
+                <span className="relative z-10 flex items-center justify-center">
                   Create Meal Plan
                   <motion.span 
                     className="inline-block ml-3"
@@ -329,12 +271,6 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
                     →
                   </motion.span>
                 </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "0%" }}
-                  transition={{ duration: 0.3 }}
-                />
               </Link>
             </motion.div>
           </motion.div>
@@ -342,9 +278,6 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           {/* Enhanced Feature Highlights */}
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
           >
             {[
               {
@@ -379,9 +312,6 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
               <motion.div
                 key={index}
                 className="glass rounded-xl p-6 text-center group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.6 + feature.delay }}
                 whileHover={{ 
                   y: -10,
                   scale: 1.02,
