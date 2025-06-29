@@ -1,6 +1,8 @@
 import React from 'react';
 import { TypographyShowcase } from '@/components/ui/Typography';
 import { ColorPalette } from '@/components/ui/ColorPalette';
+import { GradientPatterns } from '@/components/ui/GradientPatterns';
+import { ButtonShowcase } from '@/components/ui/ButtonShowcase';
 
 export default function DesignSystemPage() {
   return (
@@ -17,6 +19,14 @@ export default function DesignSystemPage() {
           
           <section>
             <ColorPalette />
+          </section>
+          
+          <section>
+            <GradientPatterns />
+          </section>
+          
+          <section>
+            <ButtonShowcase />
           </section>
         </div>
       </div>

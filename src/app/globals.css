@@ -309,3 +309,63 @@
   background: rgba(212, 175, 55, 0.3);
   color: #fafafa;
 }
+
+/* Gradient backgrounds and patterns */
+.gradient-primary {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #7c9885 0%, #2c3e50 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #d4af37 0%, #d2691e 100%);
+}
+
+.gradient-warm {
+  background: linear-gradient(135deg, #f8f6f1 0%, #ecf0f1 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2c3e50 50%, #7c9885 100%);
+}
+
+/* Subtle patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, #d4af37 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.pattern-lines {
+  background-image: linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.1) 50%, transparent 60%);
+  background-size: 30px 30px;
+}
+
+.pattern-grid {
+  background-image: 
+    linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-circles {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(210, 105, 30, 0.1) 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+
+/* Glass morphism with gradients */
+.glass-gradient {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-gradient-dark {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(44, 62, 80, 0.6) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
