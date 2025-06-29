@@ -74,18 +74,18 @@ export default function HeroSection() {
       
       {/* Animated floating elements */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl z-0"
         variants={floatingVariants}
         animate="animate"
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl z-0"
         variants={floatingVariants}
         animate="animate"
         style={{ animationDelay: "1s" }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/4 w-48 h-48 bg-secondary/10 rounded-full blur-2xl"
+        className="absolute top-1/2 left-1/4 w-48 h-48 bg-secondary/10 rounded-full blur-2xl z-0"
         variants={floatingVariants}
         animate="animate"
         style={{ animationDelay: "2s" }}
@@ -156,7 +156,7 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <motion.div 
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 z-20 relative"
         >
           <motion.div
             variants={buttonVariants}
@@ -165,19 +165,18 @@ export default function HeroSection() {
           >
             <Link 
               href="/recipes/upload"
-              className="group relative bg-primary text-primary-foreground px-10 py-5 rounded-full font-body font-semibold text-lg shadow-2xl hover:shadow-primary/25 transition-all duration-300 overflow-hidden"
+              className="group relative bg-primary text-white px-10 py-5 rounded-full font-body font-semibold text-lg shadow-2xl hover:shadow-primary/25 transition-all duration-300 overflow-hidden"
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 flex items-center text-white">
                 Start Extracting Recipes
                 <motion.span 
-                  className="inline-block ml-3"
+                  className="inline-block ml-3 text-white"
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   →
                 </motion.span>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
           </motion.div>
 
