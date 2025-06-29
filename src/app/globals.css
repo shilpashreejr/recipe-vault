@@ -47,69 +47,79 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --card: #1a1a1a;
-  --card-foreground: #fafafa;
-  --popover: #1a1a1a;
-  --popover-foreground: #fafafa;
-  --primary: #d4af37;
-  --primary-foreground: #0a0a0a;
-  --secondary: #2a2a2a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a3a3a3;
-  --accent: #d4af37;
-  --accent-foreground: #0a0a0a;
-  --destructive: #ef4444;
-  --border: #404040;
-  --input: #404040;
-  --ring: #d4af37;
-  --chart-1: #d4af37;
-  --chart-2: #f59e0b;
-  --chart-3: #10b981;
-  --chart-4: #3b82f6;
-  --chart-5: #8b5cf6;
-  --sidebar: #1a1a1a;
-  --sidebar-foreground: #fafafa;
-  --sidebar-primary: #d4af37;
-  --sidebar-primary-foreground: #0a0a0a;
-  --sidebar-accent: #2a2a2a;
-  --sidebar-accent-foreground: #fafafa;
-  --sidebar-border: #404040;
+  
+  /* Primary Colors */
+  --background: #f8f6f1; /* Warm cream */
+  --foreground: #1a1a2e; /* Deep navy */
+  --card: #ffffff;
+  --card-foreground: #1a1a2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a2e;
+  --primary: #1a1a2e; /* Deep navy */
+  --primary-foreground: #f8f6f1; /* Warm cream */
+  --secondary: #7c9885; /* Sage green */
+  --secondary-foreground: #ffffff;
+  --muted: #ecf0f1; /* Light gray */
+  --muted-foreground: #2c3e50; /* Charcoal */
+  --accent: #d4af37; /* Gold */
+  --accent-foreground: #1a1a2e;
+  --destructive: #ff6b6b; /* Soft coral */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #d4af37; /* Gold */
+  
+  /* Chart Colors */
+  --chart-1: #d4af37; /* Gold */
+  --chart-2: #d2691e; /* Terracotta */
+  --chart-3: #7c9885; /* Sage green */
+  --chart-4: #ff6b6b; /* Soft coral */
+  --chart-5: #2c3e50; /* Charcoal */
+  
+  /* Sidebar Colors */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a2e;
+  --sidebar-primary: #1a1a2e;
+  --sidebar-primary-foreground: #f8f6f1;
+  --sidebar-accent: #7c9885;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e2e8f0;
   --sidebar-ring: #d4af37;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --card: #1a1a1a;
-  --card-foreground: #fafafa;
-  --popover: #1a1a1a;
-  --popover-foreground: #fafafa;
-  --primary: #d4af37;
-  --primary-foreground: #0a0a0a;
-  --secondary: #2a2a2a;
-  --secondary-foreground: #fafafa;
-  --muted: #2a2a2a;
-  --muted-foreground: #a3a3a3;
-  --accent: #d4af37;
-  --accent-foreground: #0a0a0a;
-  --destructive: #ef4444;
+  --background: #1a1a2e; /* Deep navy */
+  --foreground: #f8f6f1; /* Warm cream */
+  --card: #2c3e50; /* Charcoal */
+  --card-foreground: #f8f6f1;
+  --popover: #2c3e50;
+  --popover-foreground: #f8f6f1;
+  --primary: #d4af37; /* Gold */
+  --primary-foreground: #1a1a2e;
+  --secondary: #7c9885; /* Sage green */
+  --secondary-foreground: #ffffff;
+  --muted: #2c3e50; /* Charcoal */
+  --muted-foreground: #ecf0f1; /* Light gray */
+  --accent: #d2691e; /* Terracotta */
+  --accent-foreground: #f8f6f1;
+  --destructive: #ff6b6b; /* Soft coral */
   --border: #404040;
   --input: #404040;
-  --ring: #d4af37;
-  --chart-1: #d4af37;
-  --chart-2: #f59e0b;
-  --chart-3: #10b981;
-  --chart-4: #3b82f6;
-  --chart-5: #8b5cf6;
-  --sidebar: #1a1a1a;
-  --sidebar-foreground: #fafafa;
+  --ring: #d4af37; /* Gold */
+  
+  /* Chart Colors - Dark Mode */
+  --chart-1: #d4af37; /* Gold */
+  --chart-2: #d2691e; /* Terracotta */
+  --chart-3: #7c9885; /* Sage green */
+  --chart-4: #ff6b6b; /* Soft coral */
+  --chart-5: #ecf0f1; /* Light gray */
+  
+  /* Sidebar Colors - Dark Mode */
+  --sidebar: #2c3e50;
+  --sidebar-foreground: #f8f6f1;
   --sidebar-primary: #d4af37;
-  --sidebar-primary-foreground: #0a0a0a;
-  --sidebar-accent: #2a2a2a;
-  --sidebar-accent-foreground: #fafafa;
+  --sidebar-primary-foreground: #1a1a2e;
+  --sidebar-accent: #7c9885;
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #404040;
   --sidebar-ring: #d4af37;
 }
@@ -244,7 +254,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #d4af37, #f59e0b);
+  background: linear-gradient(135deg, #d4af37, #d2691e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
