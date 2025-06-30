@@ -146,11 +146,17 @@
   - [ ] Subtle parallax scrolling effects
   - [ ] Floating recipe cards with hover animations
   - [ ] Elegant CTA buttons with micro-interactions
-- [ ] Design feature showcase section
+- [ ] Design feature showcase section with actionable cards
   - [ ] Animated icons for each extraction source
   - [ ] Smooth reveal animations on scroll
   - [ ] Interactive hover states for feature cards
   - [ ] Elegant typography hierarchy
+  - [ ] **Make each feature card clickable and lead to respective pages:**
+    - [ ] **AI-Powered Extraction card** → Links to `/recipes-extraction` (multi-source upload page)
+    - [ ] **Intelligent Meal Planning card** → Links to `/meal-plans` (meal planning dashboard)
+    - [ ] **Photo-Based Tracking card** → Links to `/food-logging` (food logging interface)
+    - [ ] **Smart Inventory & Shopping card** → Links to `/smart-inventory` (inventory management)
+  - [ ] Remove redundant "Start Extracting Recipes" and "Create Meal Plan" buttons
 - [ ] Create social proof section
   - [ ] Animated statistics counters
   - [ ] Elegant testimonial cards with avatars
