@@ -143,10 +143,10 @@
 
 ### Sophisticated Homepage Design
 - [X] Create hero section with elegant typography and animations
-  - [X] Large, bold headline with gradient text effect
-  - [X] Subtle parallax scrolling effects
-  - [X] Floating recipe cards with hover animations
-  - [X] Elegant CTA buttons with micro-interactions
+  - [ ] Large, bold headline with gradient text effect
+  - [ ] Subtle parallax scrolling effects
+  - [ ] Floating recipe cards with hover animations
+  - [ ] Elegant CTA buttons with micro-interactions
 - [ ] Design feature showcase section
   - [ ] Animated icons for each extraction source
   - [ ] Smooth reveal animations on scroll
