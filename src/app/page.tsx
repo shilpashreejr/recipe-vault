@@ -39,25 +39,12 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Link 
-                href="/recipes/upload"
-                className="group bg-primary text-primary-foreground px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Start Extracting Recipes
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
-              <Link 
-                href="/meal-plans"
-                className="group glass px-8 py-4 rounded-full font-body font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              >
-                Create Meal Plan
-                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
+              {/* Removed redundant CTA buttons as per design plan */}
             </div>
 
             {/* Feature Highlights */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              <Link href="/extract" data-testid="feature-ai-extraction" className="glass rounded-xl p-6 text-center cursor-pointer hover:bg-white/10 transition-all duration-300">
+              <Link href="/recipes-extraction" data-testid="feature-ai-extraction" className="glass rounded-xl p-6 text-center cursor-pointer hover:bg-white/10 transition-all duration-300">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

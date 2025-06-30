@@ -26,7 +26,7 @@ describe('Homepage Feature Cards', () => {
     render(<Home />);
     const user = userEvent.setup();
     await user.click(screen.getByTestId('feature-ai-extraction'));
-    expect(screen.getByTestId('feature-ai-extraction').getAttribute('href')).toBe('/extract');
+    expect(screen.getByTestId('feature-ai-extraction').getAttribute('href')).toBe('/recipes-extraction');
     await user.click(screen.getByTestId('feature-meal-planning'));
     expect(screen.getByTestId('feature-meal-planning').getAttribute('href')).toBe('/meal-plans');
     await user.click(screen.getByTestId('feature-photo-tracking'));

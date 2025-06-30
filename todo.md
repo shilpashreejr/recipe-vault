@@ -152,7 +152,7 @@
   - [ ] Interactive hover states for feature cards
   - [ ] Elegant typography hierarchy
   - [X] Make each feature card clickable and lead to respective pages:
-    - [ ] **AI-Powered Extraction card** → Links to `/recipes-extraction` (multi-source upload page)
+    - [X] **AI-Powered Extraction card** → Links to `/recipes-extraction` (multi-source upload page)
     - [ ] **Intelligent Meal Planning card** → Links to `/meal-plans` (meal planning dashboard)
     - [ ] **Photo-Based Tracking card** → Links to `/food-logging` (food logging interface)
     - [ ] **Smart Inventory & Shopping card** → Links to `/smart-inventory` (inventory management)
