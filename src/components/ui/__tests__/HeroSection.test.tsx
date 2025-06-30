@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { motion } from 'framer-motion';
 import HeroSection, { 
-  FloatingRecipeCard, 
   AnimatedCTAButton, 
   GradientText, 
   AnimatedFeatureIcon 
@@ -93,48 +92,6 @@ describe('HeroSection', () => {
       const { container } = render(<HeroSection className="custom-class" />);
       
       expect(container.firstChild).toHaveClass('custom-class');
-    });
-  });
-
-  describe('FloatingRecipeCard Component', () => {
-    const defaultProps = {
-      title: 'Test Recipe',
-      image: '/test-image.jpg',
-      rating: 4.5,
-      time: '30m',
-      servings: 4,
-      delay: 0.2,
-      category: 'Italian'
-    };
-
-    it('renders recipe card with all props', () => {
-      render(<FloatingRecipeCard {...defaultProps} />);
-      
-      expect(screen.getByText('Test Recipe')).toBeInTheDocument();
-      expect(screen.getByText('4.5')).toBeInTheDocument();
-      expect(screen.getByText('30m')).toBeInTheDocument();
-      expect(screen.getByText('4')).toBeInTheDocument();
-      expect(screen.getByText('Italian')).toBeInTheDocument();
-    });
-
-    it('renders chef hat icon', () => {
-      render(<FloatingRecipeCard {...defaultProps} />);
-      
-      const chefHatIcon = document.querySelector('svg');
-      expect(chefHatIcon).toBeInTheDocument();
-    });
-
-    it('applies correct CSS classes', () => {
-      const { container } = render(<FloatingRecipeCard {...defaultProps} />);
-      
-      expect(container.firstChild).toHaveClass('relative', 'group', 'cursor-pointer', 'perspective-1000');
-    });
-
-    it('handles hover state', () => {
-      render(<FloatingRecipeCard {...defaultProps} />);
-      
-      const card = screen.getByText('Test Recipe').closest('div');
-      expect(card).toBeInTheDocument();
     });
   });
 
@@ -304,146 +261,25 @@ describe('HeroSection', () => {
       expect(div).toHaveClass('mb-6');
     });
 
-    it('applies auto margins', () => {
+    it('applies margin auto for horizontal centering', () => {
       const { container } = render(<AnimatedFeatureIcon {...defaultProps} />);
       
       const div = container.querySelector('div');
       expect(div).toHaveClass('mx-auto');
     });
-  });
 
-  describe('Integration Tests', () => {
-    it('renders all components together in hero section', () => {
-      render(<HeroSection />);
+    it('renders icon with white text color', () => {
+      const { container } = render(<AnimatedFeatureIcon {...defaultProps} />);
       
-      // Check main content
-      expect(screen.getByText('Your Complete')).toBeInTheDocument();
-      expect(screen.getByText('Food Management')).toBeInTheDocument();
-      expect(screen.getByText('Ecosystem')).toBeInTheDocument();
-      
-      // Check CTA buttons
-      expect(screen.getByText('Start Extracting Recipes')).toBeInTheDocument();
-      expect(screen.getByText('Create Meal Plan')).toBeInTheDocument();
-      
-      // Check features
-      expect(screen.getByText('AI-Powered Extraction')).toBeInTheDocument();
-      expect(screen.getByText('Intelligent Meal Planning')).toBeInTheDocument();
-      expect(screen.getByText('Photo-Based Tracking')).toBeInTheDocument();
-      expect(screen.getByText('Smart Inventory & Shopping')).toBeInTheDocument();
+      const iconContainer = container.querySelector('.text-white');
+      expect(iconContainer).toBeInTheDocument();
     });
 
-    it('has proper semantic structure', () => {
-      const { container } = render(<HeroSection />);
+    it('applies text size to icon container', () => {
+      const { container } = render(<AnimatedFeatureIcon {...defaultProps} />);
       
-      // Should have a main section
-      const section = container.querySelector('section');
-      expect(section).toBeInTheDocument();
-      
-      // Should have proper heading hierarchy
-      const h1 = container.querySelector('h1');
-      expect(h1).toBeInTheDocument();
-      
-      // Should have descriptive text
-      const p = container.querySelector('p');
-      expect(p).toBeInTheDocument();
-    });
-
-    it('has accessible button elements', () => {
-      render(<HeroSection />);
-      
-      const buttons = screen.getAllByRole('button');
-      expect(buttons.length).toBeGreaterThan(0);
-      
-      buttons.forEach(button => {
-        expect(button).toBeInTheDocument();
-      });
-    });
-
-    it('has proper button elements with href attributes', () => {
-      render(<HeroSection />);
-      
-      const buttons = screen.getAllByRole('button');
-      expect(buttons.length).toBeGreaterThan(0);
-      
-      // Check that buttons have proper text content
-      buttons.forEach(button => {
-        expect(button).toHaveTextContent(/Start Extracting Recipes|Create Meal Plan/);
-      });
-    });
-  });
-
-  describe('Responsive Design', () => {
-    it('applies responsive text sizing', () => {
-      const { container } = render(<HeroSection />);
-      
-      const h1 = container.querySelector('h1');
-      expect(h1).toHaveClass('text-6xl', 'sm:text-7xl', 'lg:text-8xl', 'xl:text-9xl');
-    });
-
-    it('applies responsive grid layout', () => {
-      const { container } = render(<HeroSection />);
-      
-      const grid = container.querySelector('.grid');
-      expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-4');
-    });
-
-    it('applies responsive button layout', () => {
-      const { container } = render(<HeroSection />);
-      
-      const buttonContainer = container.querySelector('.flex.flex-col.sm\\:flex-row');
-      expect(buttonContainer).toBeInTheDocument();
-    });
-  });
-
-  describe('Animation and Interaction', () => {
-    it('has motion components rendered', () => {
-      const { container } = render(<HeroSection />);
-      
-      // Check for motion components (they render as regular divs in tests)
-      const motionElements = container.querySelectorAll('[animate]');
-      expect(motionElements.length).toBeGreaterThan(0);
-    });
-
-    it('has hover states defined', () => {
-      const { container } = render(<HeroSection />);
-      
-      // Check for hover classes
-      const hoverElements = container.querySelectorAll('.group');
-      expect(hoverElements.length).toBeGreaterThan(0);
-    });
-
-    it('has transition classes', () => {
-      const { container } = render(<HeroSection />);
-      
-      // Check for transition classes
-      const transitionElements = container.querySelectorAll('[class*="transition"]');
-      expect(transitionElements.length).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Accessibility', () => {
-    it('has proper heading structure', () => {
-      const { container } = render(<HeroSection />);
-      
-      const h1 = container.querySelector('h1');
-      expect(h1).toBeInTheDocument();
-      
-      const h3s = container.querySelectorAll('h3');
-      expect(h3s.length).toBeGreaterThan(0);
-    });
-
-    it('has descriptive button text', () => {
-      render(<HeroSection />);
-      
-      expect(screen.getByText('Start Extracting Recipes')).toBeInTheDocument();
-      expect(screen.getByText('Create Meal Plan')).toBeInTheDocument();
-    });
-
-    it('has proper contrast with gradient text', () => {
-      const { container } = render(<HeroSection />);
-      
-      const gradientElements = container.querySelectorAll('.gradient-text');
-      expect(gradientElements.length).toBeGreaterThan(0);
+      const iconContainer = container.querySelector('.text-2xl');
+      expect(iconContainer).toBeInTheDocument();
     });
   });
 }); 

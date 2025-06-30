@@ -6,91 +6,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { ArrowRight, ChefHat, BookOpen, Heart, Star, Clock, Users, Sparkles, Zap, Camera, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Enhanced Floating Recipe Card Component
-export const FloatingRecipeCard: React.FC<{
-  title: string;
-  image: string;
-  rating: number;
-  time: string;
-  servings: number;
-  delay: number;
-  category: string;
-}> = ({ title, image, rating, time, servings, delay, category }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.9, rotateY: -15 }}
-      animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-      transition={{ 
-        duration: 0.8, 
-        delay, 
-        ease: [0.25, 0.46, 0.45, 0.94],
-        type: "spring",
-        stiffness: 100
-      }}
-      whileHover={{ 
-        y: -15, 
-        scale: 1.05,
-        rotateY: 5,
-        transition: { duration: 0.4, ease: "easeOut" }
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="relative group cursor-pointer perspective-1000"
-    >
-      <div className="bg-card/80 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 transform-gpu">
-        <div className="relative aspect-video rounded-xl overflow-hidden mb-4">
-          <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center">
-            <ChefHat className="w-10 h-10 text-primary" />
-          </div>
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-          />
-          
-          {/* Category Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: delay + 0.3 }}
-            className="absolute top-3 left-3 bg-accent/90 backdrop-blur-sm text-accent-foreground px-3 py-1 rounded-full text-xs font-medium"
-          >
-            {category}
-          </motion.div>
-        </div>
-        
-        <h3 className="font-display font-semibold text-lg mb-3 line-clamp-2 leading-tight">{title}</h3>
-        
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <div className="flex items-center space-x-2">
-            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            <span className="font-medium">{rating}</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4" />
-            <span>{time}</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Users className="w-4 h-4" />
-            <span>{servings}</span>
-          </div>
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
-          transition={{ duration: 0.3 }}
-          className="absolute -top-3 -right-3 bg-gradient-to-r from-accent to-secondary text-white rounded-full p-2 shadow-lg"
-        >
-          <Heart className="w-4 h-4" />
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-};
-
 // Enhanced Animated CTA Button Component
 export const AnimatedCTAButton: React.FC<{
   children: React.ReactNode;
@@ -205,42 +120,9 @@ interface HeroSectionProps {
 
 export default function HeroSection({ className = "" }: HeroSectionProps) {
   const { scrollY } = useScroll();
-  
-  // Enhanced parallax effects
   const titleY = useTransform(scrollY, [0, 500], [0, -150]);
   const subtitleY = useTransform(scrollY, [0, 500], [0, -75]);
   const backgroundY = useTransform(scrollY, [0, 500], [0, 300]);
-  const cardsY = useTransform(scrollY, [0, 500], [0, -100]);
-
-  const floatingCards = [
-    {
-      title: "Creamy Mushroom Risotto",
-      image: "/recipe-1.jpg",
-      rating: 4.8,
-      time: "45m",
-      servings: 4,
-      delay: 0.2,
-      category: "Italian"
-    },
-    {
-      title: "Spicy Thai Green Curry",
-      image: "/recipe-2.jpg", 
-      rating: 4.6,
-      time: "30m",
-      servings: 6,
-      delay: 0.4,
-      category: "Thai"
-    },
-    {
-      title: "Chocolate Lava Cake",
-      image: "/recipe-3.jpg",
-      rating: 4.9,
-      time: "25m", 
-      servings: 2,
-      delay: 0.6,
-      category: "Dessert"
-    }
-  ];
 
   const features = [
     {
@@ -324,18 +206,6 @@ export default function HeroSection({ className = "" }: HeroSectionProps) {
           ease: "easeInOut",
         }}
       />
-
-      {/* Floating Recipe Cards */}
-      <motion.div 
-        className="absolute top-1/4 right-10 hidden lg:block"
-        style={{ y: cardsY }}
-      >
-        <div className="space-y-6">
-          {floatingCards.map((card, index) => (
-            <FloatingRecipeCard key={index} {...card} />
-          ))}
-        </div>
-      </motion.div>
       
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
